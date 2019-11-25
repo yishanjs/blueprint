@@ -12,17 +12,17 @@ $pt-intent-colors: (
 ) !default;
 
 $pt-intent-text-colors: (
-  "primary": $blue2,
+  "primary": $red2,
   "success": $green2,
   "warning": $orange2,
-  "danger" : $red2,
+  "danger" : $violet2,
 ) !default;
 
 $pt-dark-intent-text-colors: (
-  "primary": $blue5,
+  "primary": $red5,
   "success": $green5,
   "warning": $orange5,
-  "danger" : $red5,
+  "danger" : $violet5,
 ) !default;
 
 @mixin intent-color($intentName) {

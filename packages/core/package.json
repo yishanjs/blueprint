@@ -1,5 +1,5 @@
 {
-  "name": "@blueprintjs/core",
+  "name": "@yishanzhilu/blueprint-core",
   "version": "3.20.0",
   "description": "Core styles & components",
   "main": "lib/cjs/index.js",
@@ -73,8 +73,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:palantir/blueprint.git",
-    "directory": "packages/core"
+    "url": "git@github.com:yishanzhilu/blueprint.git"
   },
   "keywords": [
     "palantir",

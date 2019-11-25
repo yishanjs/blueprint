@@ -153,12 +153,14 @@ $tree-icon-spacing: ($tree-row-height - $pt-icon-size-standard) / 2 !default;
 }
 
 .#{$ns}-tree-node.#{$ns}-tree-node-selected > .#{$ns}-tree-node-content {
-  background-color: $pt-intent-primary;
+  // background-color: $pt-intent-primary;
 
-  &,
-  #{$icon-classes} {
-    color: $white;
-  }
+  // &,
+  // #{$icon-classes} {
+  //   color: $white;
+  // }
+  font-weight: 600;
+  background-color: rgba($gray5, 0.6);
 
   .#{$ns}-tree-node-caret {
     &::before {
@@ -189,6 +191,7 @@ $tree-icon-spacing: ($tree-row-height - $pt-icon-size-standard) / 2 !default;
   }
 
   .#{$ns}-tree-node.#{$ns}-tree-node-selected > .#{$ns}-tree-node-content {
-    background-color: $pt-intent-primary;
+    // background-color: $pt-intent-primary;
+    background-color: rgba($gray1, 0.4);
   }
 }

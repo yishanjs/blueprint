@@ -87,10 +87,10 @@ $dark-minimal-button-background-color-active: rgba($gray3, 0.3) !default;
 
 // "intent": (default, hover, active colors)
 $button-intents: (
-  "primary": ($pt-intent-primary, $blue2, $blue1),
+  "primary": ($pt-intent-primary, $red2, $red1),
   "success": ($pt-intent-success, $green2, $green1),
   "warning": ($pt-intent-warning, $orange2, $orange1),
-  "danger": ($pt-intent-danger, $red2, $red1)
+  "danger": ($pt-intent-danger, $violet2, $violet1)
 ) !default;
 
 @mixin pt-button-base() {

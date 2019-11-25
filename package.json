@@ -1,7 +1,6 @@
 {
-  "name": "blueprintjs-monorepo",
-  "version": "3.18.0",
-  "private": true,
+  "name": "@yishanzhilu/blueprint",
+  "version": "3.18.1-1",
   "description": "A React UI toolkit for the web.",
   "workspaces": [
     "packages/*"
@@ -66,8 +65,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:palantir/blueprint.git"
+    "url": "git@github.com:yishanzhilu/blueprint.git"
   },
   "author": "Palantir Technologies",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
 }

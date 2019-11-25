@@ -29,7 +29,7 @@ Styleguide progress-bar
 
 $progress-bar-stripes-color: rgba($white, 0.2) !default;
 
-$progress-bar-height: round($pt-grid-size * 0.8) !default;
+$progress-bar-height: round($pt-grid-size * 0.6) !default;
 $progress-bar-stripes-size: $pt-grid-size * 3 !default;
 $progress-bar-border-radius: $pt-grid-size * 4 !default;
 
