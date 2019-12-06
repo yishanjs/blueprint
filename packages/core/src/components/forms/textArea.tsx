@@ -17,8 +17,10 @@
 import classNames from "classnames";
 import * as React from "react";
 import { polyfill } from "react-lifecycles-compat";
-import { AbstractPureComponent2, Classes } from "../../common";
-import { DISPLAYNAME_PREFIX, IIntentProps, IProps } from "../../common/props";
+import { Classes } from "../../common";
+import { DISPLAYNAME_PREFIX, IIntentProps, IProps, removeNonHTMLProps } from "../../common/props";
+
+const DEFAULT_RIGHT_ELEMENT_WIDTH = 10;
 
 export interface ITextAreaProps extends IIntentProps, IProps, React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     /**
@@ -45,67 +47,98 @@ export interface ITextAreaProps extends IIntentProps, IProps, React.TextareaHTML
      * Ref handler that receives HTML `<textarea>` element backing this component.
      */
     inputRef?: (ref: HTMLTextAreaElement | null) => any;
+
+    /**
+     * Element to render on right side of input.
+     * For best results, use a minimal button, tag, or small spinner.
+     */
+    rightElement?: JSX.Element;
 }
 
 export interface ITextAreaState {
     height?: number;
+    rightElementWidth: number;
 }
 
 // this component is simple enough that tests would be purely tautological.
 /* istanbul ignore next */
 @polyfill
-export class TextArea extends AbstractPureComponent2<ITextAreaProps, ITextAreaState> {
+export class TextArea extends React.PureComponent<ITextAreaProps, ITextAreaState> {
     public static displayName = `${DISPLAYNAME_PREFIX}.TextArea`;
-    public state: ITextAreaState = {};
+    public state: ITextAreaState = {
+        rightElementWidth: DEFAULT_RIGHT_ELEMENT_WIDTH
+    };
     private internalTextAreaRef: HTMLTextAreaElement;
+    private rightElement: HTMLSpanElement;
 
     public componentDidMount() {
         if (this.props.growVertically) {
+            const height = this.internalTextAreaRef.scrollHeight || 0;
             this.setState({
-                height: this.internalTextAreaRef.scrollHeight,
+                height
+            });
+        }
+        if (this.rightElement != null) {
+            const rightElementWidth = this.rightElement.clientWidth || DEFAULT_RIGHT_ELEMENT_WIDTH;
+            this.setState({
+                rightElementWidth
             });
         }
     }
+
+    public componentDidUpdate(_: ITextAreaProps, { rightElementWidth }: ITextAreaState) {
+        if (this.rightElement != null) {
+            const newRightElementWidth = this.rightElement.clientWidth || DEFAULT_RIGHT_ELEMENT_WIDTH;
+            if (rightElementWidth !== newRightElementWidth) {
+                this.setState({
+                    rightElementWidth: newRightElementWidth,
+                });
+            }
+        }
+    }
+
     public render() {
-        const { className, fill, inputRef, intent, large, small, growVertically, ...htmlProps } = this.props;
+        const { className, fill, inputRef, intent, large, small, growVertically, rows = 1, ...htmlProps } = this.props;
 
         const rootClasses = classNames(
-            Classes.INPUT,
+            Classes.INPUT_GROUP,
             Classes.intentClass(intent),
             {
                 [Classes.FILL]: fill,
                 [Classes.LARGE]: large,
-                [Classes.SMALL]: small,
+                [Classes.SMALL]: small
             },
-            className,
+            className
         );
 
         // add explicit height style while preserving user-supplied styles if they exist
         let { style = {} } = htmlProps;
-        if (growVertically && this.state.height != null) {
-            // this style object becomes non-extensible when mounted (at least in the enzyme renderer),
-            // so we make a new one to add a property
-            style = {
-                ...style,
-                height: `${this.state.height}px`,
-            };
-        }
+        style = {
+            ...style,
+            height: `${this.state.height}px`,
+            width: "100%",
+            paddingRight: `${this.state.rightElementWidth}px`
+        };
 
         return (
-            <textarea
-                {...htmlProps}
-                className={rootClasses}
-                onChange={this.handleChange}
-                ref={this.handleInternalRef}
-                style={style}
-            />
+            <div className={rootClasses}>
+                <textarea
+                    className={Classes.INPUT}
+                    onChange={this.handleChange}
+                    ref={this.handleInternalRef}
+                    style={style}
+                    rows={rows}
+                    {...removeNonHTMLProps(htmlProps)}
+                />
+                {this.maybeRenderRightElement()}
+            </div>
         );
     }
 
     private handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         if (this.props.growVertically) {
             this.setState({
-                height: e.target.scrollHeight,
+                height: e.target.scrollHeight
             });
         }
 
@@ -121,4 +154,20 @@ export class TextArea extends AbstractPureComponent2<ITextAreaProps, ITextAreaSt
             this.props.inputRef(ref);
         }
     };
+
+    private handleRightElementRef = (ref: HTMLSpanElement | null) => {
+        this.rightElement = ref;
+    };
+
+    private maybeRenderRightElement() {
+        const { rightElement } = this.props;
+        if (rightElement == null) {
+            return undefined;
+        }
+        return (
+            <span className={Classes.INPUT_ACTION} ref={this.handleRightElementRef}>
+                {rightElement}
+            </span>
+        );
+    }
 }

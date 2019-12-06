@@ -99,6 +99,7 @@ $control-group-stack: (
   font-weight: $input-font-weight;
   transition: $input-transition;
   appearance: none;
+  resize: unset;
 
   &:focus,
   &.#{$ns}-active {

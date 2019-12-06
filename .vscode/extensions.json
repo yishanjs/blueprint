@@ -6,7 +6,5 @@
     "giladgray.theme-blueprint",
     // for consistent editor settings:
     "EditorConfig.EditorConfig",
-    // for sass source files:
-    "shinnn.stylelint",
   ]
 }

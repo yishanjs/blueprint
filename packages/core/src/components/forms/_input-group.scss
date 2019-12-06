@@ -80,7 +80,17 @@ $input-button-height-small: $pt-button-height-smaller !default;
     padding: $button-padding-small;
 
     // icons CSS API support
-    &:empty { padding: 0; }
+    &:empty {
+      padding: 0;
+    }
+  }
+
+  .#{$ns}-button-group {
+    @include pt-button-height($input-button-height);
+    margin: ($pt-input-height - $input-button-height) / 2;
+    .#{$ns}-button {
+      margin: 0;
+    }
   }
 
   // direct descendant to exclude icons in buttons
@@ -148,6 +158,14 @@ $input-button-height-small: $pt-button-height-smaller !default;
     .#{$ns}-button {
       @include pt-button-height($input-button-height-large);
       margin: ($pt-input-height-large - $input-button-height-large) / 2;
+    }
+
+    .#{$ns}-button-group {
+      @include pt-button-height($input-button-height-large);
+      margin: ($pt-input-height-large - $input-button-height-large) / 2;
+      .#{$ns}-button {
+        margin: 0;
+      }
     }
 
     > .#{$ns}-icon,
