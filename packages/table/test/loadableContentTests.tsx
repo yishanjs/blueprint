@@ -17,7 +17,7 @@
 import { expect } from "chai";
 import * as React from "react";
 
-import { Classes } from "@blueprintjs/core";
+import { Classes } from "@yishanzhilubp/core";
 
 import { LoadableContent } from "../src/common/loadableContent";
 import { ReactHarness } from "./harness";

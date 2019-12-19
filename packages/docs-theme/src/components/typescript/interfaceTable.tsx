@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Classes, Intent, IProps, Tag } from "@blueprintjs/core";
+import { Classes, Intent, IProps, Tag } from "@yishanzhilubp/core";
 import {
     isTag,
     isTsProperty,

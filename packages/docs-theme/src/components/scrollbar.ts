@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Classes } from "@blueprintjs/core";
+import { Classes } from "@yishanzhilubp/core";
 
 /**
  * Inject some CSS style rules into a new `<style>` element to add padding equal to the

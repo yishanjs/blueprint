@@ -16,9 +16,9 @@
 
 import * as React from "react";
 
-import { Switch } from "@blueprintjs/core";
-import { Example, handleBooleanChange, IExampleProps } from "@blueprintjs/docs-theme";
-import { Cell, Column, Table, TableLoadingOption } from "@blueprintjs/table";
+import { Switch } from "@yishanzhilubp/core";
+import { Example, handleBooleanChange, IExampleProps } from "@yishanzhilubp/docs-theme";
+import { Cell, Column, Table, TableLoadingOption } from "@yishanzhilubp/table";
 
 interface IBigSpaceRock {
     [key: string]: number | string;

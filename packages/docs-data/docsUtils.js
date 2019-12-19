@@ -6,15 +6,16 @@ const marked = require("marked");
 const Highlights = require("highlights");
 
 const DEFAULT_SCOPE = "source.tsx";
-const HIGHLIGHTS_LANGUAGES = ["better-handlebars", "language-less", "tree-sitter-typescript"];
+// TODO add HIGHLIGHTS_LANGUAGES
+// const HIGHLIGHTS_LANGUAGES = ["better-handlebars", "language-less", "tree-sitter-typescript"];
 
 // Highlights configuration (https://github.com/atom/highlights)
 
 const highlighter = new Highlights();
 // a few additional languages... highlights comes with a basic set.
-for (const lang of HIGHLIGHTS_LANGUAGES) {
-    highlighter.requireGrammarsSync({ modulePath: require.resolve(`${lang}/package.json`) });
-}
+// for (const lang of HIGHLIGHTS_LANGUAGES) {
+//     highlighter.requireGrammarsSync({ modulePath: require.resolve(`${lang}/package.json`) });
+// }
 
 // highlights the given text in the given language scope. returns HTML string wrapped in <pre> tag.
 // must provide full TextMate language scope: "text.html.basic"
@@ -44,8 +45,7 @@ module.exports = {
 
     // render the given text as markdown, using the custom rendering logic above.
     // code blocks are highlighted using highlight() above.
-    markdown: (textContent) => marked(textContent, { markedRenderer }),
+    markdown: textContent => marked(textContent),
 
     markedRenderer,
 };
-

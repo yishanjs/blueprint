@@ -32,8 +32,8 @@ import {
     Switch,
     Toaster,
     ToasterPosition,
-} from "@blueprintjs/core";
-import { Example, handleBooleanChange, handleStringChange, IExampleProps } from "@blueprintjs/docs-theme";
+} from "@yishanzhilubp/core";
+import { Example, handleBooleanChange, handleStringChange, IExampleProps } from "@yishanzhilubp/docs-theme";
 import { IBlueprintExampleData } from "../../tags/reactExamples";
 
 type IToastDemo = IToastProps & { button: string };

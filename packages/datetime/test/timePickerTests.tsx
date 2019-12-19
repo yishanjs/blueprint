@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Classes as CoreClasses, Intent, Keys } from "@blueprintjs/core";
+import { Classes as CoreClasses, Intent, Keys } from "@yishanzhilubp/core";
 import { assert } from "chai";
 import { mount } from "enzyme";
 import * as React from "react";

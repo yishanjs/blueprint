@@ -13,16 +13,13 @@
  * limitations under the License.
  */
 
-const { baseConfig } = require("@blueprintjs/webpack-build-scripts");
+const { baseConfig } = require("@yishanzhilubp/webpack-build-scripts");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = Object.assign({}, baseConfig, {
     entry: {
-        "blueprint-landing": [
-            "./src/index.tsx",
-            "./src/index.scss"
-        ],
+        "blueprint-landing": ["./src/index.tsx", "./src/index.scss"],
     },
 
     // we override module rules since we don't want file-loader to be triggered for inline SVGs
@@ -45,6 +42,6 @@ module.exports = Object.assign({}, baseConfig, {
             // to: is relative to dist/
             { from: "src/assets", to: "assets" },
             { from: "src/index.html", to: "." },
-        ])
+        ]),
     ]),
 });

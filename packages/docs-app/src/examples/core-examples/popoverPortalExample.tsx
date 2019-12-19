@@ -16,8 +16,8 @@
 
 import * as React from "react";
 
-import { Button, Code, H5, IPopoverProps, Popover, Position, Switch } from "@blueprintjs/core";
-import { Example, IExampleProps } from "@blueprintjs/docs-theme";
+import { Button, Code, H5, IPopoverProps, Popover, Position, Switch } from "@yishanzhilubp/core";
+import { Example, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 export interface IPopoverPortalExampleState {
     isOpen: boolean;

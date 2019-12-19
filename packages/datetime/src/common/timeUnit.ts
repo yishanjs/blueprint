@@ -24,7 +24,7 @@ export enum TimeUnit {
     HOUR_12 = "hour12",
     MINUTE = "minute",
     SECOND = "second",
-    MS = "ms",
+    MS = "ms"
 }
 
 /** Returns the given time unit component of the date. */
@@ -133,26 +133,26 @@ const TimeUnitMetadata: Record<TimeUnit, ITimeUnitMetadata> = {
     [TimeUnit.HOUR_24]: {
         className: Classes.TIMEPICKER_HOUR,
         max: DEFAULT_MAX_HOUR,
-        min: DEFAULT_MIN_HOUR,
+        min: DEFAULT_MIN_HOUR
     },
     [TimeUnit.HOUR_12]: {
         className: Classes.TIMEPICKER_HOUR,
         max: MERIDIEM_MAX_HOUR,
-        min: MERIDIEM_MIN_HOUR,
+        min: MERIDIEM_MIN_HOUR
     },
     [TimeUnit.MINUTE]: {
         className: Classes.TIMEPICKER_MINUTE,
         max: DEFAULT_MAX_MINUTE,
-        min: DEFAULT_MIN_MINUTE,
+        min: DEFAULT_MIN_MINUTE
     },
     [TimeUnit.SECOND]: {
         className: Classes.TIMEPICKER_SECOND,
         max: DEFAULT_MAX_SECOND,
-        min: DEFAULT_MIN_SECOND,
+        min: DEFAULT_MIN_SECOND
     },
     [TimeUnit.MS]: {
         className: Classes.TIMEPICKER_MILLISECOND,
         max: DEFAULT_MAX_MILLISECOND,
-        min: DEFAULT_MIN_MILLISECOND,
-    },
+        min: DEFAULT_MIN_MILLISECOND
+    }
 };

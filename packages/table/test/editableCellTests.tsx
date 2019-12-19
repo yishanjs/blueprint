@@ -19,7 +19,7 @@ import { mount } from "enzyme";
 import * as React from "react";
 import * as sinon from "sinon";
 
-import { Classes } from "@blueprintjs/core";
+import { Classes } from "@yishanzhilubp/core";
 import * as TableClasses from "../src/common/classes";
 import { Cell, EditableCell } from "../src/index";
 import { CellType, expectCellLoading } from "./cellTestUtils";

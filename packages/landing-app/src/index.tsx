@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { FocusStyleManager } from "@blueprintjs/core";
+import { FocusStyleManager } from "@yishanzhilubp/core";
 import { initializeLogo } from "./logo";
 import { initializeSVGs } from "./svgs";
 

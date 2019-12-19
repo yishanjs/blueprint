@@ -43,7 +43,7 @@ export interface IDatePickerBaseProps {
     /**
      * Collection of functions that provide internationalization support.
      */
-    localeUtils?: typeof LocaleUtils;
+    localeUtils?: LocaleUtils;
 
     /**
      * The latest date the user can select.
@@ -120,7 +120,10 @@ export function getDefaultMinDate() {
     return date;
 }
 
-export function combineModifiers(baseModifiers: IDatePickerModifiers, userModifiers: IDatePickerModifiers) {
+export function combineModifiers(
+    baseModifiers: IDatePickerModifiers,
+    userModifiers: IDatePickerModifiers
+) {
     let modifiers = baseModifiers;
     if (userModifiers != null) {
         modifiers = {};

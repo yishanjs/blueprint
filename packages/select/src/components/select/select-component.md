@@ -15,8 +15,8 @@ For example, `<Select ... disabled={true}><Button ... disabled={true} /></Select
 @reactExample SelectExample
 
 ```tsx
-import { Button, MenuItem } from "@blueprintjs/core";
-import { Select } from "@blueprintjs/select";
+import { Button, MenuItem } from "@yishanzhilubp/core";
+import { Select } from "@yishanzhilubp/select";
 import * as Films from "./films";
 
 // Select<T> is a generic component to work with your data types.
@@ -214,8 +214,8 @@ to rendering this item in this frame. The renderer is called for all items, so d
 `modifiers.matchesPredicate` to hide items that don't match the predicate. Also, don't forget to define a `key` for each item, or face React's console wrath!
 
 ```tsx
-import { Classes, MenuItem } from "@blueprintjs/core";
-import { ItemRenderer, ItemPredicate, Select } from "@blueprintjs/select";
+import { Classes, MenuItem } from "@yishanzhilubp/core";
+import { ItemRenderer, ItemPredicate, Select } from "@yishanzhilubp/select";
 
 const FilmSelect = Select.ofType<Film>();
 
@@ -248,7 +248,7 @@ const renderFilm: ItemRenderer<Film> = (film, { handleClick, modifiers }) => {
 If provided, the `itemListRenderer` prop will be called to render the contents of the dropdown menu. It has access to the items, the current query, and a `renderItem` callback for rendering a single item. A ref handler (`itemsParentRef`) is given as well; it should be attached to the parent element of the rendered menu items so that the currently selected item can be scrolled into view automatically.
 
 ```tsx
-import { ItemListRenderer } from "@blueprintjs/select";
+import { ItemListRenderer } from "@yishanzhilubp/select";
 
 const renderMenu: ItemListRenderer<Film> = ({ items, itemsParentRef, query, renderItem }) => {
     const renderedItems = items.map(renderItem).filter(item => item != null);

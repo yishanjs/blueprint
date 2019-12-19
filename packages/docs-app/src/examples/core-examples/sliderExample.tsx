@@ -16,8 +16,8 @@
 
 import * as React from "react";
 
-import { H5, Slider, Switch } from "@blueprintjs/core";
-import { Example, handleBooleanChange, IExampleProps } from "@blueprintjs/docs-theme";
+import { H5, Slider, Switch } from "@yishanzhilubp/core";
+import { Example, handleBooleanChange, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 export interface ISliderExampleState {
     value1?: number;

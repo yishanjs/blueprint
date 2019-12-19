@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { AnchorButton, Intent } from "@blueprintjs/core";
+import { AnchorButton, Intent } from "@yishanzhilubp/core";
 import { ITag } from "@documentalist/client";
 import * as React from "react";
 import { IExampleProps } from "../components/example";

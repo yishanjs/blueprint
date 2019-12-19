@@ -147,7 +147,7 @@ recommend using our exported __factory methods__ to help you construct the
 appropriate schema for your desired region type:
 
 ```tsx
-import { Regions } from "@blueprintjs/table";
+import { Regions } from "@yishanzhilubp/table";
 
 const singleCellRegion   = Regions.cell(0, 0); // { rows: [0, 0], cols: [0, 0] }
 const singleColumnRegion = Regions.column(0);  // { rows: null, cols: [0, 0] }
@@ -171,7 +171,7 @@ This enumeration is primarily used with the `selectionModes` prop to inform the
 `Table` which kinds of regions are selectable:
 
 ```tsx
-import { RegionCardinality } from "@blueprintjs/table";
+import { RegionCardinality } from "@yishanzhilubp/table";
 
 // disables selection of all region types
 <Table selectionModes={[]} />
@@ -190,7 +190,7 @@ You may also use the exported `SelectionModes` enumeration to express common
 selection-mode combinations more concisely:
 
 ```tsx
-import { SelectionModes } from "@blueprintjs/table";
+import { SelectionModes } from "@yishanzhilubp/table";
 
 <Table selectionModes={SelectionModes.ALL} />
 <Table selectionModes={SelectionModes.COLUMNS_AND_CELLS} />
@@ -205,7 +205,7 @@ determine the cardinality of any region using the exported
 `Regions.getRegionCardinality` function:
 
 ```tsx
-import { Regions } from "@blueprintjs/table";
+import { Regions } from "@yishanzhilubp/table";
 
 const cardinalities = [
     Regions.getRegionCardinality(Regions.cell(0, 0)), // RegionCardinality.CELLS

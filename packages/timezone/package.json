@@ -1,5 +1,5 @@
 {
-  "name": "@blueprintjs/timezone",
+  "name": "@yishanzhilubp/timezone",
   "version": "3.6.0",
   "description": "Components related to timezone selection and UI",
   "main": "lib/cjs/index.js",
@@ -35,20 +35,20 @@
     "verify": "npm-run-all compile -p dist test lint"
   },
   "dependencies": {
-    "@blueprintjs/core": "^3.19.0",
-    "@blueprintjs/select": "^3.11.0",
+    "@yishanzhilubp/core": "^4.0.0",
+    "@yishanzhilubp/select": "^4.0.0",
     "classnames": "^2.2",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.26",
-    "tslib": "~1.9.0"
+    "tslib": "^1.9.0"
   },
   "peerDependencies": {
-    "react": "^15.3.0 || 16",
-    "react-dom": "^15.3.0 || 16"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.5"
   },
   "devDependencies": {
-    "@blueprintjs/node-build-scripts": "^0.11.0",
-    "@blueprintjs/test-commons": "^0.10.0",
+    "@yishanzhilubp/node-build-scripts": "^0.11.0",
+    "@yishanzhilubp/test-commons": "^0.10.0",
     "@types/moment-timezone": "^0.5.12",
     "enzyme": "^3.10.0",
     "karma": "^4.2.0",
@@ -56,7 +56,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6",
-    "typescript": "~3.5.3",
+    "typescript": "~3.7.3",
     "webpack-cli": "^3.3.6"
   },
   "repository": {

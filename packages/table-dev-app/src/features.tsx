@@ -19,7 +19,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Button, Classes, H4, Intent, Menu, MenuDivider, MenuItem } from "@blueprintjs/core";
+import { Button, Classes, H4, Intent, Menu, MenuDivider, MenuItem } from "@yishanzhilubp/core";
 
 import {
     Cell,
@@ -38,7 +38,7 @@ import {
     SelectionModes,
     Table,
     Utils,
-} from "@blueprintjs/table/src";
+} from "@yishanzhilubp/table/src";
 
 import { Nav } from "./nav";
 ReactDOM.render(<Nav selected="features" />, document.getElementById("nav"));

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { IProps, Menu, MenuDivider, MenuItem } from "@blueprintjs/core";
+import { IProps, Menu, MenuDivider, MenuItem } from "@yishanzhilubp/core";
 import * as React from "react";
 
 export interface IFileMenuProps extends IProps {

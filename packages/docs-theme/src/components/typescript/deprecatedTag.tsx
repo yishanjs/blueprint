@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Intent, Tag } from "@blueprintjs/core";
+import { Intent, Tag } from "@yishanzhilubp/core";
 import * as React from "react";
 
 export const DeprecatedTag: React.SFC<{ isDeprecated: boolean | string | undefined }> = ({ isDeprecated }) => {

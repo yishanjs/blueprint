@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-// @ts-check
-const { generateIsomorphicTests } = require("@blueprintjs/test-commons");
+/* eslint-disable */
+const { generateIsomorphicTests } = require("@yishanzhilubp/test-commons");
 const React = require("react");
 const Select = require("../lib/cjs");
 
@@ -37,8 +37,5 @@ describe("Select isomorphic rendering", () => {
         Omnibar: {
             props: { items: [], isOpen: true, overlayProps: { usePortal: false } },
         },
-        QueryList: {
-            skip: true,
-        }
     });
 });

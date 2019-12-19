@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { IProps, Utils as CoreUtils } from "@blueprintjs/core";
+import { IProps, Utils as CoreUtils } from "@yishanzhilubp/core";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 

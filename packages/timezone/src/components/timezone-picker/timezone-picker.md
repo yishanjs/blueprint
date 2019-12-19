@@ -47,7 +47,7 @@ for more information and browser compatibility.
 </div>
 
 ```tsx
-import { TimezonePicker } from "@blueprintjs/timezone";
+import { TimezonePicker } from "@yishanzhilubp/timezone";
 
 export class TimezoneExample extends React.PureComponent<{}, { timezone: string; }> {
     public state = { timezone: "" };

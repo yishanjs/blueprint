@@ -29,8 +29,8 @@ import {
     MenuItem,
     Popover,
     Position,
-} from "@blueprintjs/core";
-import { QueryList, Select } from "@blueprintjs/select";
+} from "@yishanzhilubp/core";
+import { QueryList, Select } from "@yishanzhilubp/select";
 import {
     getInitialTimezoneItems,
     getLocalTimezoneItem,

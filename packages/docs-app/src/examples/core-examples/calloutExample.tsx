@@ -16,9 +16,9 @@
 
 import * as React from "react";
 
-import { Callout, Code, H5, Intent, Switch } from "@blueprintjs/core";
-import { Example, handleBooleanChange, handleStringChange, IDocsExampleProps } from "@blueprintjs/docs-theme";
-import { IconName } from "@blueprintjs/icons";
+import { Callout, Code, H5, Intent, Switch } from "@yishanzhilubp/core";
+import { Example, handleBooleanChange, handleStringChange, IDocsExampleProps } from "@yishanzhilubp/docs-theme";
+import { IconName } from "@yishanzhilubp/icons";
 import { IconSelect } from "./common/iconSelect";
 import { IntentSelect } from "./common/intentSelect";
 

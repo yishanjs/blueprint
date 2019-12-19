@@ -18,7 +18,7 @@ import classNames from "classnames";
 import * as React from "react";
 import { polyfill } from "react-lifecycles-compat";
 
-import { AbstractComponent2, IProps, Utils as CoreUtils } from "@blueprintjs/core";
+import { AbstractComponent2, IProps, Utils as CoreUtils } from "@yishanzhilubp/core";
 
 import * as Classes from "../common/classes";
 import * as Errors from "../common/errors";

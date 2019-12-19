@@ -20,8 +20,8 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as sinon from "sinon";
 
-import { Keys, Utils as CoreUtils } from "@blueprintjs/core";
-import { dispatchMouseEvent, expectPropValidationError } from "@blueprintjs/test-commons";
+import { Keys, Utils as CoreUtils } from "@yishanzhilubp/core";
+import { dispatchMouseEvent, expectPropValidationError } from "@yishanzhilubp/test-commons";
 
 import { Cell, Column, ITableProps, RegionCardinality, Table, TableLoadingOption } from "../src";
 import { ICellCoordinates, IFocusedCellCoordinates } from "../src/common/cell";

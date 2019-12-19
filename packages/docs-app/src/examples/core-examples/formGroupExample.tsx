@@ -16,8 +16,8 @@
 
 import * as React from "react";
 
-import { FormGroup, H5, InputGroup, Intent, Switch } from "@blueprintjs/core";
-import { Example, handleBooleanChange, handleStringChange, IExampleProps } from "@blueprintjs/docs-theme";
+import { FormGroup, H5, InputGroup, Intent, Switch } from "@yishanzhilubp/core";
+import { Example, handleBooleanChange, handleStringChange, IExampleProps } from "@yishanzhilubp/docs-theme";
 import { IntentSelect } from "./common/intentSelect";
 
 export interface IFormGroupExampleState {

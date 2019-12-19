@@ -27,7 +27,7 @@ import {
     TagInput,
     TagInputAddMethod,
     Utils,
-} from "@blueprintjs/core";
+} from "@yishanzhilubp/core";
 import { Classes, IListItemsProps } from "../../common";
 import { IQueryListRendererProps, QueryList } from "../query-list/queryList";
 

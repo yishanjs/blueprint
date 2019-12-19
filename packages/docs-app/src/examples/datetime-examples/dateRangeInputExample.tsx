@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import { H5, Switch } from "@blueprintjs/core";
-import { DateRange, DateRangeInput, IDateFormatProps, TimePrecision } from "@blueprintjs/datetime";
-import { Example, handleBooleanChange, IExampleProps } from "@blueprintjs/docs-theme";
+import { H5, Switch } from "@yishanzhilubp/core";
+import { DateRange, DateRangeInput, IDateFormatProps, TimePrecision } from "@yishanzhilubp/datetime";
+import { Example, handleBooleanChange, IExampleProps } from "@yishanzhilubp/docs-theme";
 import * as React from "react";
 
 import { FORMATS, FormatSelect } from "./common/formatSelect";

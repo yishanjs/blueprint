@@ -35,14 +35,14 @@ be particularly useful when writing UI tests.
 
 ```tsx
 // use Classes constants for forward-compatible custom elements.
-import { Classes } from "@blueprintjs/core"
+import { Classes } from "@yishanzhilubp/core"
 <a className={Classes.MENU_ITEM}>custom menu item</a>
 ```
 
 ```css.scss
 // interpolate the $ns variable to generate forward-compatible class names.
 // this approach is *not encouraged* as it increases maintenance cost.
-@import "~@blueprintjs/core/lib/scss/variables";
+@import "~@yishanzhilubp/core/lib/scss/variables";
 .#{$ns}-menu-item {}
 ```
 

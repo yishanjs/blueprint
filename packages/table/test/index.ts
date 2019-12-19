@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import "@blueprintjs/test-commons/bootstrap";
+import "@yishanzhilubp/test-commons/bootstrap";
 
 import "./batcherTests.tsx";
 import "./cellTests.tsx";

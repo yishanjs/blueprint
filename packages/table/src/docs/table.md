@@ -33,7 +33,7 @@ and change the `numRows` prop on the `Table` to set the number of rows.
 For example, this code creates an empty table with three columns and five rows:
 
 ```tsx
-import { Column, Table } from "@blueprintjs/table";
+import { Column, Table } from "@yishanzhilubp/table";
 
 <Table numRows={5}>
     <Column />
@@ -50,7 +50,7 @@ This is useful when working with typed columnar data, like database results.
 For example, this creates a table that renders dollar values:
 
 ```tsx
-import { Cell, Column, Table } from "@blueprintjs/table";
+import { Cell, Column, Table } from "@yishanzhilubp/table";
 
 const cellRenderer = (rowIndex: number) => {
     return <Cell>{`$${(rowIndex * 10).toFixed(2)}`}</Cell>

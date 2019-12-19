@@ -1,5 +1,5 @@
 {
-  "name": "@blueprintjs/docs-data",
+  "name": "@yishanzhilubp/docs-data",
   "version": "3.16.0",
   "main": "src/index.js",
   "types": "src/index.d.ts",
@@ -10,16 +10,13 @@
     "test": "exit 0"
   },
   "dependencies": {
-    "@blueprintjs/core": "^3.18.0",
-    "@blueprintjs/docs-theme": "^3.3.0",
+    "@yishanzhilubp/core": "^4.0.0",
+    "@yishanzhilubp/docs-theme": "^3.4.0",
     "@documentalist/compiler": "^2.2.0",
-    "better-handlebars": "github:wmeldon/better-handlebars",
     "glob": "^7.1.4",
     "highlights": "^3.1.4",
-    "language-less": "github:atom/language-less",
     "marked": "^0.7.0",
-    "semver": "^6.3.0",
-    "tree-sitter-typescript": "github:tree-sitter/tree-sitter-typescript#3684243ae16fca82bb337782759d7316fdf5f325"
+    "semver": "^6.3.0"
   },
   "repository": {
     "type": "git",

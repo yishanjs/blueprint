@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { HTMLSelect, Intent, Label } from "@blueprintjs/core";
+import { HTMLSelect, Intent, Label } from "@yishanzhilubp/core";
 import * as React from "react";
 
 const INTENTS = [

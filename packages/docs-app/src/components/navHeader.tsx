@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { INpmPackage } from "@documentalist/client";
 
 import {
     Classes,
@@ -25,9 +26,9 @@ import {
     Popover,
     Position,
     Tag,
-} from "@blueprintjs/core";
-import { NavButton } from "@blueprintjs/docs-theme";
-import { INpmPackage } from "@documentalist/client";
+} from "@yishanzhilubp/core";
+import { NavButton } from "@yishanzhilubp/docs-theme";
+
 import * as React from "react";
 import { Logo } from "./logo";
 
@@ -52,7 +53,11 @@ export class NavHeader extends React.PureComponent<INavHeaderProps, {}> {
                         <NavbarHeading className="docs-heading">
                             <span>Blueprint</span> {this.renderVersionsMenu()}
                         </NavbarHeading>
-                        <a className={Classes.TEXT_MUTED} href="https://github.com/palantir/blueprint" target="_blank">
+                        <a
+                            className={Classes.TEXT_MUTED}
+                            href="https://github.com/palantir/blueprint"
+                            target="_blank"
+                        >
                             <small>View on GitHub</small>
                         </a>
                     </div>
@@ -91,9 +96,18 @@ export class NavHeader extends React.PureComponent<INavHeaderProps, {}> {
         const [current] = /\/versions\/([0-9]+)/.exec(location.href) || [
             this.props.useNextVersion ? nextVersion : version,
         ];
+
+        console.log("versions", versions);
+
         const releaseItems = versions
             .filter(v => +major(v) > 0)
-            .map(v => <MenuItem href={v === current ? "/docs" : `/docs/versions/${major(v)}`} key={v} text={v} />);
+            .map(v => (
+                <MenuItem
+                    href={v === current ? "/docs" : `/docs/versions/${major(v)}`}
+                    key={v}
+                    text={v}
+                />
+            ));
         return (
             <Popover position={Position.BOTTOM}>
                 <Tag interactive={true} minimal={true} round={true} rightIcon="caret-down">

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import { Alignment, Button, Classes, MenuItem } from "@blueprintjs/core";
-import { IconName, IconNames } from "@blueprintjs/icons";
-import { ItemRenderer, Select } from "@blueprintjs/select";
+import { Alignment, Button, Classes, MenuItem } from "@yishanzhilubp/core";
+import { IconName, IconNames } from "@yishanzhilubp/icons";
+import { ItemRenderer, Select } from "@yishanzhilubp/select";
 import * as React from "react";
 
 export interface IIconSelectProps {

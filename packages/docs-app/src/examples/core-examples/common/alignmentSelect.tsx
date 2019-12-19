@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Alignment, Button, ButtonGroup } from "@blueprintjs/core";
+import { Alignment, Button, ButtonGroup } from "@yishanzhilubp/core";
 import * as React from "react";
 
 export interface IAlignSelectProps {

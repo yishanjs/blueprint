@@ -14,7 +14,7 @@
  */
 
 // @ts-check
-const { generateIsomorphicTests } = require("@blueprintjs/test-commons");
+const { generateIsomorphicTests } = require("@yishanzhilubp/test-commons");
 const React = require("react");
 const Timezone = require("../lib/cjs");
 

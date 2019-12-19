@@ -5,12 +5,23 @@
   ],
   "rules": {
     "declaration-empty-line-before": null,
-    "indentation": [2, {
-      "ignore": ["value"]
-    }],
+    "selector-combinator-space-after": null,
+    "value-list-comma-newline-after": null,
+    "indentation": [
+      2,
+      {
+        "ignore": [
+          "value"
+        ]
+      }
+    ],
     "max-line-length": [
       100,
-      { "ignore": ["comments"] }
+      {
+        "ignore": [
+          "comments"
+        ]
+      }
     ],
     "selector-max-universal": 1
   }

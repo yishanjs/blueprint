@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Classes as CoreClasses, H4, Menu, MenuItem } from "@blueprintjs/core";
+import { Classes as CoreClasses, H4, Menu, MenuItem } from "@yishanzhilubp/core";
 import { expect } from "chai";
 import { shallow } from "enzyme";
 import * as React from "react";

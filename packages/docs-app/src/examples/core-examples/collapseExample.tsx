@@ -16,8 +16,8 @@
 
 import * as React from "react";
 
-import { Button, Collapse, H5, Pre, Switch } from "@blueprintjs/core";
-import { Example, handleBooleanChange, IExampleProps } from "@blueprintjs/docs-theme";
+import { Button, Collapse, H5, Pre, Switch } from "@yishanzhilubp/core";
+import { Example, handleBooleanChange, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 export interface ICollapseExampleState {
     isOpen: boolean;

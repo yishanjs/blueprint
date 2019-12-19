@@ -18,7 +18,7 @@ import classNames from "classnames";
 import * as React from "react";
 import { polyfill } from "react-lifecycles-compat";
 
-import { AbstractPureComponent2, DISPLAYNAME_PREFIX, IProps, Utils } from "@blueprintjs/core";
+import { AbstractPureComponent2, DISPLAYNAME_PREFIX, IProps, Utils } from "@yishanzhilubp/core";
 
 import * as Classes from "./common/classes";
 import * as DateUtils from "./common/dateUtils";

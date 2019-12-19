@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Classes } from "@blueprintjs/core";
+import { Classes } from "@yishanzhilubp/core";
 import { IHeadingNode, IPageNode } from "@documentalist/client";
 import classNames from "classnames";
 import * as React from "react";

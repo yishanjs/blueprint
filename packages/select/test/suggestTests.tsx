@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { InputGroup, IPopoverProps, Keys, MenuItem, Popover } from "@blueprintjs/core";
+import { InputGroup, IPopoverProps, Keys, MenuItem, Popover } from "@yishanzhilubp/core";
 import { assert } from "chai";
 import { mount, ReactWrapper } from "enzyme";
 import * as React from "react";
@@ -54,8 +54,8 @@ describe("Suggest", () => {
                 {...props}
                 inputValueRenderer={inputValueRenderer}
                 popoverProps={{ isOpen: true, usePortal: false }}
-            />,
-        ),
+            />
+        )
     );
 
     describe("Basic behavior", () => {
@@ -228,7 +228,7 @@ describe("Suggest", () => {
             assert.strictEqual(
                 wrapper.state().selectedItem,
                 defaultSelectedItem,
-                "The selected item should be initialized",
+                "The selected item should be initialized"
             );
         });
 
@@ -240,7 +240,7 @@ describe("Suggest", () => {
             assert.strictEqual(
                 wrapper.state().selectedItem,
                 defaultSelectedItem,
-                "The selected item should be initialized",
+                "The selected item should be initialized"
             );
             simulateFocus(wrapper);
             selectItem(wrapper, ITEM_INDEX);

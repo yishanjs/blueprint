@@ -11,7 +11,7 @@ DOM element child. It is a thin wrapper around
 [resizeobserver]: https://developers.google.com/web/updates/2016/10/resizeobserver
 
 ```tsx
-import { IResizeEntry, ResizeSensor } from "@blueprintjs/core";
+import { IResizeEntry, ResizeSensor } from "@yishanzhilubp/core";
 
 function handleResize(entries: IResizeEntry[]) {
     console.log(entries.map(e => `${e.contentRect.width} x ${e.contentRect.height}`));

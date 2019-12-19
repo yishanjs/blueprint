@@ -18,8 +18,8 @@ import * as chroma from "chroma-js";
 import classNames from "classnames";
 import * as React from "react";
 
-import { Classes, Keys, RadioGroup } from "@blueprintjs/core";
-import { createKeyEventHandler, handleNumberChange } from "@blueprintjs/docs-theme";
+import { Classes, Keys, RadioGroup } from "@yishanzhilubp/core";
+import { createKeyEventHandler, handleNumberChange } from "@yishanzhilubp/docs-theme";
 import { ColorBar } from "./colorPalettes";
 
 const MIN_STEPS = 3;

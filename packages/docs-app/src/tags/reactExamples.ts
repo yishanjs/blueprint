@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { IExampleMap, IExampleProps } from "@blueprintjs/docs-theme";
+import { IExampleMap, IExampleProps } from "@yishanzhilubp/docs-theme";
 import * as React from "react";
 
 import * as CoreExamples from "../examples/core-examples";

@@ -7,8 +7,6 @@ const { CheckerPlugin } = require("awesome-typescript-loader");
 const path = require("path");
 const webpack = require("webpack");
 
-const REACT = process.env.REACT || "16";
-
 /**
  * This differs significantly from the base webpack config, so we don't even end up extending from it.
  */
@@ -21,14 +19,6 @@ module.exports = {
 
     resolve: {
         // swap versions of React packages when this env variable is set
-        alias: REACT === "15" ? {
-            // swap enzyme adapter
-            "enzyme-adapter-react-16": "enzyme-adapter-react-15",
-            // use path.resolve for directory (require.resolve returns main file)
-            "react": path.resolve(__dirname, "../test-react15/node_modules/react"),
-            "react-dom": path.resolve(__dirname, "../test-react15/node_modules/react-dom"),
-            "react-test-renderer": path.resolve(__dirname, "../test-react15/node_modules/react-test-renderer"),
-        } : {},
         extensions: [".css", ".js", ".ts", ".tsx"],
     },
 
@@ -36,7 +26,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                use: "source-map-loader"
+                use: "source-map-loader",
             },
             {
                 test: /\.tsx?$/,
@@ -47,10 +37,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    require.resolve("style-loader"),
-                    require.resolve("css-loader"),
-                ],
+                use: [require.resolve("style-loader"), require.resolve("css-loader")],
             },
             {
                 enforce: "post",
@@ -64,7 +51,7 @@ module.exports = {
                 test: /\.(eot|ttf|woff|woff2|svg|png)$/,
                 loader: require.resolve("file-loader"),
             },
-        ]
+        ],
     },
 
     plugins: [

@@ -28,7 +28,7 @@ the stack and is unmounted when it is closed or when a panel opens above it.
 close the current panel or open a new one on top of it.
 
 ```tsx
-import { Button, IPanelProps, PanelStack } from "@blueprintjs/core";
+import { Button, IPanelProps, PanelStack } from "@yishanzhilubp/core";
 
 class MyPanel extends React.Component<IPanelProps> {
     public render() {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Classes, Icon } from "@blueprintjs/core";
+import { Classes, Icon } from "@yishanzhilubp/core";
 import { IHeadingTag } from "@documentalist/client";
 import classNames from "classnames";
 import * as React from "react";

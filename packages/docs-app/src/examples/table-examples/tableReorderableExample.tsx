@@ -16,9 +16,9 @@
 
 import * as React from "react";
 
-import { Switch } from "@blueprintjs/core";
-import { Example, handleBooleanChange, IBaseExampleProps, IExampleProps } from "@blueprintjs/docs-theme";
-import { Cell, Column, Table, Utils } from "@blueprintjs/table";
+import { Switch } from "@yishanzhilubp/core";
+import { Example, handleBooleanChange, IBaseExampleProps, IExampleProps } from "@yishanzhilubp/docs-theme";
+import { Cell, Column, Table, Utils } from "@yishanzhilubp/table";
 
 export interface ITableReorderableExampleState {
     columns?: JSX.Element[];

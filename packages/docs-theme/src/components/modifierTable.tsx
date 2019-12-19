@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Classes, HTMLTable } from "@blueprintjs/core";
+import { Classes, HTMLTable } from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
 

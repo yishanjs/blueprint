@@ -29,7 +29,7 @@ You can pass props to the inner `DatePicker` and `TimePicker` components using
 `datePickerProps` and `timePickerProps`, respectively.
 
 ```tsx
-import { DateTimePicker } from "@blueprintjs/datetime";
+import { DateTimePicker } from "@yishanzhilubp/datetime";
 
 <DateTimePicker value={this.state.date} onChange={this.handleDateChange} />
 ```

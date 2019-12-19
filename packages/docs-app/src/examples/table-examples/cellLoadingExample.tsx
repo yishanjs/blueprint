@@ -15,9 +15,9 @@
 
 import * as React from "react";
 
-import { RadioGroup } from "@blueprintjs/core";
-import { Example, handleStringChange, IExampleProps } from "@blueprintjs/docs-theme";
-import { Cell, Column, ColumnHeaderCell, RowHeaderCell, Table } from "@blueprintjs/table";
+import { RadioGroup } from "@yishanzhilubp/core";
+import { Example, handleStringChange, IExampleProps } from "@yishanzhilubp/docs-theme";
+import { Cell, Column, ColumnHeaderCell, RowHeaderCell, Table } from "@yishanzhilubp/table";
 
 interface IBigSpaceRock {
     [key: string]: number | string;

@@ -18,7 +18,7 @@ The optional `locale` argument is the value of the `locale` prop.
 A simple implementation using built-in browser methods could look like this:
 
 ```tsx
-import { DateInput, IDateFormatProps } from "@blueprintjs/datetime";
+import { DateInput, IDateFormatProps } from "@yishanzhilubp/datetime";
 
 const jsDateFormatter: IDateFormatProps = {
     // note that the native implementation of Date functions differs between browsers
@@ -33,7 +33,7 @@ const jsDateFormatter: IDateFormatProps = {
 An implementation using `moment.js` could look like this:
 
 ```tsx
-import { DateInput, IDateFormatProps } from "@blueprintjs/datetime";
+import { DateInput, IDateFormatProps } from "@yishanzhilubp/datetime";
 import moment from "moment";
 
 function getMomentFormatter(format: string): IDateFormatProps {
@@ -61,7 +61,7 @@ Customize the date format with the required `formatDate` and `parseDate`
 callbacks.
 
 ```tsx
-import { DateInput } from "@blueprintjs/datetime";
+import { DateInput } from "@yishanzhilubp/datetime";
 
 <DateInput
     formatDate={date => date.toLocaleString()}

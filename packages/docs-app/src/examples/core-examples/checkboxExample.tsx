@@ -16,8 +16,8 @@
 
 import * as React from "react";
 
-import { Alignment, Checkbox, H5, Label, Switch } from "@blueprintjs/core";
-import { Example, handleBooleanChange, IExampleProps } from "@blueprintjs/docs-theme";
+import { Alignment, Checkbox, H5, Label, Switch } from "@yishanzhilubp/core";
+import { Example, handleBooleanChange, IExampleProps } from "@yishanzhilubp/docs-theme";
 import { AlignmentSelect } from "./common/alignmentSelect";
 
 export interface ICheckboxExampleState {

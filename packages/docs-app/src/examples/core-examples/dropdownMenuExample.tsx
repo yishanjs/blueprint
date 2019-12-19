@@ -16,8 +16,8 @@
 
 import * as React from "react";
 
-import { Button, Menu, MenuDivider, MenuItem, Popover, Position } from "@blueprintjs/core";
-import { Example, IExampleProps } from "@blueprintjs/docs-theme";
+import { Button, Menu, MenuDivider, MenuItem, Popover, Position } from "@yishanzhilubp/core";
+import { Example, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 export class DropdownMenuExample extends React.PureComponent<IExampleProps> {
     public render() {

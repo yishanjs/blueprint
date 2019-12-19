@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-import { Classes, H5, HTMLSelect, Label, Switch } from "@blueprintjs/core";
+import { Classes, H5, HTMLSelect, Label, Switch } from "@yishanzhilubp/core";
 import {
     Example,
     handleBooleanChange,
     handleNumberChange,
     handleStringChange,
     IExampleProps,
-} from "@blueprintjs/docs-theme";
+} from "@yishanzhilubp/docs-theme";
 import moment from "moment";
 import * as React from "react";
 
-import { DateRange, DateRangePicker, TimePrecision } from "@blueprintjs/datetime";
+import { DateRange, DateRangePicker, TimePrecision } from "@yishanzhilubp/datetime";
 import { MomentDateRange } from "./common/momentDate";
 import { PrecisionSelect } from "./common/precisionSelect";
 

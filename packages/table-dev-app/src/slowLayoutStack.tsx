@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Utils } from "@blueprintjs/table/src";
+import { Utils } from "@yishanzhilubp/table/src";
 import * as React from "react";
 
 export interface ISlowLayoutStackProps {

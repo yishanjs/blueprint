@@ -14,7 +14,7 @@
  * limitations under the License.```
  */
 
-import { H4 } from "@blueprintjs/core";
+import { H4 } from "@yishanzhilubp/core";
 import { expect } from "chai";
 import { shallow } from "enzyme";
 import * as React from "react";

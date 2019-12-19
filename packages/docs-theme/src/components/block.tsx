@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Classes, Code, H3 } from "@blueprintjs/core";
+import { Classes, Code, H3 } from "@yishanzhilubp/core";
 import { IBlock } from "@documentalist/client";
 import classNames from "classnames";
 import * as React from "react";

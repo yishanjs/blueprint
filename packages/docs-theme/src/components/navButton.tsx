@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Classes, Icon, IconName, KeyCombo } from "@blueprintjs/core";
+import { Classes, Icon, IconName, KeyCombo } from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
 

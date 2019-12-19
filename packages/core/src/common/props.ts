@@ -16,7 +16,7 @@
 
 import * as React from "react";
 
-import { IconName } from "@blueprintjs/icons";
+import { IconName } from "@yishanzhilubp/icons";
 import { Intent } from "./intent";
 
 export const DISPLAYNAME_PREFIX = "Blueprint3";
@@ -131,7 +131,7 @@ const INVALID_PROPS = [
     "rightIcon",
     "round",
     "small",
-    "text",
+    "text"
 ];
 
 /**
@@ -145,7 +145,7 @@ const INVALID_PROPS = [
 export function removeNonHTMLProps(
     props: { [key: string]: any },
     invalidProps = INVALID_PROPS,
-    shouldMerge = false,
+    shouldMerge = false
 ): { [key: string]: any } {
     if (shouldMerge) {
         invalidProps = invalidProps.concat(INVALID_PROPS);
@@ -158,6 +158,6 @@ export function removeNonHTMLProps(
             }
             return prev;
         },
-        { ...props },
+        { ...props }
     );
 }

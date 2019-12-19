@@ -31,7 +31,7 @@ Additional components live in the **@blueprintjs/icons**, **@blueprintjs/datetim
 Import React components from the appropriate package.
 
 ```tsx
-import { Button } from "@blueprintjs/core";
+import { Button } from "@yishanzhilubp/core";
 
 <Button intent="success" text="button content" onClick={incrementCounter} />
 ```

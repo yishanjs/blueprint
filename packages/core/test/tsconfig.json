@@ -1,16 +1,19 @@
 {
     "extends": "../src/tsconfig",
     "compilerOptions": {
-        "declaration": false,
         "module": "commonjs",
+        "sourceMap": false,
+        "inlineSourceMap": true,
         "noEmit": true,
+        "declaration": false,
+        "declarationMap": false,
         "lib": [
-          "dom",
-          "dom.iterable",
-          "es5",
-          "es2015.collection",
-          "es2015.iterable",
-          "es2015.promise"
-        ],
+            "dom",
+            "dom.iterable",
+            "es5",
+            "es2015.collection",
+            "es2015.iterable",
+            "es2015.promise"
+        ]
     }
 }

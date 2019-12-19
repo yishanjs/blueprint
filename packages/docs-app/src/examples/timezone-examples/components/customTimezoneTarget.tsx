@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import { Colors, Icon, Intent, Tooltip } from "@blueprintjs/core";
-import { IconNames } from "@blueprintjs/icons";
-import { getTimezoneMetadata } from "@blueprintjs/timezone";
+import { Colors, Icon, Intent, Tooltip } from "@yishanzhilubp/core";
+import { IconNames } from "@yishanzhilubp/icons";
+import { getTimezoneMetadata } from "@yishanzhilubp/timezone";
 import React from "react";
 
 export interface ICustomTimezonePickerTargetProps {
@@ -34,7 +34,7 @@ export class CustomTimezonePickerTarget extends React.PureComponent<
     ICustomTimezonePickerTargetState
 > {
     public state: ICustomTimezonePickerTargetState = {
-        isHovering: false,
+        isHovering: false
     };
 
     public render() {

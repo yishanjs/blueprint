@@ -45,7 +45,7 @@ component in uncontrolled mode and specify an initial date range by setting
 `defaultValue`.
 
 ```tsx
-import { DateRangePicker } from "@blueprintjs/datetime";
+import { DateRangePicker } from "@yishanzhilubp/datetime";
 
 <DateRangePicker
     value={[this.state.startDate, this.state.endDate]}

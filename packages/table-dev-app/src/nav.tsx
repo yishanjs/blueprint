@@ -15,7 +15,7 @@
 
 import * as React from "react";
 
-import { Alignment, AnchorButton, Classes, Navbar, Switch } from "@blueprintjs/core";
+import { Alignment, AnchorButton, Classes, Navbar, Switch } from "@yishanzhilubp/core";
 
 export interface INavProps {
     selected: "index" | "features";

@@ -7,7 +7,7 @@ aliases:
   - &docker-node-browsers
     - image: circleci/node:lts-browsers
       environment:
-          CHROME_BIN: "/usr/bin/google-chrome"
+        CHROME_BIN: "/usr/bin/google-chrome"
 
   - &restore-node-modules-cache
     name: Restore node_modules cache
@@ -47,7 +47,7 @@ jobs:
       - save_cache: *save-node-modules-cache
       - save_cache: *save-yarn-cache
       - persist_to_workspace:
-          root: '.'
+          root: "."
           paths: [packages/*/node_modules]
 
   clean-lockfile:
@@ -62,10 +62,10 @@ jobs:
     steps:
       - checkout
       - restore_cache: *restore-node-modules-cache
-      - attach_workspace: { at: '.' }
+      - attach_workspace: { at: "." }
       - run: yarn compile
       - persist_to_workspace:
-          root: '.'
+          root: "."
           paths: [packages/*/lib, packages/*/src/generated]
 
   lint:
@@ -75,7 +75,7 @@ jobs:
     steps:
       - checkout
       - restore_cache: *restore-node-modules-cache
-      - attach_workspace: { at: '.' }
+      - attach_workspace: { at: "." }
       - run: mkdir -p ./reports/tslint ./reports/stylelint
       - run: yarn compile --scope "@blueprintjs/tslint-config"
       - run: yarn lint
@@ -87,10 +87,10 @@ jobs:
     steps:
       - checkout
       - restore_cache: *restore-node-modules-cache
-      - attach_workspace: { at: '.' }
+      - attach_workspace: { at: "." }
       - run: yarn dist
       - persist_to_workspace:
-          root: '.'
+          root: "."
           paths: [packages/*/lib, packages/*/dist]
 
   test-react-16: &test-react
@@ -101,31 +101,24 @@ jobs:
     steps:
       - checkout
       - restore_cache: *restore-node-modules-cache
-      - attach_workspace: { at: '.' }
+      - attach_workspace: { at: "." }
       - run: mkdir ./reports
       - run:
           # split karma tests into containers because they can take up a lot of memory
           # running them in one container caused Karma to time out frequently
           # see https://github.com/palantir/blueprint/issues/3616
           command: |
-              case $CIRCLE_NODE_INDEX in \
-              0) yarn lerna run --parallel test:typeCheck ;; \
-              1) yarn lerna run --scope "@blueprintjs/core" test:karma ;; \
-              2) yarn lerna run --scope "@blueprintjs/datetime" test:karma ;; \
-              3) yarn lerna run --scope "@blueprintjs/select" test:karma ;; \
-              4) yarn lerna run --scope "@blueprintjs/table" test:karma ;; \
-              5) yarn lerna run --scope "@blueprintjs/timezone" test:karma ;; \
-              esac
+            case $CIRCLE_NODE_INDEX in \
+            0) yarn lerna run --parallel test:typeCheck ;; \
+            1) yarn lerna run --scope "@blueprintjs/core" test:karma ;; \
+            2) yarn lerna run --scope "@blueprintjs/datetime" test:karma ;; \
+            3) yarn lerna run --scope "@blueprintjs/select" test:karma ;; \
+            4) yarn lerna run --scope "@blueprintjs/table" test:karma ;; \
+            5) yarn lerna run --scope "@blueprintjs/timezone" test:karma ;; \
+            esac
           when: always
       - store_test_results: { path: ./reports }
       - store_artifacts: { path: ./reports }
-
-  test-react-15:
-    # copy test-react-16 and override environment
-    <<: *test-react
-    environment:
-      JUNIT_REPORT_PATH: reports
-      REACT: 15 # use React 15 for this job
 
   test-iso-react-16: &test-iso
     docker: *docker-node-lts
@@ -134,25 +127,18 @@ jobs:
     steps:
       - checkout
       - restore_cache: *restore-node-modules-cache
-      - attach_workspace: { at: '.' }
+      - attach_workspace: { at: "." }
       - run: mkdir ./reports
       - run: yarn lerna run --parallel test:iso
       - store_test_results: { path: ./reports }
       - store_artifacts: { path: ./reports }
-
-  test-iso-react-15:
-    # copy test-iso-react-16 and override environment
-    <<: *test-iso
-    environment:
-      JUNIT_REPORT_PATH: reports
-      REACT: 15 # use React 15 for this job
 
   deploy-preview:
     docker: *docker-node-lts
     steps:
       - checkout
       - restore_cache: *restore-node-modules-cache
-      - attach_workspace: { at: '.' }
+      - attach_workspace: { at: "." }
       - store_artifacts: { path: packages/docs-app/dist }
       - store_artifacts: { path: packages/landing-app/dist }
       - store_artifacts: { path: packages/table-dev-app/dist }
@@ -165,7 +151,7 @@ jobs:
     steps:
       - checkout
       - restore_cache: *restore-node-modules-cache
-      - attach_workspace: { at: '.' }
+      - attach_workspace: { at: "." }
       - run: ./scripts/publish-npm-semver-tagged
 
 workflows:
@@ -192,7 +178,15 @@ workflows:
       - deploy-preview:
           requires: [dist]
       - deploy-npm:
-          requires: [dist, lint, test-react-15, test-react-16, test-iso-react-15, test-iso-react-16]
+          requires:
+            [
+              dist,
+              lint,
+              test-react-15,
+              test-react-16,
+              test-iso-react-15,
+              test-iso-react-16,
+            ]
           filters:
             branches:
               only:

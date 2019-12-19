@@ -34,7 +34,7 @@ import {
     Popover,
     Position,
     Utils,
-} from "@blueprintjs/core";
+} from "@yishanzhilubp/core";
 
 import { areSameTime, DateRange, isDateValid, isDayInRange } from "./common/dateUtils";
 import * as Errors from "./common/errors";

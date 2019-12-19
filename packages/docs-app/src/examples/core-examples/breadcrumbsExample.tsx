@@ -16,8 +16,8 @@
 
 import * as React from "react";
 
-import { Boundary, Breadcrumbs, Card, H5, IBreadcrumbProps, Label, RadioGroup, Slider } from "@blueprintjs/core";
-import { Example, handleStringChange, IExampleProps } from "@blueprintjs/docs-theme";
+import { Boundary, Breadcrumbs, Card, H5, IBreadcrumbProps, Label, RadioGroup, Slider } from "@yishanzhilubp/core";
+import { Example, handleStringChange, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 export interface IBreadcrumbsExampleState {
     collapseFrom: Boundary;

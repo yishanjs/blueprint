@@ -27,9 +27,9 @@ import {
     Position,
     Switch,
     Toaster,
-} from "@blueprintjs/core";
-import { Example, handleBooleanChange, IExampleProps } from "@blueprintjs/docs-theme";
-import { Omnibar } from "@blueprintjs/select";
+} from "@yishanzhilubp/core";
+import { Example, handleBooleanChange, IExampleProps } from "@yishanzhilubp/docs-theme";
+import { Omnibar } from "@yishanzhilubp/select";
 import { areFilmsEqual, createFilm, filmSelectProps, IFilm, renderCreateFilmOption } from "./films";
 
 const FilmOmnibar = Omnibar.ofType<IFilm>();

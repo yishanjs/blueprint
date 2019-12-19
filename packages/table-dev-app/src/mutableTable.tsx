@@ -27,7 +27,7 @@ import {
     MenuDivider,
     MenuItem,
     Switch,
-} from "@blueprintjs/core";
+} from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
 
@@ -47,12 +47,12 @@ import {
     TruncatedFormat,
     TruncatedPopoverMode,
     Utils,
-} from "@blueprintjs/table/src";
+} from "@yishanzhilubp/table/src";
 
-import { IFocusedCellCoordinates } from "@blueprintjs/table/src/common/cell";
-import { IColumnIndices, IRowIndices } from "@blueprintjs/table/src/common/grid";
-import { RenderMode } from "@blueprintjs/table/src/common/renderMode";
-import { IRegion } from "@blueprintjs/table/src/regions";
+import { IFocusedCellCoordinates } from "@yishanzhilubp/table/src/common/cell";
+import { IColumnIndices, IRowIndices } from "@yishanzhilubp/table/src/common/grid";
+import { RenderMode } from "@yishanzhilubp/table/src/common/renderMode";
+import { IRegion } from "@yishanzhilubp/table/src/regions";
 import { DenseGridMutableStore } from "./denseGridMutableStore";
 import { LocalStore } from "./localStore";
 import { SlowLayoutStack } from "./slowLayoutStack";

@@ -16,8 +16,8 @@
 
 import * as React from "react";
 
-import { Example, IExampleProps } from "@blueprintjs/docs-theme";
-import { Cell, Column, JSONFormat, Table, TruncatedFormat } from "@blueprintjs/table";
+import { Example, IExampleProps } from "@yishanzhilubp/docs-theme";
+import { Cell, Column, JSONFormat, Table, TruncatedFormat } from "@yishanzhilubp/table";
 
 interface ITimezone {
     name: string;

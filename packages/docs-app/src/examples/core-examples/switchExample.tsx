@@ -16,7 +16,7 @@
 
 import * as React from "react";
 
-import { Code, Label, Switch } from "@blueprintjs/core";
+import { Code, Label, Switch } from "@yishanzhilubp/core";
 import { CheckboxExample } from "./checkboxExample";
 
 export class SwitchExample extends CheckboxExample {

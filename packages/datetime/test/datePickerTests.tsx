@@ -20,8 +20,8 @@ import * as React from "react";
 import ReactDayPicker from "react-day-picker";
 import * as sinon from "sinon";
 
-import { Button, Classes as CoreClasses, HTMLSelect, Menu, MenuItem } from "@blueprintjs/core";
-import { expectPropValidationError } from "@blueprintjs/test-commons";
+import { Button, Classes as CoreClasses, HTMLSelect, Menu, MenuItem } from "@yishanzhilubp/core";
+import { expectPropValidationError } from "@yishanzhilubp/test-commons";
 
 import * as DateUtils from "../src/common/dateUtils";
 import * as Errors from "../src/common/errors";

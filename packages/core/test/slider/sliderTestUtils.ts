@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { dispatchMouseEvent, dispatchTouchEvent } from "@blueprintjs/test-commons";
+import { dispatchMouseEvent, dispatchTouchEvent } from "@yishanzhilubp/test-commons";
 import { ReactWrapper } from "enzyme";
 import { Handle } from "../../src/components/slider/handle";
 

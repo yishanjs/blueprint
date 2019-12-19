@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { AbstractPureComponent2, IProps } from "@blueprintjs/core";
+import { AbstractPureComponent2, IProps } from "@yishanzhilubp/core";
 import * as React from "react";
 import { polyfill } from "react-lifecycles-compat";
 import { Utils } from "../common/index";

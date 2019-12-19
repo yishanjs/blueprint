@@ -32,7 +32,7 @@ If the instance has a `onContextMenuClose` method, the decorator will call this 
 the context menu is closed.
 
 ```tsx
-import { ContextMenuTarget, Menu, MenuItem } from "@blueprintjs/core";
+import { ContextMenuTarget, Menu, MenuItem } from "@yishanzhilubp/core";
 
 @ContextMenuTarget
 class RightClickMe extends React.Component<{}, {}> {
@@ -60,7 +60,7 @@ class RightClickMe extends React.Component<{}, {}> {
 If you're using Blueprint in Javascript, and don't have access to the Babel config (ie: using `create-react-app`), you won't be able to just use the decorator. You can, instead, use it as a [Higher-Order Component][react-hoc], and get to keep all the benefits of `ContextMenuTarget`:
 
 ```jsx
-import { ContextMenuTarget, Menu, MenuItem } from "@blueprintjs/core";
+import { ContextMenuTarget, Menu, MenuItem } from "@yishanzhilubp/core";
 
 const RightClickMe = ContextMenuTarget(class RightClickMeWithContext extends React.Component {
     render() {
@@ -112,7 +112,7 @@ for programmatically triggered menus or for non-React apps.
 
 
 ```ts
-import { ContextMenu, Menu, MenuItem } from "@blueprintjs/core";
+import { ContextMenu, Menu, MenuItem } from "@yishanzhilubp/core";
 
 const rightClickMe = document.querySelector("#right-click-me") as HTMLElement;
 rightClickMe.oncontextmenu = (e: MouseEvent) => {

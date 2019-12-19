@@ -18,7 +18,7 @@ import { assert } from "chai";
 import { shallow } from "enzyme";
 import * as React from "react";
 
-import { IconName } from "@blueprintjs/icons";
+import { IconName } from "@yishanzhilubp/icons";
 
 import { Classes, Icon, IIconProps, Intent } from "../../src/index";
 

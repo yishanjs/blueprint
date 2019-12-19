@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { AbstractPureComponent2, Divider, HTMLSelect, Icon, IOptionProps, Utils } from "@blueprintjs/core";
+import { AbstractPureComponent2, Divider, HTMLSelect, Icon, IOptionProps, Utils } from "@yishanzhilubp/core";
 import * as React from "react";
 import { CaptionElementProps } from "react-day-picker";
 import { polyfill } from "react-lifecycles-compat";

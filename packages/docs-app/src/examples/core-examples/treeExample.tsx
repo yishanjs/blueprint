@@ -16,8 +16,8 @@
 
 import * as React from "react";
 
-import { Classes, Icon, Intent, ITreeNode, Position, Tooltip, Tree } from "@blueprintjs/core";
-import { Example, IExampleProps } from "@blueprintjs/docs-theme";
+import { Classes, Icon, Intent, ITreeNode, Position, Tooltip, Tree } from "@yishanzhilubp/core";
+import { Example, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 export interface ITreeExampleState {
     nodes: ITreeNode[];

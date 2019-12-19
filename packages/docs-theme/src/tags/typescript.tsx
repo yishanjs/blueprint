@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { IProps } from "@blueprintjs/core";
+import { IProps } from "@yishanzhilubp/core";
 import { isTsClass, isTsEnum, isTsInterface, isTsTypeAlias, ITag, ITypescriptPluginData } from "@documentalist/client";
 import * as React from "react";
 import { DocumentationContextTypes, IDocumentationContext } from "../common/context";

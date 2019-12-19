@@ -16,9 +16,9 @@
 
 import * as React from "react";
 
-import { HTMLSelect, Label } from "@blueprintjs/core";
-import { Example, handleNumberChange, IExampleProps } from "@blueprintjs/docs-theme";
-import { Cell, Column, ColumnLoadingOption, Table } from "@blueprintjs/table";
+import { HTMLSelect, Label } from "@yishanzhilubp/core";
+import { Example, handleNumberChange, IExampleProps } from "@yishanzhilubp/docs-theme";
+import { Cell, Column, ColumnLoadingOption, Table } from "@yishanzhilubp/table";
 
 interface IBigSpaceRock {
     [key: string]: number | string;
@@ -31,12 +31,17 @@ export interface IColumnLoadingExampleState {
     loadingColumn?: number;
 }
 
-export class ColumnLoadingExample extends React.PureComponent<IExampleProps, IColumnLoadingExampleState> {
+export class ColumnLoadingExample extends React.PureComponent<
+    IExampleProps,
+    IColumnLoadingExampleState
+> {
     public state: IColumnLoadingExampleState = {
         loadingColumn: 1,
     };
 
-    private handleLoadingColumnChange = handleNumberChange(loadingColumn => this.setState({ loadingColumn }));
+    private handleLoadingColumnChange = handleNumberChange(loadingColumn =>
+        this.setState({ loadingColumn })
+    );
 
     public render() {
         return (
@@ -57,7 +62,10 @@ export class ColumnLoadingExample extends React.PureComponent<IExampleProps, ICo
         return (
             <Label>
                 Loading column
-                <HTMLSelect value={this.state.loadingColumn} onChange={this.handleLoadingColumnChange}>
+                <HTMLSelect
+                    value={this.state.loadingColumn}
+                    onChange={this.handleLoadingColumnChange}
+                >
                     {options}
                 </HTMLSelect>
             </Label>
@@ -74,7 +82,7 @@ export class ColumnLoadingExample extends React.PureComponent<IExampleProps, ICo
                     loadingOptions={this.loadingOptions(index)}
                     name={this.formatColumnName(columnName)}
                     cellRenderer={this.renderCell}
-                />,
+                />
             );
         });
 
@@ -87,7 +95,9 @@ export class ColumnLoadingExample extends React.PureComponent<IExampleProps, ICo
     };
 
     private formatColumnName = (columnName: string) => {
-        return columnName.replace(/([A-Z])/g, " $1").replace(/^./, firstCharacter => firstCharacter.toUpperCase());
+        return columnName
+            .replace(/([A-Z])/g, " $1")
+            .replace(/^./, firstCharacter => firstCharacter.toUpperCase());
     };
 
     private loadingOptions = (columnIndex: number) => {

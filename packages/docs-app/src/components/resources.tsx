@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Callout, Card } from "@blueprintjs/core";
+import { Callout, Card } from "@yishanzhilubp/core";
 import download from "downloadjs";
 import * as React from "react";
 

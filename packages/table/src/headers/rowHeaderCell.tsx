@@ -17,7 +17,7 @@
 import * as React from "react";
 import { polyfill } from "react-lifecycles-compat";
 
-import { AbstractPureComponent2, IProps } from "@blueprintjs/core";
+import { AbstractPureComponent2, IProps } from "@yishanzhilubp/core";
 
 import * as Classes from "../common/classes";
 import { LoadableContent } from "../common/loadableContent";

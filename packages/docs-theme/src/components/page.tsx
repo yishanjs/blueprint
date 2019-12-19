@@ -16,7 +16,7 @@
 
 import * as React from "react";
 
-import { Classes } from "@blueprintjs/core";
+import { Classes } from "@yishanzhilubp/core";
 import { IPageData } from "@documentalist/client";
 import { ITagRendererMap } from "../tags";
 import { renderBlock } from "./block";

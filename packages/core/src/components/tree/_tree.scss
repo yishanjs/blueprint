@@ -3,7 +3,7 @@
 
 @import "../../common/variables";
 @import "../../common/mixins";
-@import "~@blueprintjs/icons/src/icons";
+@import "~@yishanzhilubp/icons/src/icons";
 
 /*
 Trees
@@ -159,8 +159,8 @@ $tree-icon-spacing: ($tree-row-height - $pt-icon-size-standard) / 2 !default;
   // #{$icon-classes} {
   //   color: $white;
   // }
-  font-weight: 600;
   background-color: rgba($gray5, 0.6);
+  font-weight: 600;
 
   .#{$ns}-tree-node-caret {
     &::before {

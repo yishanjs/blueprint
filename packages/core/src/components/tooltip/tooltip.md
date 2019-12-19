@@ -14,7 +14,7 @@ required because the popover will disable the tooltip when it is open,
 preventing both elements from appearing at the same time.
 
 ```tsx
-import { Button, Popover, Position, Tooltip } from "@blueprintjs/core";
+import { Button, Popover, Position, Tooltip } from "@yishanzhilubp/core";
 
 <Popover content={<h1>Popover!</h1>} position={Position.RIGHT}>
     <Tooltip content="I has a popover!" position={Position.RIGHT}>

@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-import { MouseEventHandler } from "react";
-
 export interface IItemModifiers {
     /** Whether this is the "active" (focused) item, meaning keyboard interactions will act upon it. */
     active: boolean;
@@ -33,7 +31,7 @@ export interface IItemModifiers {
  */
 export interface IItemRendererProps {
     /** Click event handler to select this item. */
-    handleClick: MouseEventHandler<HTMLElement>;
+    handleClick: (e: React.SyntheticEvent<HTMLElement>) => void;
 
     index?: number;
 

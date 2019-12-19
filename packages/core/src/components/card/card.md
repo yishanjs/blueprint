@@ -17,13 +17,15 @@ The `Classes.ELEVATION_*` constants can be used on any element (not just a
 This component is a simple stateless container for its children.
 
 ```tsx
-import { Button, Card, Elevation } from "@blueprintjs/core";
+import { Button, Card, Elevation } from "@yishanzhilubp/core";
 
 <Card interactive={true} elevation={Elevation.TWO}>
-    <h5><a href="#">Card heading</a></h5>
+    <h5>
+        <a href="#">Card heading</a>
+    </h5>
     <p>Card content</p>
     <Button>Submit</Button>
-</Card>
+</Card>;
 ```
 
 @interface ICardProps

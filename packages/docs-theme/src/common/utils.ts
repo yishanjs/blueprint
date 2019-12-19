@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Utils } from "@blueprintjs/core";
+import { Utils } from "@yishanzhilubp/core";
 import { IHeadingNode, IPageNode, isPageNode } from "@documentalist/client";
 import * as React from "react";
 

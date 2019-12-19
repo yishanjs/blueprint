@@ -28,8 +28,8 @@ import {
     Label,
     Position,
     Switch,
-} from "@blueprintjs/core";
-import { Example, handleBooleanChange, handleStringChange, IExampleProps } from "@blueprintjs/docs-theme";
+} from "@yishanzhilubp/core";
+import { Example, handleBooleanChange, handleStringChange, IExampleProps } from "@yishanzhilubp/docs-theme";
 import { IBlueprintExampleData } from "../../tags/reactExamples";
 
 export interface IDrawerExampleState {

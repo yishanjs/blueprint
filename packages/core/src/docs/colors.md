@@ -46,7 +46,7 @@ Blueprint provides variables for colors in Sass, Less, and JavaScript.
 [Semantic aliases for common colors](#core/variables.color-aliases) are also provided in Sass and Less.
 
 ```css.scss
-@import "~@blueprintjs/core/lib/scss/variables";
+@import "~@yishanzhilubp/core/lib/scss/variables";
 
 .rule {
     color: $pt-link-color;
@@ -58,7 +58,7 @@ Hex values for these colors can be accessed in JavaScript through the `Colors` e
 Note that aliases are not currently available in JavaScript.
 
 ```tsx
-import { Colors } from "@blueprintjs/core";
+import { Colors } from "@yishanzhilubp/core";
 
 <div style={{ color: Colors.BLUE3, background: Colors.BLACK }} />
 ```

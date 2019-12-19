@@ -6,7 +6,7 @@
  */
 
 // @ts-check
-const { Classes } = require("@blueprintjs/core/lib/cjs/common");
+const { Classes } = require("@yishanzhilubp/core/lib/cjs/common");
 const { execSync, spawn } = require("child_process");
 const dm = require("@documentalist/compiler");
 const fs = require("fs");
@@ -55,7 +55,7 @@ function generateDocumentalistData() {
                 excludeNames: [/I.+State$/],
                 excludePaths: ["node_modules/", "-app/", "test-commons/"],
                 tsconfigPath: path.resolve(__dirname, "../../config/tsconfig.base.json"),
-            }),
+            })
         )
         .use(".scss", new dm.KssPlugin())
         .use("package.json", new dm.NpmPlugin())
@@ -69,7 +69,7 @@ function transformDocumentalistData(key, value) {
         // one major version per release
         const majors = new Map();
         for (const version of value) {
-            const major = semver.major(version)
+            const major = semver.major(version);
             if (!majors.has(major) || semver.gt(version, majors.get(major))) {
                 majors.set(major, version);
             }

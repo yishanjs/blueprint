@@ -18,7 +18,7 @@ below.
 **You must explictly enable this feature in your app (and you probably want to):**
 
 ```ts
-import { FocusStyleManager } from "@blueprintjs/core";
+import { FocusStyleManager } from "@yishanzhilubp/core";
 
 FocusStyleManager.onlyShowFocusOnTabs();
 ```

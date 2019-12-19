@@ -31,7 +31,7 @@ import {
     Keys,
     Popover,
     Utils,
-} from "@blueprintjs/core";
+} from "@yishanzhilubp/core";
 
 import * as Classes from "./common/classes";
 import { isDateValid, isDayInRange } from "./common/dateUtils";

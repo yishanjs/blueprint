@@ -16,8 +16,8 @@
 
 import * as React from "react";
 
-import { Classes, H5, InputGroup, NonIdealState, Switch } from "@blueprintjs/core";
-import { Example, handleBooleanChange, IExampleProps } from "@blueprintjs/docs-theme";
+import { Classes, H5, InputGroup, NonIdealState, Switch } from "@yishanzhilubp/core";
+import { Example, handleBooleanChange, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 export interface INonIdealStateExampleState {
     action: boolean;

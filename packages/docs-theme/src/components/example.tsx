@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { IProps } from "@blueprintjs/core";
+import { IProps } from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
 
@@ -79,7 +79,7 @@ export interface IDocsExampleProps extends IExampleProps {
  * Container for an example and its options.
  *
  * ```tsx
- * import { Example, IExampleProps } from "@blueprintjs/docs-theme";
+ * import { Example, IExampleProps } from "@yishanzhilubp/docs-theme";
  * // use IExampleProps as your props type,
  * // then spread it to <Example> below
  * export class MyExample extends React.PureComponent<IExampleProps, [your state]> {

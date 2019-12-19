@@ -30,8 +30,8 @@ import {
     Switch,
     Tag,
     Tooltip,
-} from "@blueprintjs/core";
-import { Example, handleBooleanChange, handleStringChange, IExampleProps } from "@blueprintjs/docs-theme";
+} from "@yishanzhilubp/core";
+import { Example, handleBooleanChange, handleStringChange, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 export interface IInputGroupExampleState {
     disabled: boolean;

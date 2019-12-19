@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { ContextMenuTarget, IProps } from "@blueprintjs/core";
+import { ContextMenuTarget, IProps } from "@yishanzhilubp/core";
 import * as React from "react";
 
 export interface IContextMenuTargetWrapper extends IProps {

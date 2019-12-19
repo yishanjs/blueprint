@@ -27,8 +27,8 @@ import {
     Keys,
     Popover,
     Position,
-    Utils,
-} from "@blueprintjs/core";
+    Utils
+} from "@yishanzhilubp/core";
 import { Classes, IListItemsProps } from "../../common";
 import { IQueryListRendererProps, QueryList } from "../query-list/queryList";
 
@@ -88,7 +88,7 @@ export class Select<T> extends React.PureComponent<ISelectProps<T>, ISelectState
             this.input = ref;
             Utils.safeInvokeMember(this.props.inputProps, "inputRef", ref);
         },
-        queryList: (ref: QueryList<T> | null) => (this.queryList = ref),
+        queryList: (ref: QueryList<T> | null) => (this.queryList = ref)
     };
 
     public render() {
@@ -118,7 +118,7 @@ export class Select<T> extends React.PureComponent<ISelectProps<T>, ISelectState
         const input = (
             <InputGroup
                 leftIcon="search"
-                placeholder="Filter..."
+                placeholder="筛选..."
                 rightElement={this.maybeRenderClearButton(listProps.query)}
                 {...inputProps}
                 inputRef={this.refHandlers.input}

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Utils } from "@blueprintjs/core";
+import { Utils } from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
 

@@ -25,14 +25,14 @@ import {
     NumericInput,
     Position,
     Switch,
-} from "@blueprintjs/core";
+} from "@yishanzhilubp/core";
 import {
     Example,
     handleBooleanChange,
     handleNumberChange,
     handleStringChange,
     IExampleProps,
-} from "@blueprintjs/docs-theme";
+} from "@yishanzhilubp/docs-theme";
 
 import { IntentSelect } from "./common/intentSelect";
 

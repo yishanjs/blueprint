@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Classes, Intent, IProps } from "@blueprintjs/core";
+import { Classes, Intent, IProps } from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
 

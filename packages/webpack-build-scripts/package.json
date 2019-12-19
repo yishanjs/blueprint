@@ -1,5 +1,5 @@
 {
-  "name": "@blueprintjs/webpack-build-scripts",
+  "name": "@yishanzhilubp/webpack-build-scripts",
   "version": "0.9.0",
   "description": "Webpack build scripts for @blueprintjs packages",
   "scripts": {

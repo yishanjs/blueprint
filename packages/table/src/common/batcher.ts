@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Utils } from "@blueprintjs/core";
+import { Utils } from "@yishanzhilubp/core";
 import { requestIdleCallback } from "./requestIdleCallback";
 
 export type SimpleStringifyable = string | number | null | undefined;

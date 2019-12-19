@@ -22,7 +22,7 @@ import {
     HotkeysTarget,
     IProps,
     Utils as CoreUtils,
-} from "@blueprintjs/core";
+} from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
 import { polyfill } from "react-lifecycles-compat";

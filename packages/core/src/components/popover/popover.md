@@ -82,7 +82,7 @@ See the [callout here](#core/components/button.props) for more details.
 </div>
 
 ```tsx
-import { Button, Intent, Popover, PopoverInteractionKind, Position } from "@blueprintjs/core";
+import { Button, Intent, Popover, PopoverInteractionKind, Position } from "@yishanzhilubp/core";
 
 export class PopoverExample extends React.Component {
     public render() {
@@ -205,7 +205,7 @@ The popover will re-open when `disabled` is set to `false`.
 #### Example controlled usage
 
 ```tsx
-import { Popover, Position } from "@blueprintjs/core";
+import { Popover, Position } from "@yishanzhilubp/core";
 
 export class ControlledPopoverExample extends React.Component<{}, { isOpen: boolean }> {
     public state = { isOpen: false };
@@ -440,7 +440,7 @@ zeroing the default hover delays.
 `Popover` delays rendering updates triggered on `mouseleave`, because the mouse might have moved from the popover to the target, which may require special handling depending on the current [`interactionKind`](#core/components/popover.opening-and-closing). Popper.js also throttles rendering updates to improve performance. If your components are not updating in a synchronous fashion as expected, you may need to introduce a `setTimeout` to wait for asynchronous Popover rendering to catch up:
 
 ```tsx
-import { Classes, Overlay, Popover, PopoverInteractionKind } from "@blueprintjs/core";
+import { Classes, Overlay, Popover, PopoverInteractionKind } from "@yishanzhilubp/core";
 import { assert } from "chai";
 import { mount } from "enzyme";
 import { Target } from "react-popper";

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { DISPLAYNAME_PREFIX, Icon, IProps, Popover, Position } from "@blueprintjs/core";
+import { DISPLAYNAME_PREFIX, Icon, IProps, Popover, Position } from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
 

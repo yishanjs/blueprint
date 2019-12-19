@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { IProps } from "@blueprintjs/core";
+import { IProps } from "@yishanzhilubp/core";
 import * as React from "react";
 import { DocumentationContextTypes, IDocumentationContext } from "../../common/context";
 

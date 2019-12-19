@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { Icon, Intent, IProps, Tag } from "@blueprintjs/core";
-import { DateRange } from "@blueprintjs/datetime";
+import { Icon, Intent, IProps, Tag } from "@yishanzhilubp/core";
+import { DateRange } from "@yishanzhilubp/datetime";
 import classNames from "classnames";
 import moment from "moment";
 import * as React from "react";

@@ -41,8 +41,8 @@ which SVG is rendered and `iconSize` determines which pixel grid is used:
 grid.
 
 ```tsx
-import { Icon, Intent } from "@blueprintjs/core";
-import { IconNames } from "@blueprintjs/icons";
+import { Icon, Intent } from "@yishanzhilubp/core";
+import { IconNames } from "@yishanzhilubp/icons";
 
 // string literals are supported through IconName union type
 <Icon icon="cross" />

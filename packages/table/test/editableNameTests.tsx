@@ -19,7 +19,7 @@ import { mount } from "enzyme";
 import * as React from "react";
 import * as sinon from "sinon";
 
-import { EditableText } from "@blueprintjs/core";
+import { EditableText } from "@yishanzhilubp/core";
 import { EditableName } from "../src/index";
 
 describe("<EditableName>", () => {

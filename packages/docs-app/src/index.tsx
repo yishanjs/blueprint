@@ -14,14 +14,14 @@
  */
 
 // tslint:disable-next-line:no-submodule-imports
-import "@blueprintjs/test-commons/polyfill";
+import "@yishanzhilubp/test-commons/polyfill";
 import "dom4";
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { docsData } from "@blueprintjs/docs-data";
-import { createDefaultRenderers, ReactDocsTagRenderer, ReactExampleTagRenderer } from "@blueprintjs/docs-theme";
+import { docsData } from "@yishanzhilubp/docs-data";
+import { createDefaultRenderers, ReactDocsTagRenderer, ReactExampleTagRenderer } from "@yishanzhilubp/docs-theme";
 
 import { BlueprintDocs } from "./components/blueprintDocs";
 import * as ReactDocs from "./tags/reactDocs";
@@ -38,5 +38,5 @@ const tagRenderers = {
 
 ReactDOM.render(
     <BlueprintDocs defaultPageId="blueprint" docs={docsData} tagRenderers={tagRenderers} useNextVersion={false} />,
-    document.querySelector("#blueprint-documentation"),
+    document.querySelector("#blueprint-documentation")
 );

@@ -19,7 +19,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { spy } from "sinon";
 
-import { expectPropValidationError } from "@blueprintjs/test-commons";
+import { expectPropValidationError } from "@yishanzhilubp/test-commons";
 import { mount } from "enzyme";
 import * as Classes from "../../src/common/classes";
 import { TOASTER_CREATE_NULL, TOASTER_MAX_TOASTS_INVALID } from "../../src/common/errors";

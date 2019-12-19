@@ -88,6 +88,7 @@ $input-button-height-small: $pt-button-height-smaller !default;
   .#{$ns}-button-group {
     @include pt-button-height($input-button-height);
     margin: ($pt-input-height - $input-button-height) / 2;
+
     .#{$ns}-button {
       margin: 0;
     }
@@ -163,6 +164,7 @@ $input-button-height-small: $pt-button-height-smaller !default;
     .#{$ns}-button-group {
       @include pt-button-height($input-button-height-large);
       margin: ($pt-input-height-large - $input-button-height-large) / 2;
+
       .#{$ns}-button {
         margin: 0;
       }

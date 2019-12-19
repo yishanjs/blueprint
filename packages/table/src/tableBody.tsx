@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { AbstractComponent2, Utils as CoreUtils } from "@blueprintjs/core";
+import { AbstractComponent2, Utils as CoreUtils } from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
 

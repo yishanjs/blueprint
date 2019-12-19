@@ -5,7 +5,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const coreManifest = require("../core/package.json");
-const webpackBuildScripts = require("@blueprintjs/webpack-build-scripts");
+const webpackBuildScripts = require("@yishanzhilubp/webpack-build-scripts");
 
 const COVERAGE_PERCENT = 80;
 const COVERAGE_PERCENT_HIGH = 90;
@@ -74,9 +74,9 @@ module.exports = function createKarmaConfig(
         },
         // define where to save final remapped coverage reports
         remapCoverageReporter: {
-            'text-summary': null,
-            html: './coverage/html',
-            cobertura: './coverage/cobertura.xml'
+            "text-summary": null,
+            html: "./coverage/html",
+            cobertura: "./coverage/cobertura.xml",
         },
         reporters: ["mocha"],
         singleRun: true,
@@ -96,7 +96,7 @@ module.exports = function createKarmaConfig(
             __dirname,
             "../..",
             process.env.JUNIT_REPORT_PATH,
-            path.basename(dirname),
+            path.basename(dirname)
         );
         console.info(`Karma report will appear in ${outputDir}`);
         // disable mocha reporter on circle for HUGE performance increase
@@ -115,4 +115,3 @@ module.exports = function createKarmaConfig(
 
     return config;
 };
-

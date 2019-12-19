@@ -15,7 +15,7 @@ and attach the appropriate key listeners.
 1. Define your `<Hotkey>`s inside a `<Hotkeys>` element.
 
 ```tsx
-import { Hotkey, Hotkeys, HotkeysTarget } from "@blueprintjs/core";
+import { Hotkey, Hotkeys, HotkeysTarget } from "@yishanzhilubp/core";
 import * as React from "react";
 
 @HotkeysTarget

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import { Radio, RadioGroup } from "@blueprintjs/core";
-import { IDateFormatProps } from "@blueprintjs/datetime";
-import { handleNumberChange } from "@blueprintjs/docs-theme";
+import { Radio, RadioGroup } from "@yishanzhilubp/core";
+import { IDateFormatProps } from "@yishanzhilubp/datetime";
+import { handleNumberChange } from "@yishanzhilubp/docs-theme";
 import moment from "moment";
 import * as React from "react";
 

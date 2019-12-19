@@ -16,7 +16,7 @@
 
 import * as React from "react";
 
-import { Classes } from "@blueprintjs/core";
+import { Classes } from "@yishanzhilubp/core";
 
 export interface ILoadableContentProps {
     /**

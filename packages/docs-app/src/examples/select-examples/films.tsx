@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { MenuItem } from "@blueprintjs/core";
-import { ItemPredicate, ItemRenderer } from "@blueprintjs/select";
+import { MenuItem } from "@yishanzhilubp/core";
+import { ItemPredicate, ItemRenderer } from "@yishanzhilubp/select";
 import * as React from "react";
 
 export interface IFilm {

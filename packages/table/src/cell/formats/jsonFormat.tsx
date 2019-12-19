@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { DISPLAYNAME_PREFIX } from "@blueprintjs/core";
+import { DISPLAYNAME_PREFIX } from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
 import * as Classes from "../../common/classes";

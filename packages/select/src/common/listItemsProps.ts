@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { IProps, Utils } from "@blueprintjs/core";
+import { IProps, Utils } from "@yishanzhilubp/core";
 import { ItemListRenderer } from "./itemListRenderer";
 import { ItemRenderer } from "./itemRenderer";
 import { ICreateNewItem } from "./listItemsUtils";

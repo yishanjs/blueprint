@@ -23,7 +23,7 @@ import {
     IIntentProps,
     IProps,
     Utils as CoreUtils,
-} from "@blueprintjs/core";
+} from "@yishanzhilubp/core";
 
 import { LoadableContent } from "../common/loadableContent";
 import { JSONFormat } from "./formats/jsonFormat";

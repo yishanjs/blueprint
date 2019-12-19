@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { Classes, H3, InputGroup, NonIdealState } from "@blueprintjs/core";
-import { smartSearch } from "@blueprintjs/docs-theme";
+import { Classes, H3, InputGroup, NonIdealState } from "@yishanzhilubp/core";
+import { smartSearch } from "@yishanzhilubp/docs-theme";
 import * as React from "react";
 import { DocsIcon, IDocsIconProps as IIcon } from "./docsIcon";
 
@@ -36,11 +36,11 @@ export class Icons extends React.PureComponent<IIconsProps, IIconsState> {
         iconFilter: isIconFiltered,
         iconRenderer: renderIcon,
         // tslint:disable-next-line:no-submodule-imports
-        icons: require("@blueprintjs/icons/resources/icons/icons.json"),
+        icons: require("@yishanzhilubp/icons/resources/icons/icons.json")
     };
 
     public state: IIconsState = {
-        filter: "",
+        filter: ""
     };
 
     private iconGroups = initIconGroups(this.props.icons);

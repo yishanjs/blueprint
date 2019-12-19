@@ -19,5 +19,8 @@
     "editor.tabSize": 4,
     "[scss]": {
         "editor.tabSize": 2
-    }
+    },
+    "prettier.trailingComma": "all",
+    "prettier.singleQuote": true,
+    "eslint.enable": false
 }

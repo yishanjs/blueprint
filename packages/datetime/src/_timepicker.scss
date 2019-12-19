@@ -1,7 +1,7 @@
 // Copyright 2015 Palantir Technologies, Inc. All rights reserved.
 // Licensed under the Apache License, Version 2.0.
 
-@import "~@blueprintjs/core/src/components/forms/common";
+@import "~@yishanzhilubp/core/src/components/forms/common";
 @import "./common";
 
 $timepicker-input-row-height: $pt-grid-size * 3 !default;
@@ -25,6 +25,7 @@ $timepicker-control-width: $pt-grid-size * 3.3 !default;
     width: $timepicker-control-width;
     padding: ($pt-grid-size * 0.4) 0;
     text-align: center;
+    user-select: none;
 
     + .#{$ns}-timepicker-arrow-button {
       margin-left: $timepicker-divider-width;

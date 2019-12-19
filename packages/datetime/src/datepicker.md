@@ -26,7 +26,7 @@ The **preset shortcuts** can be seen in the example above. They are as follows:
 
 @interface IDatePickerShortcut
 
-@## Props
+@## Handle Change
 
 Use the `onChange` prop to listen for changes to the set date range. You can
 control the selected date range by setting the `value` prop, or use the

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Boundary } from "@blueprintjs/core";
+import { Boundary } from "@yishanzhilubp/core";
 import { areSameDay, DateRange } from "./common/dateUtils";
 
 export interface IDateRangeSelectionState {

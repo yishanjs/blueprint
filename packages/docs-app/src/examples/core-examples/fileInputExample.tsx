@@ -15,8 +15,8 @@
 
 import * as React from "react";
 
-import { FileInput, FormGroup, H5, InputGroup } from "@blueprintjs/core";
-import { Example, IExampleProps } from "@blueprintjs/docs-theme";
+import { FileInput, FormGroup, H5, InputGroup } from "@yishanzhilubp/core";
+import { Example, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 interface IFileInputExampleState {
     buttonText?: string;

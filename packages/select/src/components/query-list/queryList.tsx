@@ -16,7 +16,7 @@
 
 import * as React from "react";
 
-import { AbstractComponent2, DISPLAYNAME_PREFIX, IProps, Keys, Menu, Utils } from "@blueprintjs/core";
+import { AbstractComponent2, DISPLAYNAME_PREFIX, IProps, Keys, Menu, Utils } from "@yishanzhilubp/core";
 import {
     executeItemsEqual,
     getActiveItem,
@@ -230,7 +230,7 @@ export class QueryList<T> extends AbstractComponent2<IQueryListProps<T>, IQueryL
         const externalChangeToActiveItem = !executeItemsEqual(
             this.props.itemsEqual,
             getActiveItem(this.expectedNextActiveItem),
-            getActiveItem(this.props.activeItem),
+            getActiveItem(this.props.activeItem)
         );
         this.expectedNextActiveItem = null;
 
@@ -520,7 +520,7 @@ export class QueryList<T> extends AbstractComponent2<IQueryListProps<T>, IQueryL
         // search only the filtered items, not the full items list, because we
         // only need to check items that match the current query.
         return this.state.filteredItems.some(item =>
-            executeItemsEqual(this.props.itemsEqual, item, this.state.createNewItem),
+            executeItemsEqual(this.props.itemsEqual, item, this.state.createNewItem)
         );
     }
 }
@@ -584,7 +584,7 @@ export function getFirstEnabledItem<T>(
     items: T[],
     itemDisabled?: keyof T | ((item: T, index: number) => boolean),
     direction = 1,
-    startIndex = items.length - 1,
+    startIndex = items.length - 1
 ): T | ICreateNewItem | null {
     if (items.length === 0) {
         return null;

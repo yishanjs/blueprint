@@ -1,4 +1,4 @@
-import { H3, Pre } from "@blueprintjs/core";
+import { H3, Pre } from "@yishanzhilubp/core";
 <H3>Subtitle</H3>
 <Pre>block</Pre>
 

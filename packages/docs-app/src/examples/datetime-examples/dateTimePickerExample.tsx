@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-import { Classes } from "@blueprintjs/core";
-import { Example, IExampleProps } from "@blueprintjs/docs-theme";
+import { Classes } from "@yishanzhilubp/core";
+import { Example, IExampleProps } from "@yishanzhilubp/docs-theme";
 import * as React from "react";
 
-import { DateTimePicker } from "@blueprintjs/datetime";
+import { DateTimePicker } from "@yishanzhilubp/datetime";
 import { MomentDate } from "./common/momentDate";
 
 export class DateTimePickerExample extends React.PureComponent<IExampleProps, { date: Date }> {

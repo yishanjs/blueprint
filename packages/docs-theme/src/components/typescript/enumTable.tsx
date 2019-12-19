@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { IProps } from "@blueprintjs/core";
+import { IProps } from "@yishanzhilubp/core";
 import { ITsEnum, ITsEnumMember } from "@documentalist/client";
 import classNames from "classnames";
 import * as React from "react";

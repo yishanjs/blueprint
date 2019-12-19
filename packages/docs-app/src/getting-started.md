@@ -21,7 +21,7 @@ The `main` module exports all symbols from all modules so you don't have to impo
 1.  After installation, you'll be able to import the React components in your application:
 
     ```tsx
-    import { Button, Intent, Spinner } from "@blueprintjs/core";
+    import { Button, Intent, Spinner } from "@yishanzhilubp/core";
 
     // using JSX:
     const mySpinner = <Spinner intent={Intent.PRIMARY} />;
@@ -36,8 +36,8 @@ The `main` module exports all symbols from all modules so you don't have to impo
     ```css.scss
     // using node-style package resolution in a CSS file:
     @import "~normalize.css";
-    @import "~@blueprintjs/core/lib/css/blueprint.css";
-    @import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
+    @import "~@yishanzhilubp/core/lib/css/blueprint.css";
+    @import "~@yishanzhilubp/icons/lib/css/blueprint-icons.css";
     ```
 
     ```html
@@ -108,7 +108,7 @@ You can render any component in any JavaScript application with `ReactDOM.render
 using a jQuery plugin.
 
 ```tsx
-import { Classes, Intent, Spinner } from "@blueprintjs/core";
+import { Classes, Intent, Spinner } from "@yishanzhilubp/core";
 
 const myContainerElement = document.getElementById("container");
 

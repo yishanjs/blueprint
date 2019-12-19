@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Classes, Menu } from "@blueprintjs/core";
+import { Classes, Menu } from "@yishanzhilubp/core";
 import { expect } from "chai";
 import * as React from "react";
 import * as sinon from "sinon";

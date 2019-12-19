@@ -13,16 +13,13 @@
  * limitations under the License.
  */
 
-const { baseConfig } = require("@blueprintjs/webpack-build-scripts");
+const { baseConfig } = require("@yishanzhilubp/webpack-build-scripts");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = Object.assign({}, baseConfig, {
     entry: {
-        "docs-app": [
-            "./src/index.tsx",
-            "./src/index.scss"
-        ],
+        "docs-app": ["./src/index.tsx", "./src/index.scss"],
     },
 
     output: {
@@ -35,6 +32,6 @@ module.exports = Object.assign({}, baseConfig, {
             // to: is relative to dist/
             { from: "src/index.html", to: "." },
             { from: "src/assets/favicon.png", to: "assets" },
-        ])
+        ]),
     ]),
 });

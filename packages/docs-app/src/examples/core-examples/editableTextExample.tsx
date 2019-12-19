@@ -16,8 +16,8 @@
 
 import * as React from "react";
 
-import { Classes, EditableText, FormGroup, H1, H5, Intent, NumericInput, Switch } from "@blueprintjs/core";
-import { Example, handleBooleanChange, handleStringChange, IExampleProps } from "@blueprintjs/docs-theme";
+import { Classes, EditableText, FormGroup, H1, H5, Intent, NumericInput, Switch } from "@yishanzhilubp/core";
+import { Example, handleBooleanChange, handleStringChange, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 import { IntentSelect } from "./common/intentSelect";
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Checkbox, Classes, Code } from "@blueprintjs/core";
+import { Checkbox, Classes, Code } from "@yishanzhilubp/core";
 import { IKssPluginData, ITag } from "@documentalist/client";
 import classNames from "classnames";
 import * as React from "react";

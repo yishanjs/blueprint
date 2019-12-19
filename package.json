@@ -1,6 +1,7 @@
 {
-  "name": "@yishanzhilu/blueprint",
-  "version": "3.18.1-1",
+  "name": "@yishanzhilubp/blueprint",
+  "private": true,
+  "version": "4.0.0",
   "description": "A React UI toolkit for the web.",
   "workspaces": [
     "packages/*"
@@ -12,17 +13,17 @@
     "copy:docs-app": "cp -rf packages/docs-app/dist/ site/docs",
     "copy:landing-app": "cp -rf packages/landing-app/dist/ site",
     "deploy": "gh-pages -d site -b master",
-    "dev": "lerna run dev --parallel --scope \"!@blueprintjs/{landing-app,table-dev-app}\"",
-    "dev:core": "lerna run dev --parallel --scope \"@blueprintjs/{core,icons,docs-app}\"",
-    "dev:docs": "lerna run dev --parallel --scope \"@blueprintjs/{core,docs-app,docs-theme}\"",
-    "dev:datetime": "lerna run dev --parallel --scope \"@blueprintjs/{core,datetime,timezone,docs-app}\"",
-    "dev:landing": "lerna run dev --parallel --scope \"@blueprintjs/{core,landing-app}\"",
-    "dev:select": "lerna run dev --parallel --scope \"@blueprintjs/{core,select,docs-app}\"",
-    "dev:table": "lerna run dev --parallel --scope \"@blueprintjs/table-dev-app\"",
+    "dev": "lerna run dev --parallel --scope \"!@yishanzhilubp/{landing-app,table-dev-app}\"",
+    "dev:core": "lerna run dev --parallel --scope \"@yishanzhilubp/{core,icons,docs-app}\"",
+    "dev:docs": "lerna run dev --parallel --scope \"@yishanzhilubp/{core,docs-app,docs-theme}\"",
+    "dev:datetime": "lerna run dev --parallel --scope \"@yishanzhilubp/{core,datetime,timezone,docs-app}\"",
+    "dev:landing": "lerna run dev --parallel --scope \"@yishanzhilubp/{core,landing-app}\"",
+    "dev:select": "lerna run dev --parallel --scope \"@yishanzhilubp/{core,select,docs-app}\"",
+    "dev:table": "lerna run dev --parallel --scope \"@yishanzhilubp/table-dev-app\"",
     "dist": "run-s dist:libs dist:apps",
-    "dist:libs": "lerna run dist --parallel --scope \"@blueprintjs/{core,datetime,docs-theme,icons,select,table,timezone}\"",
-    "dist:apps": "lerna run dist --parallel --scope \"@blueprintjs/{docs-app,landing-app,table-dev-app}\"",
-    "docs-data": "lerna run compile --scope \"@blueprintjs/docs-data\"",
+    "dist:libs": "lerna run dist --parallel --scope \"@yishanzhilubp/{core,datetime,docs-theme,icons,select,table,timezone}\"",
+    "dist:apps": "lerna run dist --parallel --scope \"@yishanzhilubp/{docs-app,landing-app,table-dev-app}\"",
+    "docs-data": "lerna run compile --scope \"@yishanzhilubp/docs-data\"",
     "lint": "lerna run --parallel lint",
     "lint-fix": "lerna run --parallel lint-fix",
     "serve": "http-server site",
@@ -34,13 +35,13 @@
   "dependencies": {
     "@types/chai": "4.1.7",
     "@types/classnames": "2.2.9",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.5",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/mocha": "5.2.7",
     "@types/prop-types": "15.7.1",
-    "@types/react": "16.8.23",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.5",
     "@types/react-lifecycles-compat": "^3.0.1",
-    "@types/react-dom": "16.8.5",
     "@types/react-transition-group": "4.2.0",
     "@types/sinon": "7.0.13",
     "@types/webpack": "4.32.1",
@@ -51,11 +52,20 @@
     "http-server": "^0.11.1",
     "lerna": "^2.11.0",
     "npm-run-all": "^4.1.5",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.5",
     "sinon": "^7.3.2",
+    "stylelint": "^9.10.0",
     "stylelint-config-palantir": "^4.0.0",
     "stylelint-scss": "^3.9.2",
-    "typescript": "~3.5.3",
+    "typescript": "~3.7.3",
     "yarn-deduplicate": "^1.1.1"
+  },
+  "devDependencies": {
+    "node-sass": "^4.12.0",
+    "tslint": "^5.12.1",
+    "vfile-message": "^2.0.0",
+    "webpack": "^4.37.0"
   },
   "resolutions": {
     "js-yaml": "3.13.1"
@@ -67,9 +77,6 @@
     "type": "git",
     "url": "git@github.com:yishanzhilu/blueprint.git"
   },
-  "author": "Palantir Technologies",
-  "license": "Apache-2.0",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  }
+  "author": "Yishan Authors",
+  "license": "Apache-2.0"
 }

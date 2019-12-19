@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { HTMLInputProps, Keys, MenuItem } from "@blueprintjs/core";
+import { HTMLInputProps, Keys, MenuItem } from "@yishanzhilubp/core";
 import { assert } from "chai";
 import { ReactWrapper } from "enzyme";
 import * as React from "react";
@@ -31,8 +31,9 @@ import { IListItemsProps } from "../src/index";
 
 export function selectComponentSuite<P extends IListItemsProps<IFilm>, S>(
     render: (props: IListItemsProps<IFilm>) => ReactWrapper<P, S>,
-    findInput: (wrapper: ReactWrapper<P, S>) => ReactWrapper<HTMLInputProps> = wrapper => wrapper.find("input"),
-    findItems: (wrapper: ReactWrapper<P, S>) => ReactWrapper = wrapper => wrapper.find("a"),
+    findInput: (wrapper: ReactWrapper<P, S>) => ReactWrapper<HTMLInputProps> = wrapper =>
+        wrapper.find("input") as ReactWrapper<HTMLInputProps>,
+    findItems: (wrapper: ReactWrapper<P, S>) => ReactWrapper = wrapper => wrapper.find("a")
 ) {
     const testProps = {
         itemPredicate: filterFilm,

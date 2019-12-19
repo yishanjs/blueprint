@@ -206,7 +206,14 @@ $control-indicator-spacing: $pt-grid-size !default;
       &::before {
         // embed SVG icon image as backgroud-image above gradient.
         // the SVG image content is inlined into the CSS, so use this sparingly.
-        background-image: svg-icon("16px/#{$icon}.svg", (path: (fill: $white)));
+        background-image: svg-icon(
+          "16px/#{$icon}.svg",
+          (
+            path: (
+              fill: $white
+            )
+          )
+        );
       }
     }
 
@@ -298,7 +305,7 @@ $control-indicator-spacing: $pt-grid-size !default;
   $switch-checked-background-color: $control-checked-background-color !default;
   $switch-checked-background-color-hover: $control-checked-background-color-hover !default;
   $switch-checked-background-color-active: $control-checked-background-color-active !default;
-  $switch-checked-background-color-disabled: rgba($blue3, 0.5) !default;
+  $switch-checked-background-color-disabled: rgba($red3, 0.5) !default;
 
   $dark-switch-background-color: rgba($black, 0.5) !default;
   $dark-switch-background-color-hover: rgba($black, 0.7) !default;

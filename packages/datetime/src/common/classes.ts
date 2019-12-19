@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Classes } from "@blueprintjs/core";
+import { Classes } from "@yishanzhilubp/core";
 
 const NS = Classes.getClassNamespace();
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { IconName } from "@blueprintjs/core";
+import { IconName } from "@yishanzhilubp/core";
 import * as moment from "moment-timezone";
 import { getTimezoneMetadata, ITimezoneMetadata } from "./timezoneMetadata";
 

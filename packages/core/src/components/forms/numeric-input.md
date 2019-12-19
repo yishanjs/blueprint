@@ -74,7 +74,7 @@ in the props to access the value as the user manipulates it. The value will be
 provided to the callback both as a number and as a string.
 
 ```tsx
-import { NumericInput } from "@blueprintjs/core";
+import { NumericInput } from "@yishanzhilubp/core";
 
 export class NumericInputExample extends React.Component<{}, {}> {
     public render() {
@@ -103,7 +103,7 @@ powerful ways. As shown in the example above, one could extend the numeric input
 component with support for mathematical expressions as follows:
 
 ```tsx
-import { NumericInput } from "@blueprintjs/core";
+import { NumericInput } from "@yishanzhilubp/core";
 import * as SomeLibrary from "some-library";
 
 export class NumericInputExample extends React.Component<{}, { value?: number |

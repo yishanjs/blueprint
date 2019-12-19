@@ -24,7 +24,7 @@ import {
 import * as React from "react";
 import { spy } from "sinon";
 
-import { expectPropValidationError } from "@blueprintjs/test-commons";
+import { expectPropValidationError } from "@yishanzhilubp/test-commons";
 
 import * as Errors from "../../src/common/errors";
 import {

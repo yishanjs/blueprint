@@ -16,8 +16,8 @@
 
 import * as React from "react";
 
-import { Button, Classes, Code, Popover, Position } from "@blueprintjs/core";
-import { Example, IExampleProps } from "@blueprintjs/docs-theme";
+import { Button, Classes, Code, Popover, Position } from "@yishanzhilubp/core";
+import { Example, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 const EXAMPLE_CLASS = "docs-popover-position-example";
 

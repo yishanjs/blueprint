@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { InputGroup, Popover } from "@blueprintjs/core";
+import { InputGroup, Popover } from "@yishanzhilubp/core";
 import { assert } from "chai";
 import { mount } from "enzyme";
 import * as React from "react";
@@ -46,7 +46,7 @@ describe("<Select>", () => {
     });
 
     selectComponentSuite<ISelectProps<IFilm>, ISelectState>(props =>
-        mount(<Select {...props} popoverProps={{ isOpen: true, usePortal: false }} />),
+        mount(<Select {...props} popoverProps={{ isOpen: true, usePortal: false }} />)
     );
 
     it("renders a Popover around children that contains InputGroup and items", () => {
@@ -99,7 +99,7 @@ describe("<Select>", () => {
         const wrapper = mount(
             <FilmSelect {...defaultProps} {...handlers} {...props}>
                 <article />
-            </FilmSelect>,
+            </FilmSelect>
         );
         if (query !== undefined) {
             wrapper.setState({ query });
