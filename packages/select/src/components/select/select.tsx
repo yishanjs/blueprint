@@ -27,7 +27,7 @@ import {
     Keys,
     Popover,
     Position,
-    Utils
+    Utils,
 } from "@yishanzhilubp/core";
 import { Classes, IListItemsProps } from "../../common";
 import { IQueryListRendererProps, QueryList } from "../query-list/queryList";
@@ -88,7 +88,7 @@ export class Select<T> extends React.PureComponent<ISelectProps<T>, ISelectState
             this.input = ref;
             Utils.safeInvokeMember(this.props.inputProps, "inputRef", ref);
         },
-        queryList: (ref: QueryList<T> | null) => (this.queryList = ref)
+        queryList: (ref: QueryList<T> | null) => (this.queryList = ref),
     };
 
     public render() {

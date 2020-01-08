@@ -22,7 +22,7 @@ import {
     Intent,
     IProps,
     Keys,
-    Utils as BlueprintUtils
+    Utils as BlueprintUtils,
 } from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
@@ -37,14 +37,14 @@ import {
     isTimeUnitValid,
     setTimeUnit,
     TimeUnit,
-    wrapTimeAtUnit
+    wrapTimeAtUnit,
 } from "./common/timeUnit";
 import * as Utils from "./common/utils";
 
 export const TimePrecision = {
     MILLISECOND: "millisecond" as "millisecond",
     MINUTE: "minute" as "minute",
-    SECOND: "second" as "second"
+    SECOND: "second" as "second",
 };
 export type TimePrecision = typeof TimePrecision[keyof typeof TimePrecision];
 
@@ -138,7 +138,7 @@ export class TimePicker extends React.Component<ITimePickerProps, ITimePickerSta
         precision: TimePrecision.MINUTE,
         selectAllOnFocus: false,
         showArrowButtons: false,
-        useAmPm: false
+        useAmPm: false,
     };
 
     public static displayName = `${DISPLAYNAME_PREFIX}.TimePicker`;
@@ -161,7 +161,7 @@ export class TimePicker extends React.Component<ITimePickerProps, ITimePickerSta
         const shouldRenderSeconds = shouldRenderMilliseconds || this.props.precision === TimePrecision.SECOND;
         const hourUnit = this.props.useAmPm ? TimeUnit.HOUR_12 : TimeUnit.HOUR_24;
         const classes = classNames(Classes.TIMEPICKER, this.props.className, {
-            [CoreClasses.DISABLED]: this.props.disabled
+            [CoreClasses.DISABLED]: this.props.disabled,
         });
 
         /* tslint:disable:max-line-length */
@@ -243,7 +243,7 @@ export class TimePicker extends React.Component<ITimePickerProps, ITimePickerSta
                 className={classNames(
                     Classes.TIMEPICKER_INPUT,
                     { [CoreClasses.intentClass(Intent.WARNING)]: !isValid },
-                    className
+                    className,
                 )}
                 onBlur={this.getInputBlurHandler(unit)}
                 onChange={this.getInputChangeHandler(unit)}
@@ -316,7 +316,7 @@ export class TimePicker extends React.Component<ITimePickerProps, ITimePickerSta
             [Keys.ARROW_DOWN]: () => this.decrementTime(unit),
             [Keys.ENTER]: () => {
                 (e.currentTarget as HTMLInputElement).blur();
-            }
+            },
         });
     };
 
@@ -349,7 +349,7 @@ export class TimePicker extends React.Component<ITimePickerProps, ITimePickerSta
             secondText: formatTime(timeInRange.getSeconds(), TimeUnit.SECOND),
             millisecondText: formatTime(timeInRange.getMilliseconds(), TimeUnit.MS),
             value: timeInRange,
-            isPm: DateUtils.getIsPmFrom24Hour(timeInRange.getHours())
+            isPm: DateUtils.getIsPmFrom24Hour(timeInRange.getHours()),
         };
         /* tslint:enable:object-literal-sort-keys */
     }

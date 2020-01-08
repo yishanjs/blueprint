@@ -23,7 +23,7 @@ import * as sinon from "sinon";
 
 // this is an awkward import across the monorepo, but we'd rather not introduce a cyclical dependency or create another package
 import { IFilm, renderFilm, TOP_100_FILMS } from "../../docs-app/src/examples/select-examples/films";
-import { IItemRendererProps, IMultiSelectProps, IMultiSelectState, MultiSelect, IListItemsProps } from "../src/index";
+import { IItemRendererProps, IListItemsProps, IMultiSelectProps, IMultiSelectState, MultiSelect } from "../src/index";
 import { selectComponentSuite } from "./selectComponentSuite";
 
 describe("<MultiSelect>", () => {
@@ -50,7 +50,7 @@ describe("<MultiSelect>", () => {
     });
 
     selectComponentSuite<IMultiSelectProps<IFilm>, IMultiSelectState>((props: IListItemsProps<IFilm>) =>
-        mount(<MultiSelect {...props} popoverProps={{ isOpen: true, usePortal: false }} tagRenderer={renderTag} />)
+        mount(<MultiSelect {...props} popoverProps={{ isOpen: true, usePortal: false }} tagRenderer={renderTag} />),
     );
 
     it("placeholder can be controlled with placeholder prop", () => {
@@ -102,7 +102,7 @@ describe("<MultiSelect>", () => {
         const wrapper = mount(
             <FilmMultiSelect {...defaultProps} {...handlers} {...props}>
                 <article />
-            </FilmMultiSelect>
+            </FilmMultiSelect>,
         );
         if (query !== undefined) {
             wrapper.setState({ query });

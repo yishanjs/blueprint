@@ -1,7 +1,10 @@
 {
     "extends": "../src/tsconfig",
     "compilerOptions": {
+        "sourceMap": false,
+        "inlineSourceMap": true,
         "declaration": false,
+        "declarationMap": false,
         "module": "commonjs",
         "noEmit": true
     }

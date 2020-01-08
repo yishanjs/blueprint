@@ -3,6 +3,8 @@
     "compilerOptions": {
         "declaration": false,
         "declarationMap": false,
+        "sourceMap": false,
+        "inlineSourceMap": true,
         "module": "commonjs",
         "noEmit": true,
         "strict": true

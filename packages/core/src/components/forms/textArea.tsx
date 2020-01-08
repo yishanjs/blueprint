@@ -23,10 +23,7 @@ import { DISPLAYNAME_PREFIX, IIntentProps, IProps, removeNonHTMLProps } from "..
 const DEFAULT_RIGHT_ELEMENT_WIDTH = 10;
 const DEFAULT_TEXTAREA_ELEMENT_HEIGHT = 30;
 
-export interface ITextAreaProps
-    extends IIntentProps,
-        IProps,
-        React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface ITextAreaProps extends IIntentProps, IProps, React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     /**
      * Whether the text area should take up the full width of its container.
      */
@@ -96,8 +93,7 @@ export class TextArea extends React.PureComponent<ITextAreaProps, ITextAreaState
 
     public componentDidUpdate(_: ITextAreaProps, { rightElementWidth }: ITextAreaState) {
         if (this.rightElement != null) {
-            const newRightElementWidth =
-                this.rightElement.clientWidth || DEFAULT_RIGHT_ELEMENT_WIDTH;
+            const newRightElementWidth = this.rightElement.clientWidth || DEFAULT_RIGHT_ELEMENT_WIDTH;
             if (rightElementWidth !== newRightElementWidth) {
                 this.setState({
                     rightElementWidth: newRightElementWidth,
@@ -128,13 +124,14 @@ export class TextArea extends React.PureComponent<ITextAreaProps, ITextAreaState
                 [Classes.LARGE]: large,
                 [Classes.SMALL]: small,
             },
-            className
+            className,
         );
 
         // add explicit height style while preserving user-supplied styles if they exist
         const textAreaStyle: React.CSSProperties = {
             ...style,
             height: `${this.state.height}px`,
+            resize: "vertical",
             paddingRight: `${this.state.rightElementWidth}px`,
         };
         return (
@@ -151,12 +148,12 @@ export class TextArea extends React.PureComponent<ITextAreaProps, ITextAreaState
                     ref={this.handleShadowInputRef}
                     className={Classes.INPUT}
                     style={{
+                        border: 0,
                         left: 0,
                         overflow: "hidden",
                         paddingRight: `${this.state.rightElementWidth}px`,
                         position: "absolute",
                         top: 0,
-                        border: 0,
                         transform: "translateZ(0)",
                         visibility: "hidden",
                     }}
@@ -179,12 +176,9 @@ export class TextArea extends React.PureComponent<ITextAreaProps, ITextAreaState
         inputShadow.value = input.value || this.props.placeholder || "x";
 
         const boxSizing = computedStyle["box-sizing"];
-        const padding =
-            getStyleValue(computedStyle, "padding-bottom") +
-            getStyleValue(computedStyle, "padding-top");
+        const padding = getStyleValue(computedStyle, "padding-bottom") + getStyleValue(computedStyle, "padding-top");
         const border =
-            getStyleValue(computedStyle, "border-bottom-width") +
-            getStyleValue(computedStyle, "border-top-width");
+            getStyleValue(computedStyle, "border-bottom-width") + getStyleValue(computedStyle, "border-top-width");
 
         // The height of the inner content
         const innerHeight = inputShadow.scrollHeight - padding;

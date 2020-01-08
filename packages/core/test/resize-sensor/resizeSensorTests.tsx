@@ -71,6 +71,14 @@ describe("<ResizeSensor>", () => {
         assert.equal(onResize2.callCount, 2);
     });
 
+    it("observeParents can work", async () => {
+        const onResize = spy();
+        mountResizeSensor(onResize);
+        wrapper.setProps({ observeParents: true });
+        await resize({ height: 100, id: 2 });
+        assert.equal(onResize.callCount, 1);
+    });
+
     function mountResizeSensor(onResize: IResizeSensorProps["onResize"]) {
         return (wrapper = mount<IResizeTesterProps>(
             <ResizeTester onResize={onResize} />,

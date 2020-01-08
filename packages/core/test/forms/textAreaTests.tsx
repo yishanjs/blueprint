@@ -15,35 +15,51 @@
  */
 
 import { assert } from "chai";
-import { mount } from "enzyme";
+import { mount, ReactWrapper } from "enzyme";
 import * as React from "react";
 
-import { TextArea } from "../../src/index";
+import { ITextAreaProps, TextArea } from "../../src/index";
 
 describe("<TextArea>", () => {
-    const domRoot = document.createElement("div");
-    document.body.appendChild(domRoot);
+    let wrapper: ReactWrapper<ITextAreaProps, any> | undefined;
+    const testsContainerElement = document.createElement("div");
+    document.body.appendChild(testsContainerElement);
+
+    function mountTextInput(props: ITextAreaProps) {
+        return (wrapper = mount<ITextAreaProps>(
+            <TextArea {...props} />,
+            // must be in the DOM for measurement
+            { attachTo: testsContainerElement },
+        ));
+    }
+
+    afterEach(() => {
+        // clean up wrapper after each test, if it was used
+        if (wrapper !== undefined) {
+            wrapper.unmount();
+            wrapper.detach();
+            wrapper = undefined;
+        }
+    });
 
     it("has default Height 30px", () => {
-        const wrapper = mount(<TextArea />, { attachTo: domRoot });
+        mountTextInput({});
         const textarea = wrapper.find("textarea").first();
         const textareaDOM = textarea.getDOMNode() as HTMLTextAreaElement;
         assert.equal(textareaDOM.scrollHeight, 30);
         assert.equal(textareaDOM.style.height, "30px");
-        wrapper.detach();
     });
 
     it("can handle multiline default value", () => {
-        const wrapper = mount(<TextArea defaultValue={"line1\nline2"} />, { attachTo: domRoot });
+        mountTextInput({ defaultValue: "line1\nline2" });
         const textarea = wrapper.find("textarea").first();
         const textareaDOM = textarea.getDOMNode() as HTMLTextAreaElement;
         assert.equal(textareaDOM.scrollHeight, 48);
         assert.equal(textareaDOM.style.height, "48px");
-        wrapper.detach();
     });
 
     it("can auto size when input value change", () => {
-        const wrapper = mount(<TextArea growVertically />, { attachTo: domRoot });
+        mountTextInput({ growVertically: true });
         const textarea = wrapper.find("textarea").first();
         const textareaDOM = textarea.getDOMNode() as HTMLTextAreaElement;
         assert.equal(textareaDOM.scrollHeight, 30);
@@ -57,48 +73,5 @@ describe("<TextArea>", () => {
         textarea.simulate("change");
         assert.equal(textareaDOM.scrollHeight, 30);
         assert.equal(textareaDOM.style.height, "30px");
-        wrapper.detach();
     });
-
-    after(function() {
-        document.body.removeChild(domRoot);
-    });
-
-    // it("doesn't resize by default", () => {
-    //     const wrapper = mount(<TextArea />);
-    //     const textarea = wrapper.find("textarea").first();
-
-    //     textarea.simulate("change", {
-    //         target: {
-    //             scrollHeight: textarea.getDOMNode().scrollHeight,
-    //         },
-    //     });
-
-    //     assert.equal((textarea.getDOMNode() as HTMLElement).style.height, "");
-    // });
-
-    // it("doesn't clobber user-supplied styles", () => {
-    //     const wrapper = mount(<TextArea growVertically={true} style={{ marginTop: 10 }} />);
-    //     const textarea = wrapper.find("textarea").first();
-
-    //     textarea.simulate("change", { target: { scrollHeight: 500 } });
-
-    //     assert.equal((textarea.getDOMNode() as HTMLElement).style.marginTop, "10px");
-    // });
-    // it("can fit large initial content", () => {
-    //     const initialValue = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    //     Aenean finibus eget enim non accumsan.
-    //     Nunc lobortis luctus magna eleifend consectetur.
-    //     Suspendisse ut semper sem, quis efficitur felis.
-    //     Praesent suscipit nunc non semper tempor.
-    //     Sed eros sapien, semper sed imperdiet sed,
-    //     dictum eget purus. Donec porta accumsan pretium.
-    //     Fusce at felis mattis, tincidunt erat non, varius erat.`;
-    //     const wrapper = mount(
-    //         <TextArea growVertically={true} defaultValue={initialValue} style={{ marginTop: 10 }} />
-    //     );
-    //     const textarea = wrapper.find("textarea");
-    //     const scrollHeightInPixels = `${(textarea.getDOMNode() as HTMLElement).scrollHeight}px`;
-    //     assert.equal((textarea.getDOMNode() as HTMLElement).style.height, scrollHeightInPixels);
-    // });
 });

@@ -54,8 +54,8 @@ describe("Suggest", () => {
                 {...props}
                 inputValueRenderer={inputValueRenderer}
                 popoverProps={{ isOpen: true, usePortal: false }}
-            />
-        )
+            />,
+        ),
     );
 
     describe("Basic behavior", () => {
@@ -228,7 +228,7 @@ describe("Suggest", () => {
             assert.strictEqual(
                 wrapper.state().selectedItem,
                 defaultSelectedItem,
-                "The selected item should be initialized"
+                "The selected item should be initialized",
             );
         });
 
@@ -240,7 +240,7 @@ describe("Suggest", () => {
             assert.strictEqual(
                 wrapper.state().selectedItem,
                 defaultSelectedItem,
-                "The selected item should be initialized"
+                "The selected item should be initialized",
             );
             simulateFocus(wrapper);
             selectItem(wrapper, ITEM_INDEX);
