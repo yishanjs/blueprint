@@ -14,12 +14,12 @@ indent_style = space
 # 120 characters max per line
 max_line_length = 120
 
-# some files use 4 spaces for indentation
+# some files use 2 spaces for indentation
 [*.{js,jsx,ts,tsx,java,xml,md}]
-indent_size = 4
+indent_size = 2
 
 [*.java]
 continuation_indent_size = 8
 
 [tsconfig.json]
-indent_size = 4
+indent_size = 2

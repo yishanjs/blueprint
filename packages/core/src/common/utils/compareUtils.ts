@@ -15,11 +15,11 @@
  */
 
 export interface IKeyWhitelist<T> {
-    include: Array<keyof T>;
+  include: Array<keyof T>;
 }
 
 export interface IKeyBlacklist<T> {
-    exclude: Array<keyof T>;
+  exclude: Array<keyof T>;
 }
 
 /**
@@ -28,14 +28,14 @@ export interface IKeyBlacklist<T> {
  * is provided.
  */
 export function arraysEqual(arrA: any[], arrB: any[], compare = (a: any, b: any) => a === b) {
-    // treat `null` and `undefined` as the same
-    if (arrA == null && arrB == null) {
-        return true;
-    } else if (arrA == null || arrB == null || arrA.length !== arrB.length) {
-        return false;
-    } else {
-        return arrA.every((a, i) => compare(a, arrB[i]));
-    }
+  // treat `null` and `undefined` as the same
+  if (arrA == null && arrB == null) {
+    return true;
+  } else if (arrA == null || arrB == null || arrA.length !== arrB.length) {
+    return false;
+  } else {
+    return arrA.every((a, i) => compare(a, arrB[i]));
+  }
 }
 
 /**
@@ -44,23 +44,21 @@ export function arraysEqual(arrA: any[], arrB: any[], compare = (a: any, b: any)
  * @returns true if items are equal.
  */
 export function shallowCompareKeys<T extends object>(objA: T, objB: T, keys?: IKeyBlacklist<T> | IKeyWhitelist<T>) {
-    // treat `null` and `undefined` as the same
-    if (objA == null && objB == null) {
-        return true;
-    } else if (objA == null || objB == null) {
-        return false;
-    } else if (Array.isArray(objA) || Array.isArray(objB)) {
-        return false;
-    } else if (keys != null) {
-        return _shallowCompareKeys(objA, objB, keys);
-    } else {
-        // shallowly compare all keys from both objects
-        const keysA = Object.keys(objA) as Array<keyof T>;
-        const keysB = Object.keys(objB) as Array<keyof T>;
-        return (
-            _shallowCompareKeys(objA, objB, { include: keysA }) && _shallowCompareKeys(objA, objB, { include: keysB })
-        );
-    }
+  // treat `null` and `undefined` as the same
+  if (objA == null && objB == null) {
+    return true;
+  } else if (objA == null || objB == null) {
+    return false;
+  } else if (Array.isArray(objA) || Array.isArray(objB)) {
+    return false;
+  } else if (keys != null) {
+    return _shallowCompareKeys(objA, objB, keys);
+  } else {
+    // shallowly compare all keys from both objects
+    const keysA = Object.keys(objA) as Array<keyof T>;
+    const keysB = Object.keys(objB) as Array<keyof T>;
+    return _shallowCompareKeys(objA, objB, { include: keysA }) && _shallowCompareKeys(objA, objB, { include: keysB });
+  }
 }
 
 /**
@@ -69,32 +67,32 @@ export function shallowCompareKeys<T extends object>(objA: T, objB: T, keys?: IK
  * @returns true if items are equal.
  */
 export function deepCompareKeys(objA: any, objB: any, keys?: Array<string | number | symbol>): boolean {
-    if (objA === objB) {
-        return true;
-    } else if (objA == null && objB == null) {
-        // treat `null` and `undefined` as the same
-        return true;
-    } else if (objA == null || objB == null) {
-        return false;
-    } else if (Array.isArray(objA) || Array.isArray(objB)) {
-        return arraysEqual(objA, objB, deepCompareKeys);
-    } else if (_isSimplePrimitiveType(objA) || _isSimplePrimitiveType(objB)) {
-        return objA === objB;
-    } else if (keys != null) {
-        return _deepCompareKeys(objA, objB, keys);
-    } else if (objA.constructor !== objB.constructor) {
-        return false;
-    } else {
-        const keysA = Object.keys(objA);
-        const keysB = Object.keys(objB);
-        if (keysA == null || keysB == null) {
-            return false;
-        }
-        if (keysA.length === 0 && keysB.length === 0) {
-            return true;
-        }
-        return arraysEqual(keysA, keysB) && _deepCompareKeys(objA, objB, keysA);
+  if (objA === objB) {
+    return true;
+  } else if (objA == null && objB == null) {
+    // treat `null` and `undefined` as the same
+    return true;
+  } else if (objA == null || objB == null) {
+    return false;
+  } else if (Array.isArray(objA) || Array.isArray(objB)) {
+    return arraysEqual(objA, objB, deepCompareKeys);
+  } else if (_isSimplePrimitiveType(objA) || _isSimplePrimitiveType(objB)) {
+    return objA === objB;
+  } else if (keys != null) {
+    return _deepCompareKeys(objA, objB, keys);
+  } else if (objA.constructor !== objB.constructor) {
+    return false;
+  } else {
+    const keysA = Object.keys(objA);
+    const keysB = Object.keys(objB);
+    if (keysA == null || keysB == null) {
+      return false;
     }
+    if (keysA.length === 0 && keysB.length === 0) {
+      return true;
+    }
+    return arraysEqual(keysA, keysB) && _deepCompareKeys(objA, objB, keysA);
+  }
 }
 
 /**
@@ -102,14 +100,14 @@ export function deepCompareKeys(objA: any, objB: any, keys?: Array<string | numb
  * between two provided objects. Useful for debugging shouldComponentUpdate.
  */
 export function getDeepUnequalKeyValues<T extends object>(
-    objA: T = ({} as any) as T,
-    objB: T = ({} as any) as T,
-    keys?: Array<keyof T>,
+  objA: T = ({} as any) as T,
+  objB: T = ({} as any) as T,
+  keys?: Array<keyof T>,
 ) {
-    const filteredKeys = keys == null ? _unionKeys(objA, objB) : keys;
-    return _getUnequalKeyValues(objA, objB, filteredKeys, (a, b, key) => {
-        return deepCompareKeys(a, b, [key]);
-    });
+  const filteredKeys = keys == null ? _unionKeys(objA, objB) : keys;
+  return _getUnequalKeyValues(objA, objB, filteredKeys, (a, b, key) => {
+    return deepCompareKeys(a, b, [key]);
+  });
 }
 
 // Private helpers
@@ -118,81 +116,81 @@ export function getDeepUnequalKeyValues<T extends object>(
 /**
  * Partial shallow comparison between objects using the given list of keys.
  */
-function _shallowCompareKeys<T>(objA: T, objB: T, keys: IKeyBlacklist<T> | IKeyWhitelist<T>) {
-    return _filterKeys(objA, objB, keys).every(key => {
-        return objA.hasOwnProperty(key) === objB.hasOwnProperty(key) && objA[key] === objB[key];
-    });
+function _shallowCompareKeys<T extends object>(objA: T, objB: T, keys: IKeyBlacklist<T> | IKeyWhitelist<T>) {
+  return _filterKeys(objA, objB, keys).every(key => {
+    return objA.hasOwnProperty(key) === objB.hasOwnProperty(key) && objA[key] === objB[key];
+  });
 }
 
 /**
  * Partial deep comparison between objects using the given list of keys.
  */
 function _deepCompareKeys(objA: any, objB: any, keys: Array<string | number | symbol>): boolean {
-    return keys.every(key => {
-        return objA.hasOwnProperty(key) === objB.hasOwnProperty(key) && deepCompareKeys(objA[key], objB[key]);
-    });
+  return keys.every(key => {
+    return objA.hasOwnProperty(key) === objB.hasOwnProperty(key) && deepCompareKeys(objA[key], objB[key]);
+  });
 }
 
 function _isSimplePrimitiveType(value: any) {
-    return typeof value === "number" || typeof value === "string" || typeof value === "boolean";
+  return typeof value === "number" || typeof value === "string" || typeof value === "boolean";
 }
 
-function _filterKeys<T>(objA: T, objB: T, keys: IKeyBlacklist<T> | IKeyWhitelist<T>) {
-    if (_isWhitelist(keys)) {
-        return keys.include;
-    } else if (_isBlacklist(keys)) {
-        const keysA = Object.keys(objA);
-        const keysB = Object.keys(objB);
-
-        // merge keys from both objects into a big set for quick access
-        const keySet = _arrayToObject(keysA.concat(keysB));
-
-        // delete blacklisted keys from the key set
-        keys.exclude.forEach(key => delete keySet[key]);
-
-        // return the remaining keys as an array
-        return Object.keys(keySet) as Array<keyof T>;
-    }
-
-    return [];
-}
-
-function _isWhitelist<T>(keys: any): keys is IKeyWhitelist<T> {
-    return keys != null && (keys as IKeyWhitelist<T>).include != null;
-}
-
-function _isBlacklist<T>(keys: any): keys is IKeyBlacklist<T> {
-    return keys != null && (keys as IKeyBlacklist<T>).exclude != null;
-}
-
-function _arrayToObject(arr: any[]) {
-    return arr.reduce((obj: any, element: any) => {
-        obj[element] = true;
-        return obj;
-    }, {});
-}
-
-function _getUnequalKeyValues<T extends object>(
-    objA: T,
-    objB: T,
-    keys: Array<keyof T>,
-    compareFn: (objA: any, objB: any, key: keyof T) => boolean,
-) {
-    const unequalKeys = keys.filter(key => !compareFn(objA, objB, key));
-    const unequalKeyValues = unequalKeys.map(key => ({
-        key,
-        valueA: objA[key],
-        valueB: objB[key],
-    }));
-    return unequalKeyValues;
-}
-
-function _unionKeys<T extends object>(objA: T, objB: T) {
+function _filterKeys<T extends object>(objA: T, objB: T, keys: IKeyBlacklist<T> | IKeyWhitelist<T>) {
+  if (_isWhitelist(keys)) {
+    return keys.include;
+  } else if (_isBlacklist(keys)) {
     const keysA = Object.keys(objA);
     const keysB = Object.keys(objB);
 
-    const concatKeys = keysA.concat(keysB);
-    const keySet = _arrayToObject(concatKeys);
+    // merge keys from both objects into a big set for quick access
+    const keySet = _arrayToObject(keysA.concat(keysB));
 
+    // delete blacklisted keys from the key set
+    keys.exclude.forEach(key => delete keySet[key]);
+
+    // return the remaining keys as an array
     return Object.keys(keySet) as Array<keyof T>;
+  }
+
+  return [];
+}
+
+function _isWhitelist<T>(keys: any): keys is IKeyWhitelist<T> {
+  return keys != null && (keys as IKeyWhitelist<T>).include != null;
+}
+
+function _isBlacklist<T>(keys: any): keys is IKeyBlacklist<T> {
+  return keys != null && (keys as IKeyBlacklist<T>).exclude != null;
+}
+
+function _arrayToObject(arr: any[]) {
+  return arr.reduce((obj: any, element: any) => {
+    obj[element] = true;
+    return obj;
+  }, {});
+}
+
+function _getUnequalKeyValues<T extends object>(
+  objA: T,
+  objB: T,
+  keys: Array<keyof T>,
+  compareFn: (objA: any, objB: any, key: keyof T) => boolean,
+) {
+  const unequalKeys = keys.filter(key => !compareFn(objA, objB, key));
+  const unequalKeyValues = unequalKeys.map(key => ({
+    key,
+    valueA: objA[key],
+    valueB: objB[key],
+  }));
+  return unequalKeyValues;
+}
+
+function _unionKeys<T extends object>(objA: T, objB: T) {
+  const keysA = Object.keys(objA);
+  const keysB = Object.keys(objB);
+
+  const concatKeys = keysA.concat(keysB);
+  const keySet = _arrayToObject(concatKeys);
+
+  return Object.keys(keySet) as Array<keyof T>;
 }

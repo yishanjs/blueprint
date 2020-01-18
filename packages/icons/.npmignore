@@ -1,5 +1,6 @@
 coverage/
 test/
+src/tsconfig.json
 webpack.config.js
 karma.conf.js
 .npmrc

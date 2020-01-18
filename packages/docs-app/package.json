@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@yishanzhilubp/core": "^4.0.0",
-    "@yishanzhilubp/datetime": "^3.15.0",
+    "@yishanzhilubp/datetime": "^4.0.0",
     "@yishanzhilubp/docs-data": "^3.16.0",
     "@yishanzhilubp/docs-theme": "^3.4.0",
     "@yishanzhilubp/icons": "^3.12.0",

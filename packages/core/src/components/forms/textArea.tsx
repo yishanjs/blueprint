@@ -61,7 +61,7 @@ export interface ITextAreaProps extends IIntentProps, IProps, React.TextareaHTML
 }
 
 export interface ITextAreaState {
-    height: number;
+    height: number | string;
     rightElementWidth: number;
 }
 
@@ -71,7 +71,7 @@ export interface ITextAreaState {
 export class TextArea extends React.PureComponent<ITextAreaProps, ITextAreaState> {
     public static displayName = `${DISPLAYNAME_PREFIX}.TextArea`;
     public state: ITextAreaState = {
-        height: DEFAULT_TEXTAREA_ELEMENT_HEIGHT,
+        height: "auto",
         rightElementWidth: DEFAULT_RIGHT_ELEMENT_WIDTH,
     };
     private internalTextAreaRef: HTMLTextAreaElement;
@@ -130,9 +130,10 @@ export class TextArea extends React.PureComponent<ITextAreaProps, ITextAreaState
         // add explicit height style while preserving user-supplied styles if they exist
         const textAreaStyle: React.CSSProperties = {
             ...style,
-            height: `${this.state.height}px`,
-            resize: "vertical",
+            height: this.state.height,
+            minHeight: DEFAULT_TEXTAREA_ELEMENT_HEIGHT,
             paddingRight: `${this.state.rightElementWidth}px`,
+            resize: "vertical",
         };
         return (
             <div className={rootClasses}>
@@ -149,6 +150,7 @@ export class TextArea extends React.PureComponent<ITextAreaProps, ITextAreaState
                     className={Classes.INPUT}
                     style={{
                         border: 0,
+                        height: "auto",
                         left: 0,
                         overflow: "hidden",
                         paddingRight: `${this.state.rightElementWidth}px`,
