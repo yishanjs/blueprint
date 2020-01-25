@@ -58,6 +58,8 @@ export interface ITextAreaProps extends IIntentProps, IProps, React.TextareaHTML
     rowsMax?: number;
 
     rowsMin?: number;
+
+    resizable?: boolean;
 }
 
 export interface ITextAreaState {
@@ -113,6 +115,7 @@ export class TextArea extends React.PureComponent<ITextAreaProps, ITextAreaState
             growVertically,
             rows = 1,
             style,
+            resizable,
             ...htmlProps
         } = this.props;
 
@@ -133,7 +136,7 @@ export class TextArea extends React.PureComponent<ITextAreaProps, ITextAreaState
             height: this.state.height,
             minHeight: DEFAULT_TEXTAREA_ELEMENT_HEIGHT,
             paddingRight: `${this.state.rightElementWidth}px`,
-            resize: "vertical",
+            resize: resizable ? "vertical" : "none",
         };
         return (
             <div className={rootClasses}>
