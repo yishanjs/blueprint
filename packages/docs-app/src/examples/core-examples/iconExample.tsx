@@ -32,7 +32,7 @@ export class IconExample extends React.PureComponent<IExampleProps, IIconExample
     public state: IIconExampleState = {
         icon: "calendar",
         iconSize: Icon.SIZE_STANDARD,
-        intent: Intent.NONE
+        intent: Intent.NONE,
     };
 
     public render() {

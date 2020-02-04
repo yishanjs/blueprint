@@ -14,15 +14,10 @@
  * limitations under the License.
  */
 
+import { IHeadingNode, IPageData, isPageNode, ITsDocBase } from "@documentalist/client";
 import { AnchorButton, Classes, setHotkeysDialogProps, Tag } from "@yishanzhilubp/core";
 import { IDocsCompleteData } from "@yishanzhilubp/docs-data";
-import {
-    Documentation,
-    IDocumentationProps,
-    INavMenuItemProps,
-    NavMenuItem,
-} from "@yishanzhilubp/docs-theme";
-import { IHeadingNode, IPageData, isPageNode, ITsDocBase } from "@documentalist/client";
+import { Documentation, IDocumentationProps, INavMenuItemProps, NavMenuItem } from "@yishanzhilubp/docs-theme";
 import classNames from "classnames";
 import * as React from "react";
 import { NavHeader } from "./navHeader";
@@ -64,11 +59,7 @@ export class BlueprintDocs extends React.Component<IBlueprintDocsProps, { themeN
         const footer = (
             <small className={classNames("docs-copyright", Classes.TEXT_MUTED)}>
                 &copy; {new Date().getFullYear()}
-                <svg
-                    className={Classes.ICON}
-                    viewBox="0 0 18 23"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg className={Classes.ICON} viewBox="0 0 18 23" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.718 16.653L9 20.013l-7.718-3.36L0 19.133 9 23l9-3.868-1.282-2.48zM9 14.738c-3.297 0-5.97-2.696-5.97-6.02C3.03 5.39 5.703 2.695 9 2.695c3.297 0 5.97 2.696 5.97 6.02 0 3.326-2.673 6.022-5.97 6.022zM9 0C4.23 0 .366 3.9.366 8.708c0 4.81 3.865 8.71 8.634 8.71 4.77 0 8.635-3.9 8.635-8.71C17.635 3.898 13.77 0 9 0z" />
                 </svg>
                 <a href="https://www.palantir.com/" target="_blank">
@@ -108,10 +99,7 @@ export class BlueprintDocs extends React.Component<IBlueprintDocsProps, { themeN
         if (isPageNode(props.section)) {
             if (props.section.level === 1) {
                 return (
-                    <div
-                        className={classNames("docs-nav-package", props.className)}
-                        data-route={route}
-                    >
+                    <div className={classNames("docs-nav-package", props.className)} data-route={route}>
                         <a className={Classes.MENU_ITEM} href={props.href} onClick={props.onClick}>
                             <NavIcon route={route} />
                             <span>{title}</span>
@@ -121,11 +109,7 @@ export class BlueprintDocs extends React.Component<IBlueprintDocsProps, { themeN
                 );
             } else {
                 // pages can define `tag: message` in metadata to appear next to nav item.
-                return (
-                    <NavMenuItem {...props}>
-                        {this.maybeRenderPageTag(props.section.reference)}
-                    </NavMenuItem>
-                );
+                return <NavMenuItem {...props}>{this.maybeRenderPageTag(props.section.reference)}</NavMenuItem>;
             }
         }
         return <NavMenuItem {...props} />;
@@ -149,11 +133,7 @@ export class BlueprintDocs extends React.Component<IBlueprintDocsProps, { themeN
             return null;
         }
         return (
-            <Tag
-                className="docs-nav-tag"
-                minimal={true}
-                intent={tag === "new" ? "success" : "none"}
-            >
+            <Tag className="docs-nav-tag" minimal={true} intent={tag === "new" ? "success" : "none"}>
                 {tag}
             </Tag>
         );
@@ -168,8 +148,7 @@ export class BlueprintDocs extends React.Component<IBlueprintDocsProps, { themeN
         if (pkg == null) {
             return null;
         }
-        const version =
-            this.props.useNextVersion && pkg.nextVersion ? pkg.nextVersion : pkg.version;
+        const version = this.props.useNextVersion && pkg.nextVersion ? pkg.nextVersion : pkg.version;
         return (
             <a className={Classes.TEXT_MUTED} href={`${NPM_URL}/${pkg.name}`} target="_blank">
                 <small>{version}</small>
@@ -186,7 +165,7 @@ export class BlueprintDocs extends React.Component<IBlueprintDocsProps, { themeN
     private handleComponentUpdate = () => {
         // indeterminate checkbox styles must be applied via JavaScript.
         Array.from(document.querySelectorAll(`.${Classes.CHECKBOX} input[indeterminate]`)).forEach(
-            (el: HTMLInputElement) => (el.indeterminate = true)
+            (el: HTMLInputElement) => (el.indeterminate = true),
         );
     };
 

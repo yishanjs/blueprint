@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import { Classes, Intent, IProps, Tag } from "@yishanzhilubp/core";
 import {
     isTag,
     isTsProperty,
@@ -24,6 +23,7 @@ import {
     ITsProperty,
     ITsSignature,
 } from "@documentalist/client";
+import { Classes, Intent, IProps, Tag } from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
 import { DocumentationContextTypes, IDocumentationContext } from "../../common/context";

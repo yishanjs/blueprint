@@ -90,11 +90,3 @@ Styleguide select
     }
   }
 }
-
-.#{$ns}-select {
-  &::after {
-    @extend %pt-select-arrow;
-    @include pt-icon();
-    content: $pt-icon-double-caret-vertical;
-  }
-}

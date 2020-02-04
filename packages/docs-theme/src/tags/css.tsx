@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { Checkbox, Classes, Code } from "@yishanzhilubp/core";
 import { IKssPluginData, ITag } from "@documentalist/client";
+import { Checkbox, Classes, Code } from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
 import { DocumentationContextTypes, IDocumentationContext } from "../common/context";

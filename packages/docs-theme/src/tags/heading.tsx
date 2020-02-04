@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { Classes, Icon } from "@yishanzhilubp/core";
 import { IHeadingTag } from "@documentalist/client";
+import { Classes, Icon } from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
 

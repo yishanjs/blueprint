@@ -36,11 +36,11 @@ export class Icons extends React.PureComponent<IIconsProps, IIconsState> {
         iconFilter: isIconFiltered,
         iconRenderer: renderIcon,
         // tslint:disable-next-line:no-submodule-imports
-        icons: require("@yishanzhilubp/icons/resources/icons/icons.json")
+        icons: require("@yishanzhilubp/icons/resources/icons/icons.json"),
     };
 
     public state: IIconsState = {
-        filter: ""
+        filter: "",
     };
 
     private iconGroups = initIconGroups(this.props.icons);

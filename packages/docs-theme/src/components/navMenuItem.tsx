@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { Classes } from "@yishanzhilubp/core";
 import { IHeadingNode, IPageNode } from "@documentalist/client";
+import { Classes } from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
 

@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { IProps } from "@yishanzhilubp/core";
 import { ITsEnum, ITsEnumMember } from "@documentalist/client";
+import { IProps } from "@yishanzhilubp/core";
 import classNames from "classnames";
 import * as React from "react";
 import { DocumentationContextTypes, IDocumentationContext } from "../../common/context";

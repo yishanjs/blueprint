@@ -34,7 +34,7 @@ export class CustomTimezonePickerTarget extends React.PureComponent<
     ICustomTimezonePickerTargetState
 > {
     public state: ICustomTimezonePickerTargetState = {
-        isHovering: false
+        isHovering: false,
     };
 
     public render() {

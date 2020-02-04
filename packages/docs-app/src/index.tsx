@@ -38,5 +38,5 @@ const tagRenderers = {
 
 ReactDOM.render(
     <BlueprintDocs defaultPageId="blueprint" docs={docsData} tagRenderers={tagRenderers} useNextVersion={false} />,
-    document.querySelector("#blueprint-documentation")
+    document.querySelector("#blueprint-documentation"),
 );

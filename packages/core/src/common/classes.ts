@@ -142,6 +142,7 @@ export const HTML_TABLE_STRIPED = `${HTML_TABLE}-striped`;
 export const INPUT = `${NS}-input`;
 export const INPUT_GHOST = `${INPUT}-ghost`;
 export const INPUT_GROUP = `${INPUT}-group`;
+export const INPUT_TEXT_AREA = `${INPUT}-text-area`;
 export const INPUT_ACTION = `${INPUT}-action`;
 
 export const CONTROL = `${NS}-control`;
@@ -284,47 +285,47 @@ export const ICON_LARGE = `${ICON}-large`;
  * Customize this namespace at build time with the `process.env.BLUEPRINT_NAMESPACE` environment variable.
  */
 export function getClassNamespace() {
-    return NS;
+  return NS;
 }
 
 /** Return CSS class for alignment. */
 export function alignmentClass(alignment: Alignment) {
-    switch (alignment) {
-        case Alignment.LEFT:
-            return ALIGN_LEFT;
-        case Alignment.RIGHT:
-            return ALIGN_RIGHT;
-        default:
-            return undefined;
-    }
+  switch (alignment) {
+    case Alignment.LEFT:
+      return ALIGN_LEFT;
+    case Alignment.RIGHT:
+      return ALIGN_RIGHT;
+    default:
+      return undefined;
+  }
 }
 
 export function elevationClass(elevation: Elevation) {
-    if (elevation == null) {
-        return undefined;
-    }
-    return `${NS}-elevation-${elevation}`;
+  if (elevation == null) {
+    return undefined;
+  }
+  return `${NS}-elevation-${elevation}`;
 }
 
 /** Returns CSS class for icon name. */
 export function iconClass(iconName?: string) {
-    if (iconName == null) {
-        return undefined;
-    }
-    return iconName.indexOf(`${NS}-icon-`) === 0 ? iconName : `${NS}-icon-${iconName}`;
+  if (iconName == null) {
+    return undefined;
+  }
+  return iconName.indexOf(`${NS}-icon-`) === 0 ? iconName : `${NS}-icon-${iconName}`;
 }
 
 /** Return CSS class for intent. */
 export function intentClass(intent?: Intent) {
-    if (intent == null || intent === Intent.NONE) {
-        return undefined;
-    }
-    return `${NS}-intent-${intent.toLowerCase()}`;
+  if (intent == null || intent === Intent.NONE) {
+    return undefined;
+  }
+  return `${NS}-intent-${intent.toLowerCase()}`;
 }
 
 export function positionClass(position: Position) {
-    if (position == null) {
-        return undefined;
-    }
-    return `${NS}-position-${position}`;
+  if (position == null) {
+    return undefined;
+  }
+  return `${NS}-position-${position}`;
 }

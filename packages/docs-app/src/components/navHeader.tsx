@@ -53,11 +53,7 @@ export class NavHeader extends React.PureComponent<INavHeaderProps, {}> {
                         <NavbarHeading className="docs-heading">
                             <span>Blueprint</span> {this.renderVersionsMenu()}
                         </NavbarHeading>
-                        <a
-                            className={Classes.TEXT_MUTED}
-                            href="https://github.com/palantir/blueprint"
-                            target="_blank"
-                        >
+                        <a className={Classes.TEXT_MUTED} href="https://github.com/palantir/blueprint" target="_blank">
                             <small>View on GitHub</small>
                         </a>
                     </div>
@@ -97,17 +93,9 @@ export class NavHeader extends React.PureComponent<INavHeaderProps, {}> {
             this.props.useNextVersion ? nextVersion : version,
         ];
 
-        console.log("versions", versions);
-
         const releaseItems = versions
             .filter(v => +major(v) > 0)
-            .map(v => (
-                <MenuItem
-                    href={v === current ? "/docs" : `/docs/versions/${major(v)}`}
-                    key={v}
-                    text={v}
-                />
-            ));
+            .map(v => <MenuItem href={v === current ? "/docs" : `/docs/versions/${major(v)}`} key={v} text={v} />);
         return (
             <Popover position={Position.BOTTOM}>
                 <Tag interactive={true} minimal={true} round={true} rightIcon="caret-down">

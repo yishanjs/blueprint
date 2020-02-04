@@ -14,74 +14,63 @@
  */
 
 module.exports = {
-    extends: [
-        "tslint:latest",
-        "tslint-react",
-        "tslint-config-prettier",
-        "tslint-plugin-prettier",
-        "./blueprint-rules",
-    ],
+  extends: ["tslint:latest", "tslint-react", "tslint-config-prettier", "tslint-plugin-prettier", "./blueprint-rules"],
 
-    defaultSeverity: "error",
+  defaultSeverity: "error",
 
-    rules: {
-        "ban": {
-            options: [
-                ["_", "extend", "use object spread: { ...a, ...b }"],
-                ["_", "isNull", "use plain JS: == null"],
-                ["_", "isDefined", "use plain JS: != null"],
-                ["Object", "assign", "use object spread: { ...a, ...b }"],
-                ["Object", "getOwnPropertyNames", "use Object.keys()"],
-                ["describe", "only", "should not be committed to repo"],
-                ["it", "only", "should not be committed to repo"],
-                ["test", "only", "should not be committed to repo"],
-            ],
-        },
-        "linebreak-style": {
-            options: ["LF"],
-        },
-        "no-console": {
-            options: ["log", "time", "timeEnd", "trace"],
-        },
-        "no-default-export": true,
-        "no-implicit-dependencies": {
-            options: ["dev"]
-        },
-        "no-invalid-this": {
-            options: ["check-function-in-method"]
-        },
-        "no-submodule-imports": {
-            options: [
-                "core-js",
-                "lodash",
-                "react-dom",
-                "@blueprintjs/table/src",
-                "@blueprintjs/test-commons/bootstrap",
-                "tsutils"
-            ]
-        },
-        "no-unnecessary-callback-wrapper": true,
-        "no-unnecessary-initializer": true,
-        "prefer-conditional-expression": false,
-        "prettier": {
-            options: {
-                "printWidth": 120,
-                "tabWidth": 4,
-                "trailingComma": "all"
-            }
-        },
-        "variable-name": {
-            options: [
-                "allow-leading-underscore",
-                "allow-pascal-case",
-                "ban-keywords",
-                "check-format",
-            ]
-        }
+  rules: {
+    ban: {
+      options: [
+        ["_", "extend", "use object spread: { ...a, ...b }"],
+        ["_", "isNull", "use plain JS: == null"],
+        ["_", "isDefined", "use plain JS: != null"],
+        ["Object", "assign", "use object spread: { ...a, ...b }"],
+        ["Object", "getOwnPropertyNames", "use Object.keys()"],
+        ["describe", "only", "should not be committed to repo"],
+        ["it", "only", "should not be committed to repo"],
+        ["test", "only", "should not be committed to repo"],
+      ],
     },
-    jsRules: {
-        "no-console": false,
-        "object-literal-sort-keys": false,
-        "trailing-comma": false,
-    }
+    "linebreak-style": {
+      options: ["LF"],
+    },
+    "no-console": {
+      options: ["log", "time", "timeEnd", "trace"],
+    },
+    "no-default-export": true,
+    "no-implicit-dependencies": {
+      options: ["dev"],
+    },
+    "no-invalid-this": {
+      options: ["check-function-in-method"],
+    },
+    "no-submodule-imports": {
+      options: [
+        "core-js",
+        "lodash",
+        "react-dom",
+        "@yishanzhilubp/table/src",
+        "@yishanzhilubp/test-commons/bootstrap",
+        "tsutils",
+      ],
+    },
+    "no-unnecessary-callback-wrapper": true,
+    "no-unnecessary-initializer": true,
+    "prefer-conditional-expression": false,
+    prettier: {
+      options: {
+        printWidth: 120,
+        tabWidth: 2,
+        trailingComma: "all",
+      },
+    },
+    "variable-name": {
+      options: ["allow-leading-underscore", "allow-pascal-case", "ban-keywords", "check-format"],
+    },
+  },
+  jsRules: {
+    "no-console": false,
+    "object-literal-sort-keys": false,
+    "trailing-comma": false,
+  },
 };

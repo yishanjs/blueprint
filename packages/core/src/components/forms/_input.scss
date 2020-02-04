@@ -92,7 +92,7 @@ Styleguide textarea
 */
 
 // stylelint-disable-next-line selector-no-qualifying-type
-textarea.#{$ns}-input {
+.#{$ns}-input-group.#{$ns}-input-text-area textarea.#{$ns}-input {
   max-width: 100%;
   padding: $input-padding-horizontal * 0.6 $input-padding-horizontal;
 
@@ -101,7 +101,7 @@ textarea.#{$ns}-input {
   &.#{$ns}-small {
     // override input styles for these modifiers.
     // line-height is needed to center text on <input> but not on multiline <textarea>
-    line-height: inherit;
+    line-height: 20px;
   }
 
   &.#{$ns}-small {

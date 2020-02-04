@@ -16,8 +16,8 @@
 
 import * as React from "react";
 
-import { Classes } from "@yishanzhilubp/core";
 import { IPageData } from "@documentalist/client";
+import { Classes } from "@yishanzhilubp/core";
 import { ITagRendererMap } from "../tags";
 import { renderBlock } from "./block";
 

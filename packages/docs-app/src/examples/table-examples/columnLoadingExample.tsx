@@ -31,17 +31,12 @@ export interface IColumnLoadingExampleState {
     loadingColumn?: number;
 }
 
-export class ColumnLoadingExample extends React.PureComponent<
-    IExampleProps,
-    IColumnLoadingExampleState
-> {
+export class ColumnLoadingExample extends React.PureComponent<IExampleProps, IColumnLoadingExampleState> {
     public state: IColumnLoadingExampleState = {
         loadingColumn: 1,
     };
 
-    private handleLoadingColumnChange = handleNumberChange(loadingColumn =>
-        this.setState({ loadingColumn })
-    );
+    private handleLoadingColumnChange = handleNumberChange(loadingColumn => this.setState({ loadingColumn }));
 
     public render() {
         return (
@@ -62,10 +57,7 @@ export class ColumnLoadingExample extends React.PureComponent<
         return (
             <Label>
                 Loading column
-                <HTMLSelect
-                    value={this.state.loadingColumn}
-                    onChange={this.handleLoadingColumnChange}
-                >
+                <HTMLSelect value={this.state.loadingColumn} onChange={this.handleLoadingColumnChange}>
                     {options}
                 </HTMLSelect>
             </Label>
@@ -82,7 +74,7 @@ export class ColumnLoadingExample extends React.PureComponent<
                     loadingOptions={this.loadingOptions(index)}
                     name={this.formatColumnName(columnName)}
                     cellRenderer={this.renderCell}
-                />
+                />,
             );
         });
 
@@ -95,9 +87,7 @@ export class ColumnLoadingExample extends React.PureComponent<
     };
 
     private formatColumnName = (columnName: string) => {
-        return columnName
-            .replace(/([A-Z])/g, " $1")
-            .replace(/^./, firstCharacter => firstCharacter.toUpperCase());
+        return columnName.replace(/([A-Z])/g, " $1").replace(/^./, firstCharacter => firstCharacter.toUpperCase());
     };
 
     private loadingOptions = (columnIndex: number) => {

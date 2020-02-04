@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { IProps } from "@yishanzhilubp/core";
 import { isTsClass, isTsEnum, isTsInterface, isTsTypeAlias, ITag, ITypescriptPluginData } from "@documentalist/client";
+import { IProps } from "@yishanzhilubp/core";
 import * as React from "react";
 import { DocumentationContextTypes, IDocumentationContext } from "../common/context";
 import { EnumTable } from "../components/typescript/enumTable";

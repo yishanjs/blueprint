@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { AnchorButton, Intent } from "@yishanzhilubp/core";
 import { ITag } from "@documentalist/client";
+import { AnchorButton, Intent } from "@yishanzhilubp/core";
 import * as React from "react";
 import { IExampleProps } from "../components/example";
 

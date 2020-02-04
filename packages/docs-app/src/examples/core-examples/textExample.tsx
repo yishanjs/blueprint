@@ -30,9 +30,7 @@ export class TextExample extends React.PureComponent<IExampleProps, ITextExample
             Nunc lobortis luctus magna eleifend consectetur.`,
     };
 
-    private onInputChange = handleStringChange((textContent: string) =>
-        this.setState({ textContent })
-    );
+    private onInputChange = handleStringChange((textContent: string) => this.setState({ textContent }));
 
     public render() {
         return (
