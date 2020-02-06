@@ -22,72 +22,72 @@ import { Text } from "../text/text";
 import { IPanel } from "./panelProps";
 
 export interface IPanelViewProps {
-    /**
-     * Callback invoked when the user presses the back button or a panel invokes
-     * the `closePanel()` injected prop method.
-     */
-    onClose: (removedPanel: IPanel) => void;
+  /**
+   * Callback invoked when the user presses the back button or a panel invokes
+   * the `closePanel()` injected prop method.
+   */
+  onClose: (removedPanel: IPanel) => void;
 
-    /**
-     * Callback invoked when a panel invokes the `openPanel(panel)` injected
-     * prop method.
-     */
-    onOpen: (addedPanel: IPanel) => void;
+  /**
+   * Callback invoked when a panel invokes the `openPanel(panel)` injected
+   * prop method.
+   */
+  onOpen: (addedPanel: IPanel) => void;
 
-    /** The panel to be displayed. */
-    panel: IPanel;
+  /** The panel to be displayed. */
+  panel: IPanel;
 
-    /** The previous panel in the stack, for rendering the "back" button. */
-    previousPanel?: IPanel;
+  /** The previous panel in the stack, for rendering the "back" button. */
+  previousPanel?: IPanel;
 
-    /** Whether to show the header with the "back" button. */
-    showHeader: boolean;
+  /** Whether to show the header with the "back" button. */
+  showHeader: boolean;
 }
 
 @polyfill
 export class PanelView extends AbstractPureComponent2<IPanelViewProps> {
-    public render() {
-        const { panel, onOpen } = this.props;
-        // two <span> tags in header ensure title is centered as long as
-        // possible, due to `flex: 1` magic.
-        return (
-            <div className={Classes.PANEL_STACK_VIEW}>
-                {this.maybeRenderHeader()}
-                <panel.component openPanel={onOpen} closePanel={this.handleClose} {...panel.props} />
-            </div>
-        );
-    }
+  public render() {
+    const { panel, onOpen } = this.props;
+    // two <span> tags in header ensure title is centered as long as
+    // possible, due to `flex: 1` magic.
+    return (
+      <div className={Classes.PANEL_STACK_VIEW}>
+        {this.maybeRenderHeader()}
+        <panel.component openPanel={onOpen} closePanel={this.handleClose} {...panel.props} />
+      </div>
+    );
+  }
 
-    private maybeRenderHeader() {
-        if (!this.props.showHeader) {
-            return null;
-        }
-        return (
-            <div className={Classes.PANEL_STACK_HEADER}>
-                <span>{this.maybeRenderBack()}</span>
-                <Text className={Classes.HEADING} ellipsize={true}>
-                    {this.props.panel.title}
-                </Text>
-                <span />
-            </div>
-        );
+  private maybeRenderHeader() {
+    if (!this.props.showHeader) {
+      return null;
     }
+    return (
+      <div className={Classes.PANEL_STACK_HEADER}>
+        <span>{this.maybeRenderBack()}</span>
+        <Text className={Classes.HEADING} ellipsize={true}>
+          {this.props.panel.title}
+        </Text>
+        <span />
+      </div>
+    );
+  }
 
-    private maybeRenderBack() {
-        if (this.props.previousPanel === undefined) {
-            return null;
-        }
-        return (
-            <Button
-                className={Classes.PANEL_STACK_HEADER_BACK}
-                icon="chevron-left"
-                minimal={true}
-                onClick={this.handleClose}
-                small={true}
-                text={this.props.previousPanel.title}
-            />
-        );
+  private maybeRenderBack() {
+    if (this.props.previousPanel === undefined) {
+      return null;
     }
+    return (
+      <Button
+        className={Classes.PANEL_STACK_HEADER_BACK}
+        icon="chevron-left"
+        minimal={true}
+        onClick={this.handleClose}
+        small={true}
+        text={this.props.previousPanel.title}
+      />
+    );
+  }
 
-    private handleClose = () => this.props.onClose(this.props.panel);
+  private handleClose = () => this.props.onClose(this.props.panel);
 }

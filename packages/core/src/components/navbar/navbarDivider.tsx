@@ -22,17 +22,17 @@ import { DISPLAYNAME_PREFIX, HTMLDivProps, IProps } from "../../common/props";
 
 // allow the empty interface so we can label it clearly in the docs
 export interface INavbarDividerProps extends IProps, HTMLDivProps {
-    // Empty
+  // Empty
 }
 
 // this component is simple enough that tests would be purely tautological.
 /* istanbul ignore next */
 @polyfill
 export class NavbarDivider extends AbstractPureComponent2<INavbarDividerProps, {}> {
-    public static displayName = `${DISPLAYNAME_PREFIX}.NavbarDivider`;
+  public static displayName = `${DISPLAYNAME_PREFIX}.NavbarDivider`;
 
-    public render() {
-        const { className, ...htmlProps } = this.props;
-        return <div className={classNames(Classes.NAVBAR_DIVIDER, className)} {...htmlProps} />;
-    }
+  public render() {
+    const { className, ...htmlProps } = this.props;
+    return <div className={classNames(Classes.NAVBAR_DIVIDER, className)} {...htmlProps} />;
+  }
 }

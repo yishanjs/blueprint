@@ -21,13 +21,13 @@ import { Example, IExampleProps } from "@yishanzhilubp/docs-theme";
 import { FileMenu } from "./common/fileMenu";
 
 export class PopoverSizingExample extends React.PureComponent<IExampleProps> {
-    public render() {
-        return (
-            <Example options={false} {...this.props}>
-                <Popover content={<FileMenu className="docs-popover-sizing-example" />} position={Position.BOTTOM_LEFT}>
-                    <Button>Open...</Button>
-                </Popover>
-            </Example>
-        );
-    }
+  public render() {
+    return (
+      <Example options={false} {...this.props}>
+        <Popover content={<FileMenu className="docs-popover-sizing-example" />} position={Position.BOTTOM_LEFT}>
+          <Button>Open...</Button>
+        </Popover>
+      </Example>
+    );
+  }
 }

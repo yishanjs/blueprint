@@ -21,18 +21,18 @@ import { Example, IExampleProps } from "@yishanzhilubp/docs-theme";
 import { FileMenu } from "./common/fileMenu";
 
 export class PopoverMinimalExample extends React.PureComponent<IExampleProps> {
-    public render() {
-        const baseProps: IPopoverProps = { content: <FileMenu />, position: Position.BOTTOM_LEFT };
+  public render() {
+    const baseProps: IPopoverProps = { content: <FileMenu />, position: Position.BOTTOM_LEFT };
 
-        return (
-            <Example options={false} {...this.props}>
-                <Popover {...baseProps} minimal={true}>
-                    <Button intent={Intent.PRIMARY}>Minimal</Button>
-                </Popover>
-                <Popover {...baseProps}>
-                    <Button>Default</Button>
-                </Popover>
-            </Example>
-        );
-    }
+    return (
+      <Example options={false} {...this.props}>
+        <Popover {...baseProps} minimal={true}>
+          <Button intent={Intent.PRIMARY}>Minimal</Button>
+        </Popover>
+        <Popover {...baseProps}>
+          <Button>Default</Button>
+        </Popover>
+      </Example>
+    );
+  }
 }

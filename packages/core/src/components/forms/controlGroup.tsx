@@ -21,41 +21,41 @@ import { AbstractPureComponent2, Classes } from "../../common";
 import { DISPLAYNAME_PREFIX, HTMLDivProps, IProps } from "../../common/props";
 
 export interface IControlGroupProps extends IProps, HTMLDivProps {
-    /**
-     * Whether the control group should take up the full width of its container.
-     * @default false
-     */
-    fill?: boolean;
+  /**
+   * Whether the control group should take up the full width of its container.
+   * @default false
+   */
+  fill?: boolean;
 
-    /**
-     * Whether the control group should appear with vertical styling.
-     * @default false
-     */
-    vertical?: boolean;
+  /**
+   * Whether the control group should appear with vertical styling.
+   * @default false
+   */
+  vertical?: boolean;
 }
 
 // this component is simple enough that tests would be purely tautological.
 /* istanbul ignore next */
 @polyfill
 export class ControlGroup extends AbstractPureComponent2<IControlGroupProps, {}> {
-    public static displayName = `${DISPLAYNAME_PREFIX}.ControlGroup`;
+  public static displayName = `${DISPLAYNAME_PREFIX}.ControlGroup`;
 
-    public render() {
-        const { children, className, fill, vertical, ...htmlProps } = this.props;
+  public render() {
+    const { children, className, fill, vertical, ...htmlProps } = this.props;
 
-        const rootClasses = classNames(
-            Classes.CONTROL_GROUP,
-            {
-                [Classes.FILL]: fill,
-                [Classes.VERTICAL]: vertical,
-            },
-            className,
-        );
+    const rootClasses = classNames(
+      Classes.CONTROL_GROUP,
+      {
+        [Classes.FILL]: fill,
+        [Classes.VERTICAL]: vertical,
+      },
+      className,
+    );
 
-        return (
-            <div {...htmlProps} className={rootClasses}>
-                {children}
-            </div>
-        );
-    }
+    return (
+      <div {...htmlProps} className={rootClasses}>
+        {children}
+      </div>
+    );
+  }
 }

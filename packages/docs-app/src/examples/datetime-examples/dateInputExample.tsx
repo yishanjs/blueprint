@@ -24,82 +24,82 @@ import { MomentDate } from "./common/momentDate";
 import { PrecisionSelect } from "./common/precisionSelect";
 
 export interface IDateInputExampleState {
-    closeOnSelection: boolean;
-    date: Date | null;
-    disabled: boolean;
-    fill: boolean;
-    format: IDateFormatProps;
-    reverseMonthAndYearMenus: boolean;
-    shortcuts: boolean;
-    timePrecision: TimePrecision | undefined;
+  closeOnSelection: boolean;
+  date: Date | null;
+  disabled: boolean;
+  fill: boolean;
+  format: IDateFormatProps;
+  reverseMonthAndYearMenus: boolean;
+  shortcuts: boolean;
+  timePrecision: TimePrecision | undefined;
 }
 
 export class DateInputExample extends React.PureComponent<IExampleProps, IDateInputExampleState> {
-    public state: IDateInputExampleState = {
-        closeOnSelection: true,
-        date: null,
-        disabled: false,
-        fill: false,
-        format: FORMATS[0],
-        reverseMonthAndYearMenus: false,
-        shortcuts: false,
-        timePrecision: undefined,
-    };
+  public state: IDateInputExampleState = {
+    closeOnSelection: true,
+    date: null,
+    disabled: false,
+    fill: false,
+    format: FORMATS[0],
+    reverseMonthAndYearMenus: false,
+    shortcuts: false,
+    timePrecision: undefined,
+  };
 
-    private toggleSelection = handleBooleanChange(closeOnSelection => this.setState({ closeOnSelection }));
-    private toggleShortcuts = handleBooleanChange(shortcuts => this.setState({ shortcuts }));
-    private toggleDisabled = handleBooleanChange(disabled => this.setState({ disabled }));
-    private toggleFill = handleBooleanChange(fill => this.setState({ fill }));
-    private toggleReverseMenus = handleBooleanChange(reverse => this.setState({ reverseMonthAndYearMenus: reverse }));
-    private toggleTimePrecision = handleStringChange((timePrecision: TimePrecision | "none") =>
-        this.setState({ timePrecision: timePrecision === "none" ? undefined : timePrecision }),
+  private toggleSelection = handleBooleanChange(closeOnSelection => this.setState({ closeOnSelection }));
+  private toggleShortcuts = handleBooleanChange(shortcuts => this.setState({ shortcuts }));
+  private toggleDisabled = handleBooleanChange(disabled => this.setState({ disabled }));
+  private toggleFill = handleBooleanChange(fill => this.setState({ fill }));
+  private toggleReverseMenus = handleBooleanChange(reverse => this.setState({ reverseMonthAndYearMenus: reverse }));
+  private toggleTimePrecision = handleStringChange((timePrecision: TimePrecision | "none") =>
+    this.setState({ timePrecision: timePrecision === "none" ? undefined : timePrecision }),
+  );
+
+  public render() {
+    const { date, format, ...spreadProps } = this.state;
+    return (
+      <Example options={this.renderOptions()} {...this.props}>
+        <DateInput
+          {...spreadProps}
+          {...format}
+          defaultValue={new Date()}
+          onChange={this.handleDateChange}
+          popoverProps={{ position: Position.BOTTOM }}
+        />
+        <MomentDate date={date} />
+      </Example>
     );
+  }
 
-    public render() {
-        const { date, format, ...spreadProps } = this.state;
-        return (
-            <Example options={this.renderOptions()} {...this.props}>
-                <DateInput
-                    {...spreadProps}
-                    {...format}
-                    defaultValue={new Date()}
-                    onChange={this.handleDateChange}
-                    popoverProps={{ position: Position.BOTTOM }}
-                />
-                <MomentDate date={date} />
-            </Example>
-        );
-    }
+  protected renderOptions() {
+    const {
+      closeOnSelection,
+      disabled,
+      fill,
+      reverseMonthAndYearMenus: reverse,
+      format,
+      timePrecision,
+      shortcuts,
+    } = this.state;
+    return (
+      <>
+        <H5>Props</H5>
+        <Switch label="Close on selection" checked={closeOnSelection} onChange={this.toggleSelection} />
+        <Switch checked={shortcuts} label="Show shortcuts" onChange={this.toggleShortcuts} />
+        <Switch label="Disabled" checked={disabled} onChange={this.toggleDisabled} />
+        <Switch label="Fill" checked={fill} onChange={this.toggleFill} />
+        <Switch label="Reverse month and year menus" checked={reverse} onChange={this.toggleReverseMenus} />
+        <FormatSelect format={format} onChange={this.handleFormatChange} />
+        <PrecisionSelect
+          allowNone={true}
+          label="Time precision"
+          onChange={this.toggleTimePrecision}
+          value={timePrecision}
+        />
+      </>
+    );
+  }
 
-    protected renderOptions() {
-        const {
-            closeOnSelection,
-            disabled,
-            fill,
-            reverseMonthAndYearMenus: reverse,
-            format,
-            timePrecision,
-            shortcuts,
-        } = this.state;
-        return (
-            <>
-                <H5>Props</H5>
-                <Switch label="Close on selection" checked={closeOnSelection} onChange={this.toggleSelection} />
-                <Switch checked={shortcuts} label="Show shortcuts" onChange={this.toggleShortcuts} />
-                <Switch label="Disabled" checked={disabled} onChange={this.toggleDisabled} />
-                <Switch label="Fill" checked={fill} onChange={this.toggleFill} />
-                <Switch label="Reverse month and year menus" checked={reverse} onChange={this.toggleReverseMenus} />
-                <FormatSelect format={format} onChange={this.handleFormatChange} />
-                <PrecisionSelect
-                    allowNone={true}
-                    label="Time precision"
-                    onChange={this.toggleTimePrecision}
-                    value={timePrecision}
-                />
-            </>
-        );
-    }
-
-    private handleDateChange = (date: Date | null) => this.setState({ date });
-    private handleFormatChange = (format: IDateFormatProps) => this.setState({ format });
+  private handleDateChange = (date: Date | null) => this.setState({ date });
+  private handleFormatChange = (format: IDateFormatProps) => this.setState({ format });
 }

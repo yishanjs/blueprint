@@ -8169,10 +8169,10 @@ rc@^1.0.1, rc@^1.1.6:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-day-picker@^7.3.2:
-  version "7.4.0"
-  resolved "https://registry.npm.taobao.org/react-day-picker/download/react-day-picker-7.4.0.tgz#1b3dfe76a81864518d241214ba658da25903b7df"
-  integrity sha1-Gz3+dqgYZFGNJBIUumWNolkDt98=
+react-day-picker@~7.3.2:
+  version "7.3.2"
+  resolved "https://registry.npm.taobao.org/react-day-picker/download/react-day-picker-7.3.2.tgz#b9b9b0000ba53b2c9df9bccb79664862aba6b60a"
+  integrity sha1-ubmwAAulOyyd+bzLeWZIYqumtgo=
   dependencies:
     prop-types "^15.6.2"
 

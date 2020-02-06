@@ -21,58 +21,58 @@ import { Example, handleBooleanChange, IExampleProps } from "@yishanzhilubp/docs
 import { AlignmentSelect } from "./common/alignmentSelect";
 
 export interface IButtonGroupExampleState {
-    alignText: Alignment;
-    fill: boolean;
-    iconOnly: boolean;
-    minimal: boolean;
-    large: boolean;
-    vertical: boolean;
+  alignText: Alignment;
+  fill: boolean;
+  iconOnly: boolean;
+  minimal: boolean;
+  large: boolean;
+  vertical: boolean;
 }
 
 export class ButtonGroupExample extends React.PureComponent<IExampleProps, IButtonGroupExampleState> {
-    public state: IButtonGroupExampleState = {
-        alignText: Alignment.CENTER,
-        fill: false,
-        iconOnly: false,
-        large: false,
-        minimal: false,
-        vertical: false,
-    };
+  public state: IButtonGroupExampleState = {
+    alignText: Alignment.CENTER,
+    fill: false,
+    iconOnly: false,
+    large: false,
+    minimal: false,
+    vertical: false,
+  };
 
-    private handleFillChange = handleBooleanChange(fill => this.setState({ fill }));
-    private handleIconOnlyChange = handleBooleanChange(iconOnly => this.setState({ iconOnly }));
-    private handleLargeChange = handleBooleanChange(large => this.setState({ large }));
-    private handleMinimalChange = handleBooleanChange(minimal => this.setState({ minimal }));
-    private handleVerticalChange = handleBooleanChange(vertical => this.setState({ vertical }));
+  private handleFillChange = handleBooleanChange(fill => this.setState({ fill }));
+  private handleIconOnlyChange = handleBooleanChange(iconOnly => this.setState({ iconOnly }));
+  private handleLargeChange = handleBooleanChange(large => this.setState({ large }));
+  private handleMinimalChange = handleBooleanChange(minimal => this.setState({ minimal }));
+  private handleVerticalChange = handleBooleanChange(vertical => this.setState({ vertical }));
 
-    public render() {
-        const { iconOnly, ...bgProps } = this.state;
-        const options = (
-            <>
-                <H5>Props</H5>
-                <Switch checked={this.state.fill} label="Fill" onChange={this.handleFillChange} />
-                <Switch checked={this.state.large} label="Large" onChange={this.handleLargeChange} />
-                <Switch checked={this.state.minimal} label="Minimal" onChange={this.handleMinimalChange} />
-                <Switch checked={this.state.vertical} label="Vertical" onChange={this.handleVerticalChange} />
-                <AlignmentSelect align={this.state.alignText} onChange={this.handleAlignChange} />
-                <H5>Example</H5>
-                <Switch checked={this.state.iconOnly} label="Icons only" onChange={this.handleIconOnlyChange} />
-            </>
-        );
+  public render() {
+    const { iconOnly, ...bgProps } = this.state;
+    const options = (
+      <>
+        <H5>Props</H5>
+        <Switch checked={this.state.fill} label="Fill" onChange={this.handleFillChange} />
+        <Switch checked={this.state.large} label="Large" onChange={this.handleLargeChange} />
+        <Switch checked={this.state.minimal} label="Minimal" onChange={this.handleMinimalChange} />
+        <Switch checked={this.state.vertical} label="Vertical" onChange={this.handleVerticalChange} />
+        <AlignmentSelect align={this.state.alignText} onChange={this.handleAlignChange} />
+        <H5>Example</H5>
+        <Switch checked={this.state.iconOnly} label="Icons only" onChange={this.handleIconOnlyChange} />
+      </>
+    );
 
-        return (
-            <Example options={options} {...this.props}>
-                {/* set `minWidth` so `alignText` will have an effect when vertical */}
-                <ButtonGroup style={{ minWidth: 200 }} {...bgProps}>
-                    <Button icon="database">{!iconOnly && "Queries"}</Button>
-                    <Button icon="function">{!iconOnly && "Functions"}</Button>
-                    <AnchorButton icon="cog" rightIcon="settings">
-                        {!iconOnly && "Options"}
-                    </AnchorButton>
-                </ButtonGroup>
-            </Example>
-        );
-    }
+    return (
+      <Example options={options} {...this.props}>
+        {/* set `minWidth` so `alignText` will have an effect when vertical */}
+        <ButtonGroup style={{ minWidth: 200 }} {...bgProps}>
+          <Button icon="database">{!iconOnly && "Queries"}</Button>
+          <Button icon="function">{!iconOnly && "Functions"}</Button>
+          <AnchorButton icon="cog" rightIcon="settings">
+            {!iconOnly && "Options"}
+          </AnchorButton>
+        </ButtonGroup>
+      </Example>
+    );
+  }
 
-    private handleAlignChange = (alignText: Alignment) => this.setState({ alignText });
+  private handleAlignChange = (alignText: Alignment) => this.setState({ alignText });
 }

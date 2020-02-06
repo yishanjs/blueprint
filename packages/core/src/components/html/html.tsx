@@ -19,22 +19,22 @@ import * as React from "react";
 import { BLOCKQUOTE, CODE, CODE_BLOCK, HEADING, LABEL, LIST } from "../../common/classes";
 
 export interface IElementRefProps<E extends HTMLElement> {
-    /** Ref handler to access the instance of the internal HTML element. */
-    elementRef?: (ref: E | null) => void;
+  /** Ref handler to access the instance of the internal HTML element. */
+  elementRef?: (ref: E | null) => void;
 }
 
 function htmlElement<E extends HTMLElement>(
-    tagName: keyof JSX.IntrinsicElements,
-    tagClassName: string,
+  tagName: keyof JSX.IntrinsicElements,
+  tagClassName: string,
 ): React.SFC<React.HTMLProps<E> & IElementRefProps<E>> {
-    return props => {
-        const { className, elementRef, ...htmlProps } = props;
-        return React.createElement(tagName, {
-            ...htmlProps,
-            className: classNames(tagClassName, className),
-            ref: elementRef,
-        });
-    };
+  return props => {
+    const { className, elementRef, ...htmlProps } = props;
+    return React.createElement(tagName, {
+      ...htmlProps,
+      className: classNames(tagClassName, className),
+      ref: elementRef,
+    });
+  };
 }
 
 // the following components are linted by blueprint-html-components because

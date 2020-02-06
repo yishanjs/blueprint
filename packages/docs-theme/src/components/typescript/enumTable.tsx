@@ -26,63 +26,63 @@ import { DeprecatedTag } from "./deprecatedTag";
 export type Renderer<T> = (props: T) => React.ReactNode;
 
 export interface IEnumTableProps extends IProps {
-    data: ITsEnum;
+  data: ITsEnum;
 }
 
 export class EnumTable extends React.PureComponent<IEnumTableProps> {
-    public static contextTypes = DocumentationContextTypes;
-    public static displayName = "Docs2.EnumTable";
+  public static contextTypes = DocumentationContextTypes;
+  public static displayName = "Docs2.EnumTable";
 
-    public context: IDocumentationContext;
+  public context: IDocumentationContext;
 
-    public render() {
-        const { data } = this.props;
-        const { renderBlock } = this.context;
-        return (
-            <div className={classNames("docs-modifiers", this.props.className)}>
-                <ApiHeader {...data} />
-                {renderBlock(data.documentation)}
-                <ModifierTable emptyMessage="This enum is empty." title="Members">
-                    {data.members.map(this.renderPropRow)}
-                </ModifierTable>
-            </div>
-        );
-    }
+  public render() {
+    const { data } = this.props;
+    const { renderBlock } = this.context;
+    return (
+      <div className={classNames("docs-modifiers", this.props.className)}>
+        <ApiHeader {...data} />
+        {renderBlock(data.documentation)}
+        <ModifierTable emptyMessage="This enum is empty." title="Members">
+          {data.members.map(this.renderPropRow)}
+        </ModifierTable>
+      </div>
+    );
+  }
 
-    private renderPropRow = (entry: ITsEnumMember) => {
-        const { renderBlock } = this.context;
-        const {
-            flags: { isDeprecated, isExternal },
-            name,
-        } = entry;
+  private renderPropRow = (entry: ITsEnumMember) => {
+    const { renderBlock } = this.context;
+    const {
+      flags: { isDeprecated, isExternal },
+      name,
+    } = entry;
 
-        const classes = classNames("docs-prop-name", {
-            "docs-prop-is-deprecated": !!isDeprecated,
-            "docs-prop-is-internal": !isExternal,
-        });
+    const classes = classNames("docs-prop-name", {
+      "docs-prop-is-deprecated": !!isDeprecated,
+      "docs-prop-is-internal": !isExternal,
+    });
 
-        // tslint:disable:blueprint-html-components - this is inside RUNNING_TEXT
-        return (
-            <tr key={name}>
-                <td className={classes}>
-                    <code>{name}</code>
-                </td>
-                <td className="docs-prop-details">
-                    <code className="docs-prop-type">
-                        <strong>{entry.defaultValue}</strong>
-                    </code>
-                    <div className="docs-prop-description">{renderBlock(entry.documentation)}</div>
-                    <div className="docs-prop-tags">{this.renderTags(entry)}</div>
-                </td>
-            </tr>
-        );
-        // tslint:enable:blueprint-html-components
-    };
+    // tslint:disable:blueprint-html-components - this is inside RUNNING_TEXT
+    return (
+      <tr key={name}>
+        <td className={classes}>
+          <code>{name}</code>
+        </td>
+        <td className="docs-prop-details">
+          <code className="docs-prop-type">
+            <strong>{entry.defaultValue}</strong>
+          </code>
+          <div className="docs-prop-description">{renderBlock(entry.documentation)}</div>
+          <div className="docs-prop-tags">{this.renderTags(entry)}</div>
+        </td>
+      </tr>
+    );
+    // tslint:enable:blueprint-html-components
+  };
 
-    private renderTags(entry: ITsEnumMember) {
-        const {
-            flags: { isDeprecated },
-        } = entry;
-        return <DeprecatedTag isDeprecated={isDeprecated} />;
-    }
+  private renderTags(entry: ITsEnumMember) {
+    const {
+      flags: { isDeprecated },
+    } = entry;
+    return <DeprecatedTag isDeprecated={isDeprecated} />;
+  }
 }

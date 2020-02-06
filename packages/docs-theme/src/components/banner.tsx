@@ -19,14 +19,14 @@ import classNames from "classnames";
 import * as React from "react";
 
 export interface IBannerProps extends IProps {
-    /** Link URL. */
-    href: string;
+  /** Link URL. */
+  href: string;
 
-    /**
-     * Intent color of banner.
-     * @default Intent.PRIMARY
-     */
-    intent?: Intent;
+  /**
+   * Intent color of banner.
+   * @default Intent.PRIMARY
+   */
+  intent?: Intent;
 }
 
 /**
@@ -34,13 +34,13 @@ export interface IBannerProps extends IProps {
  * Use this to alert users to make changes or new pages.
  */
 export class Banner extends React.PureComponent<IBannerProps> {
-    public render() {
-        const { children, className, href, intent = Intent.PRIMARY } = this.props;
-        const classes = classNames("docs-banner", Classes.intentClass(intent), className);
-        return (
-            <a className={classes} href={href} target="_blank">
-                {children}
-            </a>
-        );
-    }
+  public render() {
+    const { children, className, href, intent = Intent.PRIMARY } = this.props;
+    const classes = classNames("docs-banner", Classes.intentClass(intent), className);
+    return (
+      <a className={classes} href={href} target="_blank">
+        {children}
+      </a>
+    );
+  }
 }

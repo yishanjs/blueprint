@@ -22,49 +22,49 @@ import { DISPLAYNAME_PREFIX, removeNonHTMLProps } from "../../common/props";
 import { ITabProps, TabId } from "./tab";
 
 export interface ITabTitleProps extends ITabProps {
-    /** Handler invoked when this tab is clicked. */
-    onClick: (id: TabId, event: React.MouseEvent<HTMLElement>) => void;
+  /** Handler invoked when this tab is clicked. */
+  onClick: (id: TabId, event: React.MouseEvent<HTMLElement>) => void;
 
-    /** ID of the parent `Tabs` to which this tab belongs. Used to generate ID for ARIA attributes. */
-    parentId: TabId;
+  /** ID of the parent `Tabs` to which this tab belongs. Used to generate ID for ARIA attributes. */
+  parentId: TabId;
 
-    /** Whether the tab is currently selected. */
-    selected: boolean;
+  /** Whether the tab is currently selected. */
+  selected: boolean;
 }
 
 @polyfill
 export class TabTitle extends AbstractPureComponent2<ITabTitleProps, {}> {
-    public static displayName = `${DISPLAYNAME_PREFIX}.TabTitle`;
+  public static displayName = `${DISPLAYNAME_PREFIX}.TabTitle`;
 
-    public render() {
-        const { className, children, disabled, id, parentId, selected, title, ...htmlProps } = this.props;
-        return (
-            <div
-                {...removeNonHTMLProps(htmlProps)}
-                aria-controls={generateTabPanelId(parentId, id)}
-                aria-disabled={disabled}
-                aria-expanded={selected}
-                aria-selected={selected}
-                className={classNames(Classes.TAB, className)}
-                data-tab-id={id}
-                id={generateTabTitleId(parentId, id)}
-                onClick={disabled ? undefined : this.handleClick}
-                role="tab"
-                tabIndex={disabled ? undefined : 0}
-            >
-                {title}
-                {children}
-            </div>
-        );
-    }
+  public render() {
+    const { className, children, disabled, id, parentId, selected, title, ...htmlProps } = this.props;
+    return (
+      <div
+        {...removeNonHTMLProps(htmlProps)}
+        aria-controls={generateTabPanelId(parentId, id)}
+        aria-disabled={disabled}
+        aria-expanded={selected}
+        aria-selected={selected}
+        className={classNames(Classes.TAB, className)}
+        data-tab-id={id}
+        id={generateTabTitleId(parentId, id)}
+        onClick={disabled ? undefined : this.handleClick}
+        role="tab"
+        tabIndex={disabled ? undefined : 0}
+      >
+        {title}
+        {children}
+      </div>
+    );
+  }
 
-    private handleClick = (e: React.MouseEvent<HTMLElement>) => this.props.onClick(this.props.id, e);
+  private handleClick = (e: React.MouseEvent<HTMLElement>) => this.props.onClick(this.props.id, e);
 }
 
 export function generateTabPanelId(parentId: TabId, tabId: TabId) {
-    return `${Classes.TAB_PANEL}_${parentId}_${tabId}`;
+  return `${Classes.TAB_PANEL}_${parentId}_${tabId}`;
 }
 
 export function generateTabTitleId(parentId: TabId, tabId: TabId) {
-    return `${Classes.TAB}-title_${parentId}_${tabId}`;
+  return `${Classes.TAB}-title_${parentId}_${tabId}`;
 }

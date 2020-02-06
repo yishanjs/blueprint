@@ -31,12 +31,12 @@ const reactDocs = new ReactDocsTagRenderer(ReactDocs as any);
 const reactExample = new ReactExampleTagRenderer(reactExamples);
 
 const tagRenderers = {
-    ...createDefaultRenderers(),
-    reactDocs: reactDocs.render,
-    reactExample: reactExample.render,
+  ...createDefaultRenderers(),
+  reactDocs: reactDocs.render,
+  reactExample: reactExample.render,
 };
 
 ReactDOM.render(
-    <BlueprintDocs defaultPageId="blueprint" docs={docsData} tagRenderers={tagRenderers} useNextVersion={false} />,
-    document.querySelector("#blueprint-documentation"),
+  <BlueprintDocs defaultPageId="blueprint" docs={docsData} tagRenderers={tagRenderers} useNextVersion={false} />,
+  document.querySelector("#blueprint-documentation"),
 );

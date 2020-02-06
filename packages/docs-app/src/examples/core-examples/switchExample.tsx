@@ -20,21 +20,21 @@ import { Code, Label, Switch } from "@yishanzhilubp/core";
 import { CheckboxExample } from "./checkboxExample";
 
 export class SwitchExample extends CheckboxExample {
-    // See CheckboxExample for options
-    protected renderExample() {
-        return (
-            <>
-                <div>
-                    <Label>Privacy setting</Label>
-                    <Switch {...this.state} labelElement={<strong>Enabled</strong>} />
-                    <Switch {...this.state} labelElement={<em>Public</em>} />
-                    <Switch {...this.state} labelElement={<u>Cooperative</u>} defaultChecked={true} />
-                    <Switch {...this.state} labelElement={"Containing Text"} innerLabelChecked="on" innerLabel="off" />
-                </div>
-                <small style={{ width: "100%", textAlign: "center" }}>
-                    This example uses <Code>labelElement</Code> to demonstrate JSX labels.
-                </small>
-            </>
-        );
-    }
+  // See CheckboxExample for options
+  protected renderExample() {
+    return (
+      <>
+        <div>
+          <Label>Privacy setting</Label>
+          <Switch {...this.state} labelElement={<strong>Enabled</strong>} />
+          <Switch {...this.state} labelElement={<em>Public</em>} />
+          <Switch {...this.state} labelElement={<u>Cooperative</u>} defaultChecked={true} />
+          <Switch {...this.state} labelElement={"Containing Text"} innerLabelChecked="on" innerLabel="off" />
+        </div>
+        <small style={{ width: "100%", textAlign: "center" }}>
+          This example uses <Code>labelElement</Code> to demonstrate JSX labels.
+        </small>
+      </>
+    );
+  }
 }

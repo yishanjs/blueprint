@@ -25,117 +25,117 @@ const TARGET_SELECTOR = `.${Classes.POPOVER_TARGET}`;
 const TOOLTIP_SELECTOR = `.${Classes.TOOLTIP}`;
 
 describe("<Tooltip>", () => {
-    it("propogates class names correctly", () => {
-        const tooltip = renderTooltip({
-            className: "bar",
-            isOpen: true,
-            popoverClassName: "foo",
-        });
-        assert.isTrue(tooltip.find(TOOLTIP_SELECTOR).hasClass(tooltip.prop("popoverClassName")), "tooltip");
-        assert.isTrue(tooltip.find(`.${Classes.POPOVER_WRAPPER}`).hasClass(tooltip.prop("className")), "wrapper");
+  it("propogates class names correctly", () => {
+    const tooltip = renderTooltip({
+      className: "bar",
+      isOpen: true,
+      popoverClassName: "foo",
+    });
+    assert.isTrue(tooltip.find(TOOLTIP_SELECTOR).hasClass(tooltip.prop("popoverClassName")), "tooltip");
+    assert.isTrue(tooltip.find(`.${Classes.POPOVER_WRAPPER}`).hasClass(tooltip.prop("className")), "wrapper");
+  });
+
+  it("wrapperTagName & targetTagName render the right elements", () => {
+    const tooltip = renderTooltip({ isOpen: true, targetTagName: "address", wrapperTagName: "article" });
+    assert.isTrue(tooltip.find("address").hasClass(Classes.POPOVER_TARGET));
+    assert.isTrue(tooltip.find("article").hasClass(Classes.POPOVER_WRAPPER));
+  });
+
+  it("supports overlay lifecycle props", () => {
+    const onOpening = spy();
+    renderTooltip({ isOpen: true, onOpening });
+    assert.isTrue(onOpening.calledOnce);
+  });
+
+  describe("in uncontrolled mode", () => {
+    it("defaultIsOpen determines initial open state", () => {
+      assert.lengthOf(renderTooltip({ defaultIsOpen: true }).find(TOOLTIP_SELECTOR), 1);
     });
 
-    it("wrapperTagName & targetTagName render the right elements", () => {
-        const tooltip = renderTooltip({ isOpen: true, targetTagName: "address", wrapperTagName: "article" });
-        assert.isTrue(tooltip.find("address").hasClass(Classes.POPOVER_TARGET));
-        assert.isTrue(tooltip.find("article").hasClass(Classes.POPOVER_WRAPPER));
+    it("triggers on hover", () => {
+      const tooltip = renderTooltip();
+      assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 0);
+
+      tooltip.find(TARGET_SELECTOR).simulate("mouseenter");
+      assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 1);
     });
 
-    it("supports overlay lifecycle props", () => {
-        const onOpening = spy();
-        renderTooltip({ isOpen: true, onOpening });
-        assert.isTrue(onOpening.calledOnce);
+    it("triggers on focus", () => {
+      const tooltip = renderTooltip();
+      assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 0);
+
+      tooltip.find(TARGET_SELECTOR).simulate("focus");
+      assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 1);
     });
 
-    describe("in uncontrolled mode", () => {
-        it("defaultIsOpen determines initial open state", () => {
-            assert.lengthOf(renderTooltip({ defaultIsOpen: true }).find(TOOLTIP_SELECTOR), 1);
-        });
+    it("does not trigger on focus if openOnTargetFocus={false}", () => {
+      const tooltip = renderTooltip({ openOnTargetFocus: false });
+      assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 0);
 
-        it("triggers on hover", () => {
-            const tooltip = renderTooltip();
-            assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 0);
-
-            tooltip.find(TARGET_SELECTOR).simulate("mouseenter");
-            assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 1);
-        });
-
-        it("triggers on focus", () => {
-            const tooltip = renderTooltip();
-            assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 0);
-
-            tooltip.find(TARGET_SELECTOR).simulate("focus");
-            assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 1);
-        });
-
-        it("does not trigger on focus if openOnTargetFocus={false}", () => {
-            const tooltip = renderTooltip({ openOnTargetFocus: false });
-            assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 0);
-
-            tooltip.find(Popover).simulate("focus");
-            assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 0);
-        });
-
-        it("empty content disables Popover and warns", () => {
-            const warnSpy = stub(console, "warn");
-            const tooltip = renderTooltip({ isOpen: true });
-
-            function assertDisabledPopover(content?: string) {
-                tooltip.setProps({ content });
-                assert.isFalse(tooltip.find(Overlay).prop("isOpen"), `"${content}"`);
-                assert.isTrue(warnSpy.calledOnce, "spy not called once");
-                warnSpy.resetHistory();
-            }
-
-            assertDisabledPopover("");
-            assertDisabledPopover("   ");
-            assertDisabledPopover(null);
-            warnSpy.restore();
-        });
-
-        it("setting disabled=true prevents opening tooltip", () => {
-            const tooltip = renderTooltip({ disabled: true });
-            tooltip.find(Popover).simulate("mouseenter");
-            assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 0);
-        });
+      tooltip.find(Popover).simulate("focus");
+      assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 0);
     });
 
-    describe("in controlled mode", () => {
-        it("renders when open", () => {
-            const tooltip = renderTooltip({ isOpen: true });
-            assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 1);
-        });
+    it("empty content disables Popover and warns", () => {
+      const warnSpy = stub(console, "warn");
+      const tooltip = renderTooltip({ isOpen: true });
 
-        it("doesn't render when not open", () => {
-            const tooltip = renderTooltip({ isOpen: false });
-            assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 0);
-        });
+      function assertDisabledPopover(content?: string) {
+        tooltip.setProps({ content });
+        assert.isFalse(tooltip.find(Overlay).prop("isOpen"), `"${content}"`);
+        assert.isTrue(warnSpy.calledOnce, "spy not called once");
+        warnSpy.resetHistory();
+      }
 
-        it("empty content disables Popover and warns", () => {
-            const warnSpy = stub(console, "warn");
-            const tooltip = renderTooltip({ content: "", isOpen: true });
-            assert.isFalse(tooltip.find(Overlay).prop("isOpen"));
-            assert.isTrue(warnSpy.calledOnce);
-            warnSpy.restore();
-        });
-
-        describe("onInteraction()", () => {
-            it("is invoked with `true` when closed tooltip target is hovered", () => {
-                const handleInteraction = spy();
-                renderTooltip({ isOpen: false, onInteraction: handleInteraction })
-                    .find(TARGET_SELECTOR)
-                    .simulate("mouseenter");
-                assert.isTrue(handleInteraction.calledOnce, "called once");
-                assert.isTrue(handleInteraction.calledWith(true), "call args");
-            });
-        });
+      assertDisabledPopover("");
+      assertDisabledPopover("   ");
+      assertDisabledPopover(null);
+      warnSpy.restore();
     });
 
-    function renderTooltip(props?: Partial<ITooltipProps>) {
-        return mount<ITooltipProps>(
-            <Tooltip content={<p>Text</p>} hoverOpenDelay={0} {...props} usePortal={false}>
-                <button>Target</button>
-            </Tooltip>,
-        );
-    }
+    it("setting disabled=true prevents opening tooltip", () => {
+      const tooltip = renderTooltip({ disabled: true });
+      tooltip.find(Popover).simulate("mouseenter");
+      assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 0);
+    });
+  });
+
+  describe("in controlled mode", () => {
+    it("renders when open", () => {
+      const tooltip = renderTooltip({ isOpen: true });
+      assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 1);
+    });
+
+    it("doesn't render when not open", () => {
+      const tooltip = renderTooltip({ isOpen: false });
+      assert.lengthOf(tooltip.find(TOOLTIP_SELECTOR), 0);
+    });
+
+    it("empty content disables Popover and warns", () => {
+      const warnSpy = stub(console, "warn");
+      const tooltip = renderTooltip({ content: "", isOpen: true });
+      assert.isFalse(tooltip.find(Overlay).prop("isOpen"));
+      assert.isTrue(warnSpy.calledOnce);
+      warnSpy.restore();
+    });
+
+    describe("onInteraction()", () => {
+      it("is invoked with `true` when closed tooltip target is hovered", () => {
+        const handleInteraction = spy();
+        renderTooltip({ isOpen: false, onInteraction: handleInteraction })
+          .find(TARGET_SELECTOR)
+          .simulate("mouseenter");
+        assert.isTrue(handleInteraction.calledOnce, "called once");
+        assert.isTrue(handleInteraction.calledWith(true), "call args");
+      });
+    });
+  });
+
+  function renderTooltip(props?: Partial<ITooltipProps>) {
+    return mount<ITooltipProps>(
+      <Tooltip content={<p>Text</p>} hoverOpenDelay={0} {...props} usePortal={false}>
+        <button>Target</button>
+      </Tooltip>,
+    );
+  }
 });

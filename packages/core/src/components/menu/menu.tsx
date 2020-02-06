@@ -23,27 +23,27 @@ import { MenuDivider } from "./menuDivider";
 import { MenuItem } from "./menuItem";
 
 export interface IMenuProps extends IProps, React.HTMLAttributes<HTMLUListElement> {
-    /** Whether the menu items in this menu should use a large appearance. */
-    large?: boolean;
+  /** Whether the menu items in this menu should use a large appearance. */
+  large?: boolean;
 
-    /** Ref handler that receives the HTML `<ul>` element backing this component. */
-    ulRef?: (ref: HTMLUListElement | null) => any;
+  /** Ref handler that receives the HTML `<ul>` element backing this component. */
+  ulRef?: (ref: HTMLUListElement | null) => any;
 }
 
 @polyfill
 export class Menu extends AbstractPureComponent2<IMenuProps> {
-    public static displayName = `${DISPLAYNAME_PREFIX}.Menu`;
+  public static displayName = `${DISPLAYNAME_PREFIX}.Menu`;
 
-    public static Divider = MenuDivider;
-    public static Item = MenuItem;
+  public static Divider = MenuDivider;
+  public static Item = MenuItem;
 
-    public render() {
-        const { className, children, large, ulRef, ...htmlProps } = this.props;
-        const classes = classNames(Classes.MENU, { [Classes.LARGE]: large }, className);
-        return (
-            <ul {...htmlProps} className={classes} ref={ulRef}>
-                {children}
-            </ul>
-        );
-    }
+  public render() {
+    const { className, children, large, ulRef, ...htmlProps } = this.props;
+    const classes = classNames(Classes.MENU, { [Classes.LARGE]: large }, className);
+    return (
+      <ul {...htmlProps} className={classes} ref={ulRef}>
+        {children}
+      </ul>
+    );
+  }
 }

@@ -19,44 +19,44 @@ import { FileInput, FormGroup, H5, InputGroup } from "@yishanzhilubp/core";
 import { Example, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 interface IFileInputExampleState {
-    buttonText?: string;
-    text?: string;
+  buttonText?: string;
+  text?: string;
 }
 
 export class FileInputExample extends React.PureComponent<IExampleProps, IFileInputExampleState> {
-    public state: IFileInputExampleState = {};
+  public state: IFileInputExampleState = {};
 
-    public render() {
-        const { text, buttonText } = this.state;
+  public render() {
+    const { text, buttonText } = this.state;
 
-        return (
-            <Example options={this.renderOptions()} {...this.props}>
-                <FileInput text={text} buttonText={buttonText} />
-            </Example>
-        );
-    }
+    return (
+      <Example options={this.renderOptions()} {...this.props}>
+        <FileInput text={text} buttonText={buttonText} />
+      </Example>
+    );
+  }
 
-    private renderOptions = () => {
-        const { text, buttonText } = this.state;
+  private renderOptions = () => {
+    const { text, buttonText } = this.state;
 
-        return (
-            <>
-                <H5>Props</H5>
-                <FormGroup label="Text">
-                    <InputGroup placeholder="Choose file..." onChange={this.handleTextChange} value={text} />
-                </FormGroup>
-                <FormGroup label="Button text">
-                    <InputGroup placeholder="Browse" onChange={this.handleButtonTextChange} value={buttonText} />
-                </FormGroup>
-            </>
-        );
-    };
+    return (
+      <>
+        <H5>Props</H5>
+        <FormGroup label="Text">
+          <InputGroup placeholder="Choose file..." onChange={this.handleTextChange} value={text} />
+        </FormGroup>
+        <FormGroup label="Button text">
+          <InputGroup placeholder="Browse" onChange={this.handleButtonTextChange} value={buttonText} />
+        </FormGroup>
+      </>
+    );
+  };
 
-    private handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({ text: e.target.value });
-    };
+  private handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ text: e.target.value });
+  };
 
-    private handleButtonTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({ buttonText: e.target.value });
-    };
+  private handleButtonTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ buttonText: e.target.value });
+  };
 }

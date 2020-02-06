@@ -20,18 +20,18 @@ import { Button, Icon } from "@yishanzhilubp/core";
 import { Example, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 export class ButtonsIconsExample extends React.PureComponent<IExampleProps> {
-    public render() {
-        return (
-            <Example options={false} {...this.props}>
-                {/* icon and rightIcon props */}
-                <Button icon="refresh" intent="danger" text="Reset" />
-                <Button icon="user" rightIcon="caret-down" text="Profile settings" />
-                <Button rightIcon="arrow-right" intent="success" text="Next step" />
-                {/* <Icon> children as inline text elements */}
-                <Button>
-                    <Icon icon="document" /> Upload... <Icon icon="small-cross" />
-                </Button>
-            </Example>
-        );
-    }
+  public render() {
+    return (
+      <Example options={false} {...this.props}>
+        {/* icon and rightIcon props */}
+        <Button icon="refresh" intent="danger" text="Reset" />
+        <Button icon="user" rightIcon="caret-down" text="Profile settings" />
+        <Button rightIcon="arrow-right" intent="success" text="Next step" />
+        {/* <Icon> children as inline text elements */}
+        <Button>
+          <Icon icon="document" /> Upload... <Icon icon="small-cross" />
+        </Button>
+      </Example>
+    );
+  }
 }

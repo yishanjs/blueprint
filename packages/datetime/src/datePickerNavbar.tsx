@@ -23,41 +23,41 @@ import * as Classes from "./common/classes";
 import { areSameMonth } from "./common/dateUtils";
 
 export interface IDatePickerNavbarProps extends NavbarElementProps {
-    maxDate: Date;
-    minDate: Date;
+  maxDate: Date;
+  minDate: Date;
 
-    hideLeftNavButton?: boolean;
-    hideRightNavButton?: boolean;
+  hideLeftNavButton?: boolean;
+  hideRightNavButton?: boolean;
 }
 
 export class DatePickerNavbar extends React.PureComponent<IDatePickerNavbarProps> {
-    public render() {
-        const { classNames: classes, month, maxDate, minDate } = this.props;
+  public render() {
+    const { classNames: classes, month, maxDate, minDate } = this.props;
 
-        return (
-            <div className={classNames(Classes.DATEPICKER_NAVBAR, classes.navBar)}>
-                {this.props.hideLeftNavButton || (
-                    <Button
-                        className={classes.navButtonPrev}
-                        disabled={areSameMonth(month, minDate)}
-                        icon="chevron-left"
-                        minimal={true}
-                        onClick={this.handlePreviousClick}
-                    />
-                )}
-                {this.props.hideRightNavButton || (
-                    <Button
-                        className={classes.navButtonNext}
-                        disabled={areSameMonth(month, maxDate)}
-                        icon="chevron-right"
-                        minimal={true}
-                        onClick={this.handleNextClick}
-                    />
-                )}
-            </div>
-        );
-    }
+    return (
+      <div className={classNames(Classes.DATEPICKER_NAVBAR, classes.navBar)}>
+        {this.props.hideLeftNavButton || (
+          <Button
+            className={classes.navButtonPrev}
+            disabled={areSameMonth(month, minDate)}
+            icon="chevron-left"
+            minimal={true}
+            onClick={this.handlePreviousClick}
+          />
+        )}
+        {this.props.hideRightNavButton || (
+          <Button
+            className={classes.navButtonNext}
+            disabled={areSameMonth(month, maxDate)}
+            icon="chevron-right"
+            minimal={true}
+            onClick={this.handleNextClick}
+          />
+        )}
+      </div>
+    );
+  }
 
-    private handleNextClick = () => this.props.onNextClick();
-    private handlePreviousClick = () => this.props.onPreviousClick();
+  private handleNextClick = () => this.props.onNextClick();
+  private handlePreviousClick = () => this.props.onPreviousClick();
 }

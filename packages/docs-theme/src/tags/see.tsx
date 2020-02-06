@@ -19,7 +19,7 @@ import * as React from "react";
 import { DocumentationContextTypes, IDocumentationContext } from "../common/context";
 
 export const SeeTag: React.SFC<ITag> = ({ value }, { renderType }: IDocumentationContext) => (
-    <p>See: {renderType(value)}</p>
+  <p>See: {renderType(value)}</p>
 );
 SeeTag.contextTypes = DocumentationContextTypes;
 SeeTag.displayName = "Docs.SeeTag";

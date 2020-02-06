@@ -18,18 +18,18 @@ import { Intent, Tag } from "@yishanzhilubp/core";
 import * as React from "react";
 
 export const DeprecatedTag: React.SFC<{ isDeprecated: boolean | string | undefined }> = ({ isDeprecated }) => {
-    if (isDeprecated === true || typeof isDeprecated === "string") {
-        return (
-            <Tag intent={Intent.DANGER} minimal={true}>
-                {typeof isDeprecated === "string" ? (
-                    <span dangerouslySetInnerHTML={markdownCode(`Deprecated: ${isDeprecated}`)} />
-                ) : (
-                    "Deprecated"
-                )}
-            </Tag>
-        );
-    }
-    return null;
+  if (isDeprecated === true || typeof isDeprecated === "string") {
+    return (
+      <Tag intent={Intent.DANGER} minimal={true}>
+        {typeof isDeprecated === "string" ? (
+          <span dangerouslySetInnerHTML={markdownCode(`Deprecated: ${isDeprecated}`)} />
+        ) : (
+          "Deprecated"
+        )}
+      </Tag>
+    );
+  }
+  return null;
 };
 DeprecatedTag.displayName = "Docs2.DeprecatedTag";
 
@@ -38,10 +38,10 @@ DeprecatedTag.displayName = "Docs2.DeprecatedTag";
  * Does not provide any syntax highlighting.
  */
 function markdownCode(text: string) {
-    return {
-        __html: text
-            .replace("<", "&lt;")
-            .replace(/```([^`]+)```/g, (_, code) => `<pre>${code}</pre>`)
-            .replace(/`([^`]+)`/g, (_, code) => `<code>${code}</code>`),
-    };
+  return {
+    __html: text
+      .replace("<", "&lt;")
+      .replace(/```([^`]+)```/g, (_, code) => `<pre>${code}</pre>`)
+      .replace(/`([^`]+)`/g, (_, code) => `<code>${code}</code>`),
+  };
 }

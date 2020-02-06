@@ -23,59 +23,59 @@ import { DISPLAYNAME_PREFIX, HTMLDivProps, IProps } from "../../common/props";
 export type TabId = string | number;
 
 export interface ITabProps extends IProps, Omit<HTMLDivProps, "id" | "title" | "onClick"> {
-    /**
-     * Content of tab title, rendered in a list above the active panel.
-     * Can also be set via the `title` prop.
-     */
-    children?: React.ReactNode;
+  /**
+   * Content of tab title, rendered in a list above the active panel.
+   * Can also be set via the `title` prop.
+   */
+  children?: React.ReactNode;
 
-    /**
-     * Whether the tab is disabled.
-     * @default false
-     */
-    disabled?: boolean;
+  /**
+   * Whether the tab is disabled.
+   * @default false
+   */
+  disabled?: boolean;
 
-    /**
-     * Unique identifier used to control which tab is selected
-     * and to generate ARIA attributes for accessibility.
-     */
-    id: TabId;
+  /**
+   * Unique identifier used to control which tab is selected
+   * and to generate ARIA attributes for accessibility.
+   */
+  id: TabId;
 
-    /**
-     * Panel content, rendered by the parent `Tabs` when this tab is active.
-     * If omitted, no panel will be rendered for this tab.
-     */
-    panel?: JSX.Element;
+  /**
+   * Panel content, rendered by the parent `Tabs` when this tab is active.
+   * If omitted, no panel will be rendered for this tab.
+   */
+  panel?: JSX.Element;
 
-    /**
-     * Space-delimited string of class names applied to tab panel container.
-     */
-    panelClassName?: string;
+  /**
+   * Space-delimited string of class names applied to tab panel container.
+   */
+  panelClassName?: string;
 
-    /**
-     * Content of tab title element, rendered in a list above the active panel.
-     * Can also be set via React `children`.
-     */
-    title?: React.ReactNode;
+  /**
+   * Content of tab title element, rendered in a list above the active panel.
+   * Can also be set via React `children`.
+   */
+  title?: React.ReactNode;
 }
 
 @polyfill
 export class Tab extends AbstractPureComponent2<ITabProps, {}> {
-    public static defaultProps: ITabProps = {
-        disabled: false,
-        id: undefined,
-    };
+  public static defaultProps: ITabProps = {
+    disabled: false,
+    id: undefined,
+  };
 
-    public static displayName = `${DISPLAYNAME_PREFIX}.Tab`;
+  public static displayName = `${DISPLAYNAME_PREFIX}.Tab`;
 
-    // this component is never rendered directly; see Tabs#renderTabPanel()
-    /* istanbul ignore next */
-    public render() {
-        const { className, panel } = this.props;
-        return (
-            <div className={classNames(Classes.TAB_PANEL, className)} role="tablist">
-                {panel}
-            </div>
-        );
-    }
+  // this component is never rendered directly; see Tabs#renderTabPanel()
+  /* istanbul ignore next */
+  public render() {
+    const { className, panel } = this.props;
+    return (
+      <div className={classNames(Classes.TAB_PANEL, className)} role="tablist">
+        {panel}
+      </div>
+    );
+  }
 }

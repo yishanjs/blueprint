@@ -24,60 +24,60 @@ import { LoadableContent } from "../common/loadableContent";
 import { HeaderCell, IHeaderCellProps } from "./headerCell";
 
 export interface IRowHeaderCellProps extends IHeaderCellProps, IProps {
-    /**
-     * Specifies if the row is reorderable.
-     */
-    enableRowReordering?: boolean;
+  /**
+   * Specifies if the row is reorderable.
+   */
+  enableRowReordering?: boolean;
 
-    /**
-     * Specifies whether the full row is part of a selection.
-     */
-    isRowSelected?: boolean;
+  /**
+   * Specifies whether the full row is part of a selection.
+   */
+  isRowSelected?: boolean;
 
-    /**
-     * A callback to override the default name rendering behavior. The default
-     * behavior is to simply use the `RowHeaderCell`s name prop.
-     *
-     * This render callback can be used, for example, to provide a
-     * `EditableName` component for editing row names.
-     *
-     * The callback will also receive the row index if an `index` was originally
-     * provided via props.
-     */
-    nameRenderer?: (name: string, index?: number) => React.ReactElement<IProps>;
+  /**
+   * A callback to override the default name rendering behavior. The default
+   * behavior is to simply use the `RowHeaderCell`s name prop.
+   *
+   * This render callback can be used, for example, to provide a
+   * `EditableName` component for editing row names.
+   *
+   * The callback will also receive the row index if an `index` was originally
+   * provided via props.
+   */
+  nameRenderer?: (name: string, index?: number) => React.ReactElement<IProps>;
 }
 
 @polyfill
 export class RowHeaderCell extends AbstractPureComponent2<IRowHeaderCellProps> {
-    public render() {
-        const {
-            // from IRowHeaderCellProps
-            enableRowReordering,
-            isRowSelected,
-            name,
-            nameRenderer,
+  public render() {
+    const {
+      // from IRowHeaderCellProps
+      enableRowReordering,
+      isRowSelected,
+      name,
+      nameRenderer,
 
-            // from IHeaderProps
-            ...spreadableProps
-        } = this.props;
-        const defaultName = <div className={Classes.TABLE_ROW_NAME_TEXT}>{name}</div>;
+      // from IHeaderProps
+      ...spreadableProps
+    } = this.props;
+    const defaultName = <div className={Classes.TABLE_ROW_NAME_TEXT}>{name}</div>;
 
-        const nameComponent = (
-            <LoadableContent loading={spreadableProps.loading}>
-                {nameRenderer == null ? defaultName : nameRenderer(name, spreadableProps.index)}
-            </LoadableContent>
-        );
+    const nameComponent = (
+      <LoadableContent loading={spreadableProps.loading}>
+        {nameRenderer == null ? defaultName : nameRenderer(name, spreadableProps.index)}
+      </LoadableContent>
+    );
 
-        return (
-            <HeaderCell
-                isReorderable={this.props.enableRowReordering}
-                isSelected={this.props.isRowSelected}
-                {...spreadableProps}
-            >
-                <div className={Classes.TABLE_ROW_NAME}>{nameComponent}</div>
-                {this.props.children}
-                {spreadableProps.loading ? undefined : spreadableProps.resizeHandle}
-            </HeaderCell>
-        );
-    }
+    return (
+      <HeaderCell
+        isReorderable={this.props.enableRowReordering}
+        isSelected={this.props.isRowSelected}
+        {...spreadableProps}
+      >
+        <div className={Classes.TABLE_ROW_NAME}>{nameComponent}</div>
+        {this.props.children}
+        {spreadableProps.loading ? undefined : spreadableProps.resizeHandle}
+      </HeaderCell>
+    );
+  }
 }

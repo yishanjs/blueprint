@@ -22,29 +22,29 @@ import { DocumentationContextTypes, IDocumentationContext } from "../../common/c
 import { ApiHeader } from "./apiHeader";
 
 export interface ITypeAliasTableProps extends IProps {
-    data: ITsTypeAlias;
+  data: ITsTypeAlias;
 }
 
 export class TypeAliasTable extends React.PureComponent<ITypeAliasTableProps> {
-    public static contextTypes = DocumentationContextTypes;
-    public static displayName = "Docs2.TypeAliasTable";
+  public static contextTypes = DocumentationContextTypes;
+  public static displayName = "Docs2.TypeAliasTable";
 
-    public context: IDocumentationContext;
+  public context: IDocumentationContext;
 
-    public render() {
-        const { data } = this.props;
-        const { renderBlock, renderType } = this.context;
-        const aliases = data.type.split(" | ").map((type, i) => (
-            <div key={i}>
-                {i === 0 ? "=" : "|"} {renderType(type)}
-            </div>
-        ));
-        return (
-            <div className={classNames("docs-modifiers", this.props.className)}>
-                <ApiHeader {...data} />
-                {renderBlock(data.documentation)}
-                <div className="docs-type-alias docs-code">{aliases}</div>
-            </div>
-        );
-    }
+  public render() {
+    const { data } = this.props;
+    const { renderBlock, renderType } = this.context;
+    const aliases = data.type.split(" | ").map((type, i) => (
+      <div key={i}>
+        {i === 0 ? "=" : "|"} {renderType(type)}
+      </div>
+    ));
+    return (
+      <div className={classNames("docs-modifiers", this.props.className)}>
+        <ApiHeader {...data} />
+        {renderBlock(data.documentation)}
+        <div className="docs-type-alias docs-code">{aliases}</div>
+      </div>
+    );
+  }
 }

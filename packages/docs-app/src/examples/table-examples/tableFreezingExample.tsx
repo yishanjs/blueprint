@@ -20,8 +20,8 @@ import { Example, IExampleProps } from "@yishanzhilubp/docs-theme";
 import { Cell, Column, Table, Utils } from "@yishanzhilubp/table";
 
 export interface ITableFreezingExampleState {
-    numFrozenColumns?: number;
-    numFrozenRows?: number;
+  numFrozenColumns?: number;
+  numFrozenRows?: number;
 }
 
 const NUM_ROWS = 20;
@@ -30,29 +30,25 @@ const NUM_FROZEN_ROWS = 2;
 const NUM_FROZEN_COLUMNS = 1;
 
 export class TableFreezingExample extends React.PureComponent<IExampleProps, ITableFreezingExampleState> {
-    public render() {
-        return (
-            <Example options={false} showOptionsBelowExample={true} {...this.props}>
-                <Table numRows={NUM_ROWS} numFrozenRows={NUM_FROZEN_ROWS} numFrozenColumns={NUM_FROZEN_COLUMNS}>
-                    {this.renderColumns()}
-                </Table>
-            </Example>
-        );
-    }
+  public render() {
+    return (
+      <Example options={false} showOptionsBelowExample={true} {...this.props}>
+        <Table numRows={NUM_ROWS} numFrozenRows={NUM_FROZEN_ROWS} numFrozenColumns={NUM_FROZEN_COLUMNS}>
+          {this.renderColumns()}
+        </Table>
+      </Example>
+    );
+  }
 
-    public renderCell = (rowIndex: number, columnIndex: number) => {
-        return <Cell>{Utils.toBase26CellName(rowIndex, columnIndex)}</Cell>;
-    };
+  public renderCell = (rowIndex: number, columnIndex: number) => {
+    return <Cell>{Utils.toBase26CellName(rowIndex, columnIndex)}</Cell>;
+  };
 
-    public renderColumns = () => {
-        return Utils.times(NUM_COLUMNS, (columnIndex: number) => {
-            return (
-                <Column
-                    key={columnIndex}
-                    name={`Column ${Utils.toBase26Alpha(columnIndex)}`}
-                    cellRenderer={this.renderCell}
-                />
-            );
-        });
-    };
+  public renderColumns = () => {
+    return Utils.times(NUM_COLUMNS, (columnIndex: number) => {
+      return (
+        <Column key={columnIndex} name={`Column ${Utils.toBase26Alpha(columnIndex)}`} cellRenderer={this.renderCell} />
+      );
+    });
+  };
 }

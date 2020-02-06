@@ -22,42 +22,42 @@ import { IActionProps, ILinkProps } from "../../common/props";
 import { Icon } from "../icon/icon";
 
 export interface IBreadcrumbProps extends IActionProps, ILinkProps {
-    /** Whether this breadcrumb is the current breadcrumb. */
-    current?: boolean;
+  /** Whether this breadcrumb is the current breadcrumb. */
+  current?: boolean;
 }
 
 export const Breadcrumb: React.SFC<IBreadcrumbProps> = breadcrumbProps => {
-    const classes = classNames(
-        Classes.BREADCRUMB,
-        {
-            [Classes.BREADCRUMB_CURRENT]: breadcrumbProps.current,
-            [Classes.DISABLED]: breadcrumbProps.disabled,
-        },
-        breadcrumbProps.className,
-    );
+  const classes = classNames(
+    Classes.BREADCRUMB,
+    {
+      [Classes.BREADCRUMB_CURRENT]: breadcrumbProps.current,
+      [Classes.DISABLED]: breadcrumbProps.disabled,
+    },
+    breadcrumbProps.className,
+  );
 
-    const icon = breadcrumbProps.icon != null ? <Icon icon={breadcrumbProps.icon} /> : undefined;
+  const icon = breadcrumbProps.icon != null ? <Icon icon={breadcrumbProps.icon} /> : undefined;
 
-    if (breadcrumbProps.href == null && breadcrumbProps.onClick == null) {
-        return (
-            <span className={classes}>
-                {icon}
-                {breadcrumbProps.text}
-                {breadcrumbProps.children}
-            </span>
-        );
-    }
+  if (breadcrumbProps.href == null && breadcrumbProps.onClick == null) {
     return (
-        <a
-            className={classes}
-            href={breadcrumbProps.href}
-            onClick={breadcrumbProps.disabled ? null : breadcrumbProps.onClick}
-            tabIndex={breadcrumbProps.disabled ? null : 0}
-            target={breadcrumbProps.target}
-        >
-            {icon}
-            {breadcrumbProps.text}
-            {breadcrumbProps.children}
-        </a>
+      <span className={classes}>
+        {icon}
+        {breadcrumbProps.text}
+        {breadcrumbProps.children}
+      </span>
     );
+  }
+  return (
+    <a
+      className={classes}
+      href={breadcrumbProps.href}
+      onClick={breadcrumbProps.disabled ? null : breadcrumbProps.onClick}
+      tabIndex={breadcrumbProps.disabled ? null : 0}
+      target={breadcrumbProps.target}
+    >
+      {icon}
+      {breadcrumbProps.text}
+      {breadcrumbProps.children}
+    </a>
+  );
 };

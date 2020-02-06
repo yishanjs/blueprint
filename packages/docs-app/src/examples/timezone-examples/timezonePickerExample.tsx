@@ -22,71 +22,71 @@ import { TimezoneDisplayFormat, TimezonePicker } from "@yishanzhilubp/timezone";
 import { CustomTimezonePickerTarget } from "./components";
 
 export interface ITimezonePickerExampleState {
-    disabled: boolean;
-    showCustomTarget: boolean;
-    showLocalTimezone: boolean;
-    targetDisplayFormat: TimezoneDisplayFormat;
-    timezone: string;
+  disabled: boolean;
+  showCustomTarget: boolean;
+  showLocalTimezone: boolean;
+  targetDisplayFormat: TimezoneDisplayFormat;
+  timezone: string;
 }
 
 export class TimezonePickerExample extends React.PureComponent<IExampleProps, ITimezonePickerExampleState> {
-    public state: ITimezonePickerExampleState = {
-        disabled: false,
-        showCustomTarget: false,
-        showLocalTimezone: true,
-        targetDisplayFormat: TimezoneDisplayFormat.COMPOSITE,
-        timezone: "",
-    };
+  public state: ITimezonePickerExampleState = {
+    disabled: false,
+    showCustomTarget: false,
+    showLocalTimezone: true,
+    targetDisplayFormat: TimezoneDisplayFormat.COMPOSITE,
+    timezone: "",
+  };
 
-    private handleDisabledChange = handleBooleanChange(disabled => this.setState({ disabled }));
-    private handleShowLocalChange = handleBooleanChange(showLocalTimezone => this.setState({ showLocalTimezone }));
-    private handleCustomChildChange = handleBooleanChange(showCustomTarget => this.setState({ showCustomTarget }));
-    private handleFormatChange = handleStringChange((targetDisplayFormat: TimezoneDisplayFormat) =>
-        this.setState({ targetDisplayFormat }),
+  private handleDisabledChange = handleBooleanChange(disabled => this.setState({ disabled }));
+  private handleShowLocalChange = handleBooleanChange(showLocalTimezone => this.setState({ showLocalTimezone }));
+  private handleCustomChildChange = handleBooleanChange(showCustomTarget => this.setState({ showCustomTarget }));
+  private handleFormatChange = handleStringChange((targetDisplayFormat: TimezoneDisplayFormat) =>
+    this.setState({ targetDisplayFormat }),
+  );
+
+  public render() {
+    const { timezone, targetDisplayFormat, disabled, showCustomTarget, showLocalTimezone } = this.state;
+
+    const options = (
+      <>
+        <H5>Props</H5>
+        <Switch checked={showLocalTimezone} label="Show local timezone" onChange={this.handleShowLocalChange} />
+        <Switch checked={disabled} label="Disabled" onChange={this.handleDisabledChange} />
+        <RadioGroup
+          label="Display format"
+          onChange={this.handleFormatChange}
+          selectedValue={this.state.targetDisplayFormat}
+        >
+          <Radio label="Abbreviation" value={TimezoneDisplayFormat.ABBREVIATION} />
+          <Radio label="Composite" value={TimezoneDisplayFormat.COMPOSITE} />
+          <Radio label="Name" value={TimezoneDisplayFormat.NAME} />
+          <Radio label="Offset" value={TimezoneDisplayFormat.OFFSET} />
+        </RadioGroup>
+        <H5>Example</H5>
+        <Switch checked={showCustomTarget} label="Custom target" onChange={this.handleCustomChildChange} />
+      </>
     );
 
-    public render() {
-        const { timezone, targetDisplayFormat, disabled, showCustomTarget, showLocalTimezone } = this.state;
+    return (
+      <Example options={options} {...this.props}>
+        <TimezonePicker
+          value={timezone}
+          onChange={this.handleTimezoneChange}
+          valueDisplayFormat={targetDisplayFormat}
+          popoverProps={{ position: Position.BOTTOM }}
+          showLocalTimezone={showLocalTimezone}
+          disabled={disabled}
+        >
+          {showCustomTarget ? this.renderCustomTarget() : undefined}
+        </TimezonePicker>
+      </Example>
+    );
+  }
 
-        const options = (
-            <>
-                <H5>Props</H5>
-                <Switch checked={showLocalTimezone} label="Show local timezone" onChange={this.handleShowLocalChange} />
-                <Switch checked={disabled} label="Disabled" onChange={this.handleDisabledChange} />
-                <RadioGroup
-                    label="Display format"
-                    onChange={this.handleFormatChange}
-                    selectedValue={this.state.targetDisplayFormat}
-                >
-                    <Radio label="Abbreviation" value={TimezoneDisplayFormat.ABBREVIATION} />
-                    <Radio label="Composite" value={TimezoneDisplayFormat.COMPOSITE} />
-                    <Radio label="Name" value={TimezoneDisplayFormat.NAME} />
-                    <Radio label="Offset" value={TimezoneDisplayFormat.OFFSET} />
-                </RadioGroup>
-                <H5>Example</H5>
-                <Switch checked={showCustomTarget} label="Custom target" onChange={this.handleCustomChildChange} />
-            </>
-        );
+  private renderCustomTarget() {
+    return <CustomTimezonePickerTarget timezone={this.state.timezone} />;
+  }
 
-        return (
-            <Example options={options} {...this.props}>
-                <TimezonePicker
-                    value={timezone}
-                    onChange={this.handleTimezoneChange}
-                    valueDisplayFormat={targetDisplayFormat}
-                    popoverProps={{ position: Position.BOTTOM }}
-                    showLocalTimezone={showLocalTimezone}
-                    disabled={disabled}
-                >
-                    {showCustomTarget ? this.renderCustomTarget() : undefined}
-                </TimezonePicker>
-            </Example>
-        );
-    }
-
-    private renderCustomTarget() {
-        return <CustomTimezonePickerTarget timezone={this.state.timezone} />;
-    }
-
-    private handleTimezoneChange = (timezone: string) => this.setState({ timezone });
+  private handleTimezoneChange = (timezone: string) => this.setState({ timezone });
 }

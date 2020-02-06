@@ -20,33 +20,33 @@ import { Button, Classes, FocusStyleManager, InputGroup, Switch } from "@yishanz
 import { Example, handleBooleanChange, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 export interface IFocusExampleState {
-    isFocusActive?: boolean;
+  isFocusActive?: boolean;
 }
 
 export class FocusExample extends React.PureComponent<IExampleProps, IFocusExampleState> {
-    public state = {
-        isFocusActive: true,
-    };
+  public state = {
+    isFocusActive: true,
+  };
 
-    private toggleFocus = handleBooleanChange(enabled => {
-        if (enabled) {
-            FocusStyleManager.onlyShowFocusOnTabs();
-        } else {
-            FocusStyleManager.alwaysShowFocus();
-        }
-        this.setState({ isFocusActive: FocusStyleManager.isActive() });
-    });
-
-    public render() {
-        const options = (
-            <Switch checked={this.state.isFocusActive} label="Only show focus on tab" onChange={this.toggleFocus} />
-        );
-        return (
-            <Example options={options} {...this.props}>
-                <InputGroup leftIcon="star" placeholder="Test me for focus" />
-                <br />
-                <Button className={Classes.FILL} text="Test me for focus" />
-            </Example>
-        );
+  private toggleFocus = handleBooleanChange(enabled => {
+    if (enabled) {
+      FocusStyleManager.onlyShowFocusOnTabs();
+    } else {
+      FocusStyleManager.alwaysShowFocus();
     }
+    this.setState({ isFocusActive: FocusStyleManager.isActive() });
+  });
+
+  public render() {
+    const options = (
+      <Switch checked={this.state.isFocusActive} label="Only show focus on tab" onChange={this.toggleFocus} />
+    );
+    return (
+      <Example options={options} {...this.props}>
+        <InputGroup leftIcon="star" placeholder="Test me for focus" />
+        <br />
+        <Button className={Classes.FILL} text="Test me for focus" />
+      </Example>
+    );
+  }
 }

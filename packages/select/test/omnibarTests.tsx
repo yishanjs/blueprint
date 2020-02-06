@@ -20,6 +20,6 @@ import { Omnibar } from "../src";
 import { selectComponentSuite } from "./selectComponentSuite";
 
 describe("<Omnibar>", () => {
-    // must have query to show any items
-    selectComponentSuite(props => mount(<Omnibar {...props} isOpen={true} overlayProps={{ usePortal: false }} />));
+  // must have query to show any items
+  selectComponentSuite(props => mount(<Omnibar {...props} isOpen={true} overlayProps={{ usePortal: false }} />));
 });

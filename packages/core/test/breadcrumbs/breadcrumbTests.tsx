@@ -22,37 +22,37 @@ import { spy } from "sinon";
 import { Breadcrumb, Classes, Icon } from "../../src/index";
 
 describe("Breadcrumb", () => {
-    it("renders its contents", () => {
-        const wrapper = shallow(<Breadcrumb className="foo" text="Hello" />);
-        assert.isTrue(wrapper.hasClass(Classes.BREADCRUMB));
-        assert.isTrue(wrapper.hasClass("foo"));
-        assert.strictEqual(wrapper.text(), "Hello");
-    });
+  it("renders its contents", () => {
+    const wrapper = shallow(<Breadcrumb className="foo" text="Hello" />);
+    assert.isTrue(wrapper.hasClass(Classes.BREADCRUMB));
+    assert.isTrue(wrapper.hasClass("foo"));
+    assert.strictEqual(wrapper.text(), "Hello");
+  });
 
-    it("clicking triggers onClick", () => {
-        const onClick = spy();
-        shallow(<Breadcrumb onClick={onClick} text="Hello" />).simulate("click");
-        assert.isTrue(onClick.calledOnce, "onClick not called once");
-    });
+  it("clicking triggers onClick", () => {
+    const onClick = spy();
+    shallow(<Breadcrumb onClick={onClick} text="Hello" />).simulate("click");
+    assert.isTrue(onClick.calledOnce, "onClick not called once");
+  });
 
-    it("clicking disabled does not trigger onClick", () => {
-        const onClick = spy();
-        shallow(<Breadcrumb disabled={true} onClick={onClick} text="Hello" />).simulate("click");
-        assert.isTrue(onClick.notCalled, "onClick called");
-    });
+  it("clicking disabled does not trigger onClick", () => {
+    const onClick = spy();
+    shallow(<Breadcrumb disabled={true} onClick={onClick} text="Hello" />).simulate("click");
+    assert.isTrue(onClick.notCalled, "onClick called");
+  });
 
-    it("renders an a tag if it's clickable", () => {
-        assert.lengthOf(shallow(<Breadcrumb href="test" />).find("a"), 1);
-        assert.lengthOf(shallow(<Breadcrumb href="test" />).find("span"), 0);
-    });
+  it("renders an a tag if it's clickable", () => {
+    assert.lengthOf(shallow(<Breadcrumb href="test" />).find("a"), 1);
+    assert.lengthOf(shallow(<Breadcrumb href="test" />).find("span"), 0);
+  });
 
-    it("renders a span tag if it's not clickable", () => {
-        assert.lengthOf(shallow(<Breadcrumb />).find("a"), 0);
-        assert.lengthOf(shallow(<Breadcrumb />).find("span"), 1);
-    });
+  it("renders a span tag if it's not clickable", () => {
+    assert.lengthOf(shallow(<Breadcrumb />).find("a"), 0);
+    assert.lengthOf(shallow(<Breadcrumb />).find("span"), 1);
+  });
 
-    it("renders an icon if one is provided", () => {
-        assert.lengthOf(shallow(<Breadcrumb />).find(Icon), 0);
-        assert.lengthOf(shallow(<Breadcrumb icon="folder-close" />).find(Icon), 1);
-    });
+  it("renders an icon if one is provided", () => {
+    assert.lengthOf(shallow(<Breadcrumb />).find(Icon), 0);
+    assert.lengthOf(shallow(<Breadcrumb icon="folder-close" />).find(Icon), 1);
+  });
 });

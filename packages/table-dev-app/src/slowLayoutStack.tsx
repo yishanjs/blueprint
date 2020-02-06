@@ -18,28 +18,28 @@ import { Utils } from "@yishanzhilubp/table/src";
 import * as React from "react";
 
 export interface ISlowLayoutStackProps {
-    /**
-     * The number of levels in the stack
-     */
-    depth: number;
+  /**
+   * The number of levels in the stack
+   */
+  depth: number;
 
-    /**
-     * A switch to turn on/off the stack. If disabled this components children
-     * will be added to a single `<div>` with the `rootClassName` class.
-     *
-     * @default true
-     */
-    enabled?: boolean;
+  /**
+   * A switch to turn on/off the stack. If disabled this components children
+   * will be added to a single `<div>` with the `rootClassName` class.
+   *
+   * @default true
+   */
+  enabled?: boolean;
 
-    /**
-     * The classname applied to the top `<div>` of the stack
-     */
-    rootClassName?: string;
+  /**
+   * The classname applied to the top `<div>` of the stack
+   */
+  rootClassName?: string;
 
-    /**
-     * The classname applied to each branch `<div>` below the root in the stack
-     */
-    branchClassName?: string;
+  /**
+   * The classname applied to each branch `<div>` below the root in the stack
+   */
+  branchClassName?: string;
 }
 
 /**
@@ -71,18 +71,18 @@ export interface ISlowLayoutStackProps {
  * To mimic slowness in the native "Update Layer Tree", try: `overflow: auto`.
  */
 export class SlowLayoutStack extends React.Component<ISlowLayoutStackProps, {}> {
-    public render() {
-        const { children, depth, enabled, rootClassName, branchClassName } = this.props;
-        let elements = children;
-        if (enabled) {
-            Utils.times(depth, (i: number) => {
-                elements = [
-                    <div key={i} className={branchClassName}>
-                        {elements}
-                    </div>,
-                ];
-            });
-        }
-        return <div className={rootClassName}>{elements}</div>;
+  public render() {
+    const { children, depth, enabled, rootClassName, branchClassName } = this.props;
+    let elements = children;
+    if (enabled) {
+      Utils.times(depth, (i: number) => {
+        elements = [
+          <div key={i} className={branchClassName}>
+            {elements}
+          </div>,
+        ];
+      });
     }
+    return <div className={rootClassName}>{elements}</div>;
+  }
 }

@@ -22,149 +22,149 @@ import { CellType, expectCellLoading } from "./cellTestUtils";
 import { ReactHarness } from "./harness";
 
 interface ITableLoadingOptionsTesterProps {
-    columnLoadingOptions: ColumnLoadingOption[];
-    tableLoadingOptions: TableLoadingOption[];
+  columnLoadingOptions: ColumnLoadingOption[];
+  tableLoadingOptions: TableLoadingOption[];
 }
 
 class TableLoadingOptionsTester extends React.Component<ITableLoadingOptionsTesterProps, {}> {
-    public static isCellLoading = (index: number) => {
-        if (index === 0) {
-            return true;
-        } else if (index === 1) {
-            return false;
-        } else {
-            return undefined;
-        }
-    };
-
-    private static cellRenderer = (rowIndex: number) => {
-        return <Cell loading={TableLoadingOptionsTester.isCellLoading(rowIndex)}>some cell text</Cell>;
-    };
-
-    private static columnHeaderCellRenderer = (columnIndex: number) => {
-        return <ColumnHeaderCell loading={TableLoadingOptionsTester.isCellLoading(columnIndex)} name="column header" />;
-    };
-
-    private static rowHeaderCellRenderer = (rowIndex: number) => {
-        return <RowHeaderCell loading={TableLoadingOptionsTester.isCellLoading(rowIndex)} name="row header" />;
-    };
-
-    public render() {
-        const { columnLoadingOptions, tableLoadingOptions } = this.props;
-        return (
-            <Table
-                loadingOptions={tableLoadingOptions}
-                numRows={3}
-                rowHeaderCellRenderer={TableLoadingOptionsTester.rowHeaderCellRenderer}
-            >
-                <Column
-                    loadingOptions={columnLoadingOptions}
-                    cellRenderer={TableLoadingOptionsTester.cellRenderer}
-                    columnHeaderCellRenderer={TableLoadingOptionsTester.columnHeaderCellRenderer}
-                />
-                <Column
-                    loadingOptions={columnLoadingOptions}
-                    columnHeaderCellRenderer={TableLoadingOptionsTester.columnHeaderCellRenderer}
-                />
-                <Column
-                    loadingOptions={columnLoadingOptions}
-                    columnHeaderCellRenderer={TableLoadingOptionsTester.columnHeaderCellRenderer}
-                />
-            </Table>
-        );
+  public static isCellLoading = (index: number) => {
+    if (index === 0) {
+      return true;
+    } else if (index === 1) {
+      return false;
+    } else {
+      return undefined;
     }
+  };
+
+  private static cellRenderer = (rowIndex: number) => {
+    return <Cell loading={TableLoadingOptionsTester.isCellLoading(rowIndex)}>some cell text</Cell>;
+  };
+
+  private static columnHeaderCellRenderer = (columnIndex: number) => {
+    return <ColumnHeaderCell loading={TableLoadingOptionsTester.isCellLoading(columnIndex)} name="column header" />;
+  };
+
+  private static rowHeaderCellRenderer = (rowIndex: number) => {
+    return <RowHeaderCell loading={TableLoadingOptionsTester.isCellLoading(rowIndex)} name="row header" />;
+  };
+
+  public render() {
+    const { columnLoadingOptions, tableLoadingOptions } = this.props;
+    return (
+      <Table
+        loadingOptions={tableLoadingOptions}
+        numRows={3}
+        rowHeaderCellRenderer={TableLoadingOptionsTester.rowHeaderCellRenderer}
+      >
+        <Column
+          loadingOptions={columnLoadingOptions}
+          cellRenderer={TableLoadingOptionsTester.cellRenderer}
+          columnHeaderCellRenderer={TableLoadingOptionsTester.columnHeaderCellRenderer}
+        />
+        <Column
+          loadingOptions={columnLoadingOptions}
+          columnHeaderCellRenderer={TableLoadingOptionsTester.columnHeaderCellRenderer}
+        />
+        <Column
+          loadingOptions={columnLoadingOptions}
+          columnHeaderCellRenderer={TableLoadingOptionsTester.columnHeaderCellRenderer}
+        />
+      </Table>
+    );
+  }
 }
 
 describe("Loading Options", () => {
-    const harness = new ReactHarness();
-    const allTableLoadingOptions = generatePowerSet([
-        TableLoadingOption.CELLS,
-        TableLoadingOption.COLUMN_HEADERS,
-        TableLoadingOption.ROW_HEADERS,
-    ]);
-    const allColumnLoadingOptions = generatePowerSet([ColumnLoadingOption.CELLS, ColumnLoadingOption.HEADER]);
+  const harness = new ReactHarness();
+  const allTableLoadingOptions = generatePowerSet([
+    TableLoadingOption.CELLS,
+    TableLoadingOption.COLUMN_HEADERS,
+    TableLoadingOption.ROW_HEADERS,
+  ]);
+  const allColumnLoadingOptions = generatePowerSet([ColumnLoadingOption.CELLS, ColumnLoadingOption.HEADER]);
 
-    afterEach(() => {
-        harness.unmount();
+  afterEach(() => {
+    harness.unmount();
+  });
+
+  after(() => {
+    harness.destroy();
+  });
+
+  // Below is an exhaustive set of tests of all possible combinations of loading options
+  allTableLoadingOptions.forEach(tableLoadingOptions => {
+    allColumnLoadingOptions.forEach(columnLoadingOptions => {
+      it(`table: [${tableLoadingOptions}], column: [${columnLoadingOptions}]`, () => {
+        const tableHarness = harness.mount(
+          <TableLoadingOptionsTester
+            columnLoadingOptions={columnLoadingOptions}
+            tableLoadingOptions={tableLoadingOptions}
+          />,
+        );
+
+        // only testing the first column of body cells because the second and third
+        // columns are meant to test column related loading combinations
+        const quadrantSelector = `.${Classes.TABLE_QUADRANT_MAIN}`;
+        const cells = Array.from(
+          tableHarness.element.querySelectorAll(
+            `${quadrantSelector} .${Classes.TABLE_CELL}.${Classes.columnCellIndexClass(0)}`,
+          ),
+        );
+        const columnHeaders = Array.from(
+          tableHarness.element.querySelectorAll(
+            `${quadrantSelector} .${Classes.TABLE_COLUMN_HEADERS} .${Classes.TABLE_HEADER}`,
+          ),
+        );
+        const rowHeaders = Array.from(
+          tableHarness.element.querySelectorAll(
+            `${quadrantSelector} .${Classes.TABLE_ROW_HEADERS} .${Classes.TABLE_HEADER}`,
+          ),
+        );
+        testLoadingOptionOverrides(
+          columnHeaders,
+          CellType.COLUMN_HEADER,
+          TableLoadingOptionsTester.isCellLoading,
+          columnLoadingOptions,
+          tableLoadingOptions,
+        );
+        testLoadingOptionOverrides(
+          rowHeaders,
+          CellType.ROW_HEADER,
+          TableLoadingOptionsTester.isCellLoading,
+          columnLoadingOptions,
+          tableLoadingOptions,
+        );
+        testLoadingOptionOverrides(
+          cells,
+          CellType.BODY_CELL,
+          TableLoadingOptionsTester.isCellLoading,
+          columnLoadingOptions,
+          tableLoadingOptions,
+        );
+      });
     });
-
-    after(() => {
-        harness.destroy();
-    });
-
-    // Below is an exhaustive set of tests of all possible combinations of loading options
-    allTableLoadingOptions.forEach(tableLoadingOptions => {
-        allColumnLoadingOptions.forEach(columnLoadingOptions => {
-            it(`table: [${tableLoadingOptions}], column: [${columnLoadingOptions}]`, () => {
-                const tableHarness = harness.mount(
-                    <TableLoadingOptionsTester
-                        columnLoadingOptions={columnLoadingOptions}
-                        tableLoadingOptions={tableLoadingOptions}
-                    />,
-                );
-
-                // only testing the first column of body cells because the second and third
-                // columns are meant to test column related loading combinations
-                const quadrantSelector = `.${Classes.TABLE_QUADRANT_MAIN}`;
-                const cells = Array.from(
-                    tableHarness.element.querySelectorAll(
-                        `${quadrantSelector} .${Classes.TABLE_CELL}.${Classes.columnCellIndexClass(0)}`,
-                    ),
-                );
-                const columnHeaders = Array.from(
-                    tableHarness.element.querySelectorAll(
-                        `${quadrantSelector} .${Classes.TABLE_COLUMN_HEADERS} .${Classes.TABLE_HEADER}`,
-                    ),
-                );
-                const rowHeaders = Array.from(
-                    tableHarness.element.querySelectorAll(
-                        `${quadrantSelector} .${Classes.TABLE_ROW_HEADERS} .${Classes.TABLE_HEADER}`,
-                    ),
-                );
-                testLoadingOptionOverrides(
-                    columnHeaders,
-                    CellType.COLUMN_HEADER,
-                    TableLoadingOptionsTester.isCellLoading,
-                    columnLoadingOptions,
-                    tableLoadingOptions,
-                );
-                testLoadingOptionOverrides(
-                    rowHeaders,
-                    CellType.ROW_HEADER,
-                    TableLoadingOptionsTester.isCellLoading,
-                    columnLoadingOptions,
-                    tableLoadingOptions,
-                );
-                testLoadingOptionOverrides(
-                    cells,
-                    CellType.BODY_CELL,
-                    TableLoadingOptionsTester.isCellLoading,
-                    columnLoadingOptions,
-                    tableLoadingOptions,
-                );
-            });
-        });
-    });
+  });
 });
 
 function generatePowerSet<T>(list: T[]) {
-    const base2 = (num: number) => num.toString(2);
-    const numberOfSubsets = Math.pow(2, list.length);
-    const listOfSubsets: T[][] = [undefined];
+  const base2 = (num: number) => num.toString(2);
+  const numberOfSubsets = Math.pow(2, list.length);
+  const listOfSubsets: T[][] = [undefined];
 
-    for (let i = 1; i < numberOfSubsets; i++) {
-        const subset: T[] = [];
-        // front-pad the string and then slice from the back to ensure fixed length binary string
-        const binaryString = (Array(list.length).join("0") + base2(i)).slice(list.length * -1);
-        for (let j = 0; j < binaryString.length; j++) {
-            if (binaryString.charAt(j) === "1") {
-                subset.push(list[j]);
-            }
-        }
-        listOfSubsets.push(subset);
+  for (let i = 1; i < numberOfSubsets; i++) {
+    const subset: T[] = [];
+    // front-pad the string and then slice from the back to ensure fixed length binary string
+    const binaryString = (Array(list.length).join("0") + base2(i)).slice(list.length * -1);
+    for (let j = 0; j < binaryString.length; j++) {
+      if (binaryString.charAt(j) === "1") {
+        subset.push(list[j]);
+      }
     }
+    listOfSubsets.push(subset);
+  }
 
-    return listOfSubsets;
+  return listOfSubsets;
 }
 
 /*
@@ -181,28 +181,28 @@ function generatePowerSet<T>(list: T[]) {
  * the cell.
  */
 function testLoadingOptionOverrides(
-    cells: Element[],
-    cellType: CellType,
-    cellLoading: (index: number) => boolean,
-    columnLoadingOptions: ColumnLoadingOption[],
-    tableLoadingOptions: TableLoadingOption[],
+  cells: Element[],
+  cellType: CellType,
+  cellLoading: (index: number) => boolean,
+  columnLoadingOptions: ColumnLoadingOption[],
+  tableLoadingOptions: TableLoadingOption[],
 ) {
-    cells.forEach((cell, i) => {
-        if (cellLoading(i)) {
-            expectCellLoading(cell, cellType, true);
-        } else if (cellLoading(i) === false) {
-            expectCellLoading(cell, cellType, false);
-        } else if (
-            (cellType === CellType.BODY_CELL || cellType === CellType.COLUMN_HEADER) &&
-            columnLoadingOptions != null
-        ) {
-            // cast is safe because cellType is guaranteed to not be TableLoadingOption.ROW_HEADERS
-            const loading = columnLoadingOptions.indexOf((cellType as any) as ColumnLoadingOption) >= 0;
-            expectCellLoading(cell, cellType, loading);
-        } else if (tableLoadingOptions != null) {
-            expectCellLoading(cell, cellType, tableLoadingOptions.indexOf(cellType) >= 0);
-        } else {
-            expectCellLoading(cell, cellType, false);
-        }
-    });
+  cells.forEach((cell, i) => {
+    if (cellLoading(i)) {
+      expectCellLoading(cell, cellType, true);
+    } else if (cellLoading(i) === false) {
+      expectCellLoading(cell, cellType, false);
+    } else if (
+      (cellType === CellType.BODY_CELL || cellType === CellType.COLUMN_HEADER) &&
+      columnLoadingOptions != null
+    ) {
+      // cast is safe because cellType is guaranteed to not be TableLoadingOption.ROW_HEADERS
+      const loading = columnLoadingOptions.indexOf((cellType as any) as ColumnLoadingOption) >= 0;
+      expectCellLoading(cell, cellType, loading);
+    } else if (tableLoadingOptions != null) {
+      expectCellLoading(cell, cellType, tableLoadingOptions.indexOf(cellType) >= 0);
+    } else {
+      expectCellLoading(cell, cellType, false);
+    }
+  });
 }

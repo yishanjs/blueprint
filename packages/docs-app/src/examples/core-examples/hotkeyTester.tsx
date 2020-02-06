@@ -20,50 +20,45 @@ import { Code, getKeyComboString, KeyCombo } from "@yishanzhilubp/core";
 import { Example, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 export interface IHotkeyTesterState {
-    combo: string;
+  combo: string;
 }
 
 export class HotkeyTester extends React.PureComponent<IExampleProps, IHotkeyTesterState> {
-    public state: IHotkeyTesterState = {
-        combo: null,
-    };
+  public state: IHotkeyTesterState = {
+    combo: null,
+  };
 
-    public render() {
-        return (
-            <Example options={false} {...this.props}>
-                <div
-                    className="docs-hotkey-tester"
-                    onKeyDown={this.handleKeyDown}
-                    onBlur={this.handleBlur}
-                    tabIndex={0}
-                >
-                    {this.renderKeyCombo()}
-                </div>
-            </Example>
-        );
+  public render() {
+    return (
+      <Example options={false} {...this.props}>
+        <div className="docs-hotkey-tester" onKeyDown={this.handleKeyDown} onBlur={this.handleBlur} tabIndex={0}>
+          {this.renderKeyCombo()}
+        </div>
+      </Example>
+    );
+  }
+
+  private renderKeyCombo(): React.ReactNode {
+    const { combo } = this.state;
+    if (combo == null) {
+      return "Click here then press a key combo";
+    } else {
+      return (
+        <>
+          <KeyCombo combo={combo} />
+          <Code>{combo}</Code>
+        </>
+      );
     }
+  }
 
-    private renderKeyCombo(): React.ReactNode {
-        const { combo } = this.state;
-        if (combo == null) {
-            return "Click here then press a key combo";
-        } else {
-            return (
-                <>
-                    <KeyCombo combo={combo} />
-                    <Code>{combo}</Code>
-                </>
-            );
-        }
-    }
+  private handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-    private handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-        e.preventDefault();
-        e.stopPropagation();
+    const combo = getKeyComboString(e.nativeEvent as KeyboardEvent);
+    this.setState({ combo });
+  };
 
-        const combo = getKeyComboString(e.nativeEvent as KeyboardEvent);
-        this.setState({ combo });
-    };
-
-    private handleBlur = () => this.setState({ combo: null });
+  private handleBlur = () => this.setState({ combo: null });
 }

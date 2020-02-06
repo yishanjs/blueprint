@@ -21,45 +21,45 @@ import { AbstractPureComponent2, Classes } from "../../common";
 import { IElementRefProps } from "../html/html";
 
 export interface IHTMLTableProps
-    extends React.TableHTMLAttributes<HTMLTableElement>,
-        IElementRefProps<HTMLTableElement> {
-    /** Enables borders between rows and cells. */
-    bordered?: boolean;
+  extends React.TableHTMLAttributes<HTMLTableElement>,
+    IElementRefProps<HTMLTableElement> {
+  /** Enables borders between rows and cells. */
+  bordered?: boolean;
 
-    /** Use small, condensed appearance. */
-    condensed?: boolean;
+  /** Use small, condensed appearance. */
+  condensed?: boolean;
 
-    /** Enables hover styles on row. */
-    interactive?: boolean;
+  /** Enables hover styles on row. */
+  interactive?: boolean;
 
-    /**
-     * Use small, condensed appearance for this element and all child elements.
-     * @deprecated
-     */
-    small?: boolean;
+  /**
+   * Use small, condensed appearance for this element and all child elements.
+   * @deprecated
+   */
+  small?: boolean;
 
-    /** Use an alternate background color on odd rows. */
-    striped?: boolean;
+  /** Use an alternate background color on odd rows. */
+  striped?: boolean;
 }
 
 // this component is simple enough that tests would be purely tautological.
 /* istanbul ignore next */
 @polyfill
 export class HTMLTable extends AbstractPureComponent2<IHTMLTableProps> {
-    public render() {
-        const { bordered, className, condensed, elementRef, interactive, small, striped, ...htmlProps } = this.props;
-        const classes = classNames(
-            Classes.HTML_TABLE,
-            {
-                [Classes.HTML_TABLE_BORDERED]: bordered,
-                [Classes.HTML_TABLE_CONDENSED]: condensed,
-                [Classes.HTML_TABLE_STRIPED]: striped,
-                [Classes.INTERACTIVE]: interactive,
-                [Classes.SMALL]: small,
-            },
-            className,
-        );
-        // tslint:disable-next-line:blueprint-html-components
-        return <table {...htmlProps} ref={elementRef} className={classes} />;
-    }
+  public render() {
+    const { bordered, className, condensed, elementRef, interactive, small, striped, ...htmlProps } = this.props;
+    const classes = classNames(
+      Classes.HTML_TABLE,
+      {
+        [Classes.HTML_TABLE_BORDERED]: bordered,
+        [Classes.HTML_TABLE_CONDENSED]: condensed,
+        [Classes.HTML_TABLE_STRIPED]: striped,
+        [Classes.INTERACTIVE]: interactive,
+        [Classes.SMALL]: small,
+      },
+      className,
+    );
+    // tslint:disable-next-line:blueprint-html-components
+    return <table {...htmlProps} ref={elementRef} className={classes} />;
+  }
 }

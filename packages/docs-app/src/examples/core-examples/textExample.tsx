@@ -20,33 +20,33 @@ import { Text, TextArea } from "@yishanzhilubp/core";
 import { Example, handleStringChange, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 export interface ITextExampleState {
-    textContent: string;
+  textContent: string;
 }
 
 export class TextExample extends React.PureComponent<IExampleProps, ITextExampleState> {
-    public state: ITextExampleState = {
-        textContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  public state: ITextExampleState = {
+    textContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Aenean finibus eget enim non accumsan.
             Nunc lobortis luctus magna eleifend consectetur.`,
-    };
+  };
 
-    private onInputChange = handleStringChange((textContent: string) => this.setState({ textContent }));
+  private onInputChange = handleStringChange((textContent: string) => this.setState({ textContent }));
 
-    public render() {
-        return (
-            <Example options={false} {...this.props}>
-                <Text ellipsize={true}>
-                    {this.state.textContent}
-                    &nbsp;
-                </Text>
-                <TextArea
-                    growVertically={true}
-                    rows={3}
-                    fill={true}
-                    onChange={this.onInputChange}
-                    value={this.state.textContent}
-                />
-            </Example>
-        );
-    }
+  public render() {
+    return (
+      <Example options={false} {...this.props}>
+        <Text ellipsize={true}>
+          {this.state.textContent}
+          &nbsp;
+        </Text>
+        <TextArea
+          growVertically={true}
+          rows={3}
+          fill={true}
+          onChange={this.onInputChange}
+          value={this.state.textContent}
+        />
+      </Example>
+    );
+  }
 }

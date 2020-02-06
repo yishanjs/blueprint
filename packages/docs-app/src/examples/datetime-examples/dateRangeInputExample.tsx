@@ -23,110 +23,93 @@ import { FORMATS, FormatSelect } from "./common/formatSelect";
 import { MomentDateRange } from "./common/momentDate";
 
 export interface IDateRangeInputExampleState {
-    allowSingleDayRange: boolean;
-    closeOnSelection: boolean;
-    contiguousCalendarMonths: boolean;
-    disabled: boolean;
-    enableTimePicker: boolean;
-    format: IDateFormatProps;
-    range: DateRange;
-    reverseMonthAndYearMenus: boolean;
-    selectAllOnFocus: boolean;
-    shortcuts: boolean;
-    singleMonthOnly: boolean;
+  allowSingleDayRange: boolean;
+  closeOnSelection: boolean;
+  contiguousCalendarMonths: boolean;
+  disabled: boolean;
+  enableTimePicker: boolean;
+  format: IDateFormatProps;
+  range: DateRange;
+  reverseMonthAndYearMenus: boolean;
+  selectAllOnFocus: boolean;
+  shortcuts: boolean;
+  singleMonthOnly: boolean;
 }
 
 export class DateRangeInputExample extends React.PureComponent<IExampleProps, IDateRangeInputExampleState> {
-    public state: IDateRangeInputExampleState = {
-        allowSingleDayRange: false,
-        closeOnSelection: false,
-        contiguousCalendarMonths: true,
-        disabled: false,
-        enableTimePicker: false,
-        format: FORMATS[0],
-        range: [null, null],
-        reverseMonthAndYearMenus: false,
-        selectAllOnFocus: false,
-        shortcuts: true,
-        singleMonthOnly: false,
-    };
+  public state: IDateRangeInputExampleState = {
+    allowSingleDayRange: false,
+    closeOnSelection: false,
+    contiguousCalendarMonths: true,
+    disabled: false,
+    enableTimePicker: false,
+    format: FORMATS[0],
+    range: [null, null],
+    reverseMonthAndYearMenus: false,
+    selectAllOnFocus: false,
+    shortcuts: true,
+    singleMonthOnly: false,
+  };
 
-    private toggleContiguous = handleBooleanChange(contiguous => {
-        this.setState({ contiguousCalendarMonths: contiguous });
-    });
-    private toggleDisabled = handleBooleanChange(disabled => this.setState({ disabled }));
-    private toggleReverseMonthAndYearMenus = handleBooleanChange(reverseMonthAndYearMenus =>
-        this.setState({ reverseMonthAndYearMenus }),
+  private toggleContiguous = handleBooleanChange(contiguous => {
+    this.setState({ contiguousCalendarMonths: contiguous });
+  });
+  private toggleDisabled = handleBooleanChange(disabled => this.setState({ disabled }));
+  private toggleReverseMonthAndYearMenus = handleBooleanChange(reverseMonthAndYearMenus =>
+    this.setState({ reverseMonthAndYearMenus }),
+  );
+  private toggleSelection = handleBooleanChange(closeOnSelection => this.setState({ closeOnSelection }));
+  private toggleSelectAllOnFocus = handleBooleanChange(selectAllOnFocus => this.setState({ selectAllOnFocus }));
+  private toggleSingleDay = handleBooleanChange(allowSingleDayRange => this.setState({ allowSingleDayRange }));
+  private toggleSingleMonth = handleBooleanChange(singleMonthOnly => this.setState({ singleMonthOnly }));
+  private toggleShortcuts = handleBooleanChange(shortcuts => this.setState({ shortcuts }));
+  private toggleTimePicker = handleBooleanChange(enableTimePicker => this.setState({ enableTimePicker }));
+
+  public render() {
+    const { enableTimePicker, format, range, ...spreadProps } = this.state;
+    const timePrecision = enableTimePicker ? TimePrecision.MINUTE : undefined;
+    return (
+      <Example options={this.renderOptions()} {...this.props}>
+        <DateRangeInput {...spreadProps} {...format} onChange={this.handleRangeChange} timePrecision={timePrecision} />
+        <MomentDateRange range={range} />
+      </Example>
     );
-    private toggleSelection = handleBooleanChange(closeOnSelection => this.setState({ closeOnSelection }));
-    private toggleSelectAllOnFocus = handleBooleanChange(selectAllOnFocus => this.setState({ selectAllOnFocus }));
-    private toggleSingleDay = handleBooleanChange(allowSingleDayRange => this.setState({ allowSingleDayRange }));
-    private toggleSingleMonth = handleBooleanChange(singleMonthOnly => this.setState({ singleMonthOnly }));
-    private toggleShortcuts = handleBooleanChange(shortcuts => this.setState({ shortcuts }));
-    private toggleTimePicker = handleBooleanChange(enableTimePicker => this.setState({ enableTimePicker }));
+  }
 
-    public render() {
-        const { enableTimePicker, format, range, ...spreadProps } = this.state;
-        const timePrecision = enableTimePicker ? TimePrecision.MINUTE : undefined;
-        return (
-            <Example options={this.renderOptions()} {...this.props}>
-                <DateRangeInput
-                    {...spreadProps}
-                    {...format}
-                    onChange={this.handleRangeChange}
-                    timePrecision={timePrecision}
-                />
-                <MomentDateRange range={range} />
-            </Example>
-        );
-    }
+  protected renderOptions() {
+    return (
+      <>
+        <H5>Props</H5>
+        <Switch
+          checked={this.state.allowSingleDayRange}
+          label="Allow single day range"
+          onChange={this.toggleSingleDay}
+        />
+        <Switch checked={this.state.singleMonthOnly} label="Single month only" onChange={this.toggleSingleMonth} />
+        <Switch checked={this.state.shortcuts} label="Show shortcuts" onChange={this.toggleShortcuts} />
+        <Switch checked={this.state.closeOnSelection} label="Close on selection" onChange={this.toggleSelection} />
+        <Switch
+          checked={this.state.contiguousCalendarMonths}
+          label="Constrain calendar to contiguous months"
+          onChange={this.toggleContiguous}
+        />
+        <Switch checked={this.state.disabled} label="Disabled" onChange={this.toggleDisabled} />
+        <Switch
+          checked={this.state.selectAllOnFocus}
+          label="Select all on focus"
+          onChange={this.toggleSelectAllOnFocus}
+        />
+        <Switch
+          checked={this.state.reverseMonthAndYearMenus}
+          label="Reverse month and year menus"
+          onChange={this.toggleReverseMonthAndYearMenus}
+        />
+        <Switch checked={this.state.enableTimePicker} label="Enable time picker" onChange={this.toggleTimePicker} />
+        <FormatSelect key="Format" format={this.state.format} onChange={this.handleFormatChange} />
+      </>
+    );
+  }
 
-    protected renderOptions() {
-        return (
-            <>
-                <H5>Props</H5>
-                <Switch
-                    checked={this.state.allowSingleDayRange}
-                    label="Allow single day range"
-                    onChange={this.toggleSingleDay}
-                />
-                <Switch
-                    checked={this.state.singleMonthOnly}
-                    label="Single month only"
-                    onChange={this.toggleSingleMonth}
-                />
-                <Switch checked={this.state.shortcuts} label="Show shortcuts" onChange={this.toggleShortcuts} />
-                <Switch
-                    checked={this.state.closeOnSelection}
-                    label="Close on selection"
-                    onChange={this.toggleSelection}
-                />
-                <Switch
-                    checked={this.state.contiguousCalendarMonths}
-                    label="Constrain calendar to contiguous months"
-                    onChange={this.toggleContiguous}
-                />
-                <Switch checked={this.state.disabled} label="Disabled" onChange={this.toggleDisabled} />
-                <Switch
-                    checked={this.state.selectAllOnFocus}
-                    label="Select all on focus"
-                    onChange={this.toggleSelectAllOnFocus}
-                />
-                <Switch
-                    checked={this.state.reverseMonthAndYearMenus}
-                    label="Reverse month and year menus"
-                    onChange={this.toggleReverseMonthAndYearMenus}
-                />
-                <Switch
-                    checked={this.state.enableTimePicker}
-                    label="Enable time picker"
-                    onChange={this.toggleTimePicker}
-                />
-                <FormatSelect key="Format" format={this.state.format} onChange={this.handleFormatChange} />
-            </>
-        );
-    }
-
-    private handleFormatChange = (format: IDateFormatProps) => this.setState({ format });
-    private handleRangeChange = (range: DateRange) => this.setState({ range });
+  private handleFormatChange = (format: IDateFormatProps) => this.setState({ format });
+  private handleRangeChange = (range: DateRange) => this.setState({ range });
 }

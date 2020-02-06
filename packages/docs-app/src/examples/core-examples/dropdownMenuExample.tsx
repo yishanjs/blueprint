@@ -20,26 +20,26 @@ import { Button, Menu, MenuDivider, MenuItem, Popover, Position } from "@yishanz
 import { Example, IExampleProps } from "@yishanzhilubp/docs-theme";
 
 export class DropdownMenuExample extends React.PureComponent<IExampleProps> {
-    public render() {
-        const exampleMenu = (
-            <Menu>
-                <MenuItem icon="graph" text="Graph" />
-                <MenuItem icon="map" text="Map" />
-                <MenuItem icon="th" text="Table" shouldDismissPopover={false} />
-                <MenuItem icon="zoom-to-fit" text="Nucleus" disabled={true} />
-                <MenuDivider />
-                <MenuItem icon="cog" text="Settings...">
-                    <MenuItem icon="add" text="Add new application" disabled={true} />
-                    <MenuItem icon="remove" text="Remove application" />
-                </MenuItem>
-            </Menu>
-        );
-        return (
-            <Example options={false} {...this.props}>
-                <Popover content={exampleMenu} position={Position.RIGHT_BOTTOM}>
-                    <Button icon="share" text="Open in..." />
-                </Popover>
-            </Example>
-        );
-    }
+  public render() {
+    const exampleMenu = (
+      <Menu>
+        <MenuItem icon="graph" text="Graph" />
+        <MenuItem icon="map" text="Map" />
+        <MenuItem icon="th" text="Table" shouldDismissPopover={false} />
+        <MenuItem icon="zoom-to-fit" text="Nucleus" disabled={true} />
+        <MenuDivider />
+        <MenuItem icon="cog" text="Settings...">
+          <MenuItem icon="add" text="Add new application" disabled={true} />
+          <MenuItem icon="remove" text="Remove application" />
+        </MenuItem>
+      </Menu>
+    );
+    return (
+      <Example options={false} {...this.props}>
+        <Popover content={exampleMenu} position={Position.RIGHT_BOTTOM}>
+          <Button icon="share" text="Open in..." />
+        </Popover>
+      </Example>
+    );
+  }
 }

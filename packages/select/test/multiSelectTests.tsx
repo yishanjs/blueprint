@@ -27,94 +27,94 @@ import { IItemRendererProps, IListItemsProps, IMultiSelectProps, IMultiSelectSta
 import { selectComponentSuite } from "./selectComponentSuite";
 
 describe("<MultiSelect>", () => {
-    const FilmMultiSelect = MultiSelect.ofType<IFilm>();
-    const defaultProps = {
-        items: TOP_100_FILMS,
-        popoverProps: { isOpen: true, usePortal: false },
-        query: "",
-        selectedItems: [] as IFilm[],
-        tagRenderer: renderTag,
-    };
-    let handlers: {
-        itemPredicate: sinon.SinonSpy<[string, IFilm], boolean>;
-        itemRenderer: sinon.SinonSpy<[IFilm, IItemRendererProps], JSX.Element | null>;
-        onItemSelect: sinon.SinonSpy;
-    };
+  const FilmMultiSelect = MultiSelect.ofType<IFilm>();
+  const defaultProps = {
+    items: TOP_100_FILMS,
+    popoverProps: { isOpen: true, usePortal: false },
+    query: "",
+    selectedItems: [] as IFilm[],
+    tagRenderer: renderTag,
+  };
+  let handlers: {
+    itemPredicate: sinon.SinonSpy<[string, IFilm], boolean>;
+    itemRenderer: sinon.SinonSpy<[IFilm, IItemRendererProps], JSX.Element | null>;
+    onItemSelect: sinon.SinonSpy;
+  };
 
-    beforeEach(() => {
-        handlers = {
-            itemPredicate: sinon.spy(filterByYear),
-            itemRenderer: sinon.spy(renderFilm),
-            onItemSelect: sinon.spy(),
-        };
+  beforeEach(() => {
+    handlers = {
+      itemPredicate: sinon.spy(filterByYear),
+      itemRenderer: sinon.spy(renderFilm),
+      onItemSelect: sinon.spy(),
+    };
+  });
+
+  selectComponentSuite<IMultiSelectProps<IFilm>, IMultiSelectState>((props: IListItemsProps<IFilm>) =>
+    mount(<MultiSelect {...props} popoverProps={{ isOpen: true, usePortal: false }} tagRenderer={renderTag} />),
+  );
+
+  it("placeholder can be controlled with placeholder prop", () => {
+    const placeholder = "look here";
+
+    const input = multiselect({ placeholder }).find("input");
+    assert.equal((input.getDOMNode() as HTMLInputElement).placeholder, placeholder);
+  });
+
+  it("placeholder can be controlled with TagInput's inputProps", () => {
+    const placeholder = "look here";
+
+    const input = multiselect({ tagInputProps: { placeholder } }).find("input");
+    assert.equal((input.getDOMNode() as HTMLInputElement).placeholder, placeholder);
+  });
+
+  it("tagRenderer can return JSX", () => {
+    const wrapper = multiselect({
+      selectedItems: [TOP_100_FILMS[0]],
+      tagRenderer: film => <strong>{film.title}</strong>,
+    });
+    assert.equal(wrapper.find(Tag).find("strong").length, 1);
+  });
+
+  it("selectedItems is optional", () => {
+    assert.doesNotThrow(() => multiselect({ selectedItems: undefined }));
+  });
+
+  it("only triggers QueryList key up events when focus is on TagInput's <input>", () => {
+    const itemSelectSpy = sinon.spy();
+    const wrapper = multiselect({
+      onItemSelect: itemSelectSpy,
+      selectedItems: [TOP_100_FILMS[1]],
     });
 
-    selectComponentSuite<IMultiSelectProps<IFilm>, IMultiSelectState>((props: IListItemsProps<IFilm>) =>
-        mount(<MultiSelect {...props} popoverProps={{ isOpen: true, usePortal: false }} tagRenderer={renderTag} />),
+    const firstTagRemoveButton = wrapper
+      .find(`.${CoreClasses.TAG_REMOVE}`)
+      .at(0)
+      .getDOMNode();
+    dispatchTestKeyboardEventWithCode(firstTagRemoveButton, "keyup", "Enter", Keys.ENTER);
+
+    // checks for the bug in https://github.com/palantir/blueprint/issues/3674
+    // where the first item in the dropdown list would get selected upon hitting Enter inside
+    // a TAG_REMOVE button
+    assert.isFalse(itemSelectSpy.calledWith(TOP_100_FILMS[0]));
+  });
+
+  function multiselect(props: Partial<IMultiSelectProps<IFilm>> = {}, query?: string) {
+    const wrapper = mount(
+      <FilmMultiSelect {...defaultProps} {...handlers} {...props}>
+        <article />
+      </FilmMultiSelect>,
     );
-
-    it("placeholder can be controlled with placeholder prop", () => {
-        const placeholder = "look here";
-
-        const input = multiselect({ placeholder }).find("input");
-        assert.equal((input.getDOMNode() as HTMLInputElement).placeholder, placeholder);
-    });
-
-    it("placeholder can be controlled with TagInput's inputProps", () => {
-        const placeholder = "look here";
-
-        const input = multiselect({ tagInputProps: { placeholder } }).find("input");
-        assert.equal((input.getDOMNode() as HTMLInputElement).placeholder, placeholder);
-    });
-
-    it("tagRenderer can return JSX", () => {
-        const wrapper = multiselect({
-            selectedItems: [TOP_100_FILMS[0]],
-            tagRenderer: film => <strong>{film.title}</strong>,
-        });
-        assert.equal(wrapper.find(Tag).find("strong").length, 1);
-    });
-
-    it("selectedItems is optional", () => {
-        assert.doesNotThrow(() => multiselect({ selectedItems: undefined }));
-    });
-
-    it("only triggers QueryList key up events when focus is on TagInput's <input>", () => {
-        const itemSelectSpy = sinon.spy();
-        const wrapper = multiselect({
-            onItemSelect: itemSelectSpy,
-            selectedItems: [TOP_100_FILMS[1]],
-        });
-
-        const firstTagRemoveButton = wrapper
-            .find(`.${CoreClasses.TAG_REMOVE}`)
-            .at(0)
-            .getDOMNode();
-        dispatchTestKeyboardEventWithCode(firstTagRemoveButton, "keyup", "Enter", Keys.ENTER);
-
-        // checks for the bug in https://github.com/palantir/blueprint/issues/3674
-        // where the first item in the dropdown list would get selected upon hitting Enter inside
-        // a TAG_REMOVE button
-        assert.isFalse(itemSelectSpy.calledWith(TOP_100_FILMS[0]));
-    });
-
-    function multiselect(props: Partial<IMultiSelectProps<IFilm>> = {}, query?: string) {
-        const wrapper = mount(
-            <FilmMultiSelect {...defaultProps} {...handlers} {...props}>
-                <article />
-            </FilmMultiSelect>,
-        );
-        if (query !== undefined) {
-            wrapper.setState({ query });
-        }
-        return wrapper;
+    if (query !== undefined) {
+      wrapper.setState({ query });
     }
+    return wrapper;
+  }
 });
 
 function renderTag(film: IFilm) {
-    return film.title;
+  return film.title;
 }
 
 function filterByYear(query: string, film: IFilm) {
-    return query === "" || film.year.toString() === query;
+  return query === "" || film.year.toString() === query;
 }

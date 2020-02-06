@@ -19,18 +19,18 @@ import classNames from "classnames";
 import * as React from "react";
 
 export interface INavButtonProps {
-    icon: IconName;
-    hotkey: string;
-    text: string;
-    onClick: () => void;
+  icon: IconName;
+  hotkey: string;
+  text: string;
+  onClick: () => void;
 }
 
 export const NavButton: React.SFC<INavButtonProps> = props => (
-    <div className={classNames("docs-nav-button", Classes.TEXT_MUTED)} onClick={props.onClick}>
-        <Icon icon={props.icon} />
-        <span className={Classes.FILL}>{props.text}</span>
-        <div style={{ opacity: 0.5 }}>
-            <KeyCombo combo={props.hotkey} minimal={true} />
-        </div>
+  <div className={classNames("docs-nav-button", Classes.TEXT_MUTED)} onClick={props.onClick}>
+    <Icon icon={props.icon} />
+    <span className={Classes.FILL}>{props.text}</span>
+    <div style={{ opacity: 0.5 }}>
+      <KeyCombo combo={props.hotkey} minimal={true} />
     </div>
+  </div>
 );

@@ -21,18 +21,18 @@ import { HTMLDivProps, IProps, Keys, removeNonHTMLProps, Utils } from "@yishanzh
 import { createKeyEventHandler } from "@yishanzhilubp/docs-theme";
 
 export interface IClickToCopyProps extends IProps, HTMLDivProps {
-    /**
-     * Additional class names to apply after value has been copied
-     * @default "docs-clipboard-copied"
-     */
-    copiedClassName?: string;
+  /**
+   * Additional class names to apply after value has been copied
+   * @default "docs-clipboard-copied"
+   */
+  copiedClassName?: string;
 
-    /** Value to copy when clicked */
-    value: string;
+  /** Value to copy when clicked */
+  value: string;
 }
 
 export interface IClickToCopyState {
-    hasCopied?: boolean;
+  hasCopied?: boolean;
 }
 
 /**
@@ -46,61 +46,61 @@ export interface IClickToCopyState {
  * The message is reset to default when the user mouses off the element after copying it.
  */
 export class ClickToCopy extends React.PureComponent<IClickToCopyProps, IClickToCopyState> {
-    public static defaultProps: IClickToCopyProps = {
-        copiedClassName: "docs-clipboard-copied",
-        value: "",
-    };
+  public static defaultProps: IClickToCopyProps = {
+    copiedClassName: "docs-clipboard-copied",
+    value: "",
+  };
 
-    public state: IClickToCopyState = {
-        hasCopied: false,
-    };
+  public state: IClickToCopyState = {
+    hasCopied: false,
+  };
 
-    private inputElement: HTMLInputElement;
+  private inputElement: HTMLInputElement;
 
-    private refHandlers = {
-        input: (input: HTMLInputElement) => (this.inputElement = input),
-    };
+  private refHandlers = {
+    input: (input: HTMLInputElement) => (this.inputElement = input),
+  };
 
-    public render() {
-        const { className, children, copiedClassName, value } = this.props;
-        return (
-            <div
-                {...removeNonHTMLProps(this.props, ["copiedClassName", "value"], true)}
-                className={classNames("docs-clipboard", className, { [copiedClassName!]: this.state.hasCopied })}
-                onClick={this.handleClickEvent}
-                onMouseLeave={this.handleMouseLeave}
-            >
-                <input
-                    onBlur={this.handleMouseLeave}
-                    onKeyDown={this.handleKeyDown}
-                    readOnly={true}
-                    ref={this.refHandlers.input}
-                    value={value}
-                />
-                {children}
-            </div>
-        );
-    }
-
-    private handleClickEvent = (e: React.SyntheticEvent<HTMLElement>) => {
-        this.inputElement.select();
-        document.execCommand("copy");
-        this.setState({ hasCopied: true });
-        Utils.safeInvoke(this.props.onClick, e);
-    };
-
-    // tslint:disable-next-line:member-ordering
-    private handleKeyDown = createKeyEventHandler(
-        {
-            all: this.props.onKeyDown,
-            [Keys.SPACE]: this.handleClickEvent,
-            [Keys.ENTER]: this.handleClickEvent,
-        },
-        true,
+  public render() {
+    const { className, children, copiedClassName, value } = this.props;
+    return (
+      <div
+        {...removeNonHTMLProps(this.props, ["copiedClassName", "value"], true)}
+        className={classNames("docs-clipboard", className, { [copiedClassName!]: this.state.hasCopied })}
+        onClick={this.handleClickEvent}
+        onMouseLeave={this.handleMouseLeave}
+      >
+        <input
+          onBlur={this.handleMouseLeave}
+          onKeyDown={this.handleKeyDown}
+          readOnly={true}
+          ref={this.refHandlers.input}
+          value={value}
+        />
+        {children}
+      </div>
     );
+  }
 
-    private handleMouseLeave = (e: React.SyntheticEvent<HTMLElement>) => {
-        this.setState({ hasCopied: false });
-        Utils.safeInvoke(this.props.onMouseLeave, e);
-    };
+  private handleClickEvent = (e: React.SyntheticEvent<HTMLElement>) => {
+    this.inputElement.select();
+    document.execCommand("copy");
+    this.setState({ hasCopied: true });
+    Utils.safeInvoke(this.props.onClick, e);
+  };
+
+  // tslint:disable-next-line:member-ordering
+  private handleKeyDown = createKeyEventHandler(
+    {
+      all: this.props.onKeyDown,
+      [Keys.SPACE]: this.handleClickEvent,
+      [Keys.ENTER]: this.handleClickEvent,
+    },
+    true,
+  );
+
+  private handleMouseLeave = (e: React.SyntheticEvent<HTMLElement>) => {
+    this.setState({ hasCopied: false });
+    Utils.safeInvoke(this.props.onMouseLeave, e);
+  };
 }

@@ -22,25 +22,25 @@ import { DIVIDER } from "../../common/classes";
 import { DISPLAYNAME_PREFIX, IProps } from "../../common/props";
 
 export interface IDividerProps extends IProps, React.HTMLAttributes<HTMLElement> {
-    /**
-     * HTML tag to use for element.
-     * @default "div"
-     */
-    tagName?: keyof JSX.IntrinsicElements;
+  /**
+   * HTML tag to use for element.
+   * @default "div"
+   */
+  tagName?: keyof JSX.IntrinsicElements;
 }
 
 // this component is simple enough that tests would be purely tautological.
 /* istanbul ignore next */
 @polyfill
 export class Divider extends AbstractPureComponent2<IDividerProps> {
-    public static displayName = `${DISPLAYNAME_PREFIX}.Divider`;
+  public static displayName = `${DISPLAYNAME_PREFIX}.Divider`;
 
-    public render() {
-        const { className, tagName = "div", ...htmlProps } = this.props;
-        const classes = classNames(DIVIDER, className);
-        return React.createElement(tagName, {
-            ...htmlProps,
-            className: classes,
-        });
-    }
+  public render() {
+    const { className, tagName = "div", ...htmlProps } = this.props;
+    const classes = classNames(DIVIDER, className);
+    return React.createElement(tagName, {
+      ...htmlProps,
+      className: classes,
+    });
+  }
 }

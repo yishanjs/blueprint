@@ -21,31 +21,31 @@ import { AbstractPureComponent2, Alignment, Classes } from "../../common";
 import { DISPLAYNAME_PREFIX, HTMLDivProps, IProps } from "../../common/props";
 
 export interface INavbarGroupProps extends IProps, HTMLDivProps {
-    /**
-     * The side of the navbar on which the group should appear.
-     * The `Alignment` enum provides constants for these values.
-     * @default Alignment.LEFT
-     */
-    align?: Alignment;
+  /**
+   * The side of the navbar on which the group should appear.
+   * The `Alignment` enum provides constants for these values.
+   * @default Alignment.LEFT
+   */
+  align?: Alignment;
 }
 
 // this component is simple enough that tests would be purely tautological.
 /* istanbul ignore next */
 @polyfill
 export class NavbarGroup extends AbstractPureComponent2<INavbarGroupProps, {}> {
-    public static displayName = `${DISPLAYNAME_PREFIX}.NavbarGroup`;
+  public static displayName = `${DISPLAYNAME_PREFIX}.NavbarGroup`;
 
-    public static defaultProps: INavbarGroupProps = {
-        align: Alignment.LEFT,
-    };
+  public static defaultProps: INavbarGroupProps = {
+    align: Alignment.LEFT,
+  };
 
-    public render() {
-        const { align, children, className, ...htmlProps } = this.props;
-        const classes = classNames(Classes.NAVBAR_GROUP, Classes.alignmentClass(align), className);
-        return (
-            <div className={classes} {...htmlProps}>
-                {children}
-            </div>
-        );
-    }
+  public render() {
+    const { align, children, className, ...htmlProps } = this.props;
+    const classes = classNames(Classes.NAVBAR_GROUP, Classes.alignmentClass(align), className);
+    return (
+      <div className={classes} {...htmlProps}>
+        {children}
+      </div>
+    );
+  }
 }

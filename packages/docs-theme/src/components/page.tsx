@@ -22,18 +22,18 @@ import { ITagRendererMap } from "../tags";
 import { renderBlock } from "./block";
 
 export interface IPageProps {
-    page: IPageData;
-    renderActions: (page: IPageData) => React.ReactNode;
-    tagRenderers: ITagRendererMap;
+  page: IPageData;
+  renderActions: (page: IPageData) => React.ReactNode;
+  tagRenderers: ITagRendererMap;
 }
 
 export const Page: React.SFC<IPageProps> = ({ page, renderActions, tagRenderers }) => {
-    // apply running text styles to blocks in pages (but not on blocks in examples)
-    const pageContents = renderBlock(page, tagRenderers, Classes.TEXT_LARGE);
-    return (
-        <div className="docs-page" data-page-id={page.route}>
-            {renderActions && <div className="docs-page-actions">{renderActions(page)}</div>}
-            {pageContents}
-        </div>
-    );
+  // apply running text styles to blocks in pages (but not on blocks in examples)
+  const pageContents = renderBlock(page, tagRenderers, Classes.TEXT_LARGE);
+  return (
+    <div className="docs-page" data-page-id={page.route}>
+      {renderActions && <div className="docs-page-actions">{renderActions(page)}</div>}
+      {pageContents}
+    </div>
+  );
 };

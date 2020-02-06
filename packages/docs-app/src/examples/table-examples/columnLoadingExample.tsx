@@ -21,78 +21,78 @@ import { Example, handleNumberChange, IExampleProps } from "@yishanzhilubp/docs-
 import { Cell, Column, ColumnLoadingOption, Table } from "@yishanzhilubp/table";
 
 interface IBigSpaceRock {
-    [key: string]: number | string;
+  [key: string]: number | string;
 }
 
 // tslint:disable-next-line:no-var-requires
 const bigSpaceRocks = require("./potentiallyHazardousAsteroids.json") as IBigSpaceRock[];
 
 export interface IColumnLoadingExampleState {
-    loadingColumn?: number;
+  loadingColumn?: number;
 }
 
 export class ColumnLoadingExample extends React.PureComponent<IExampleProps, IColumnLoadingExampleState> {
-    public state: IColumnLoadingExampleState = {
-        loadingColumn: 1,
-    };
+  public state: IColumnLoadingExampleState = {
+    loadingColumn: 1,
+  };
 
-    private handleLoadingColumnChange = handleNumberChange(loadingColumn => this.setState({ loadingColumn }));
+  private handleLoadingColumnChange = handleNumberChange(loadingColumn => this.setState({ loadingColumn }));
 
-    public render() {
-        return (
-            <Example options={this.renderOptions()} showOptionsBelowExample={true} {...this.props}>
-                <Table numRows={bigSpaceRocks.length}>{this.renderColumns()}</Table>
-            </Example>
-        );
+  public render() {
+    return (
+      <Example options={this.renderOptions()} showOptionsBelowExample={true} {...this.props}>
+        <Table numRows={bigSpaceRocks.length}>{this.renderColumns()}</Table>
+      </Example>
+    );
+  }
+
+  protected renderOptions() {
+    const firstSpaceRock = bigSpaceRocks[0];
+    const numColumns = Object.keys(firstSpaceRock).length;
+    const options: JSX.Element[] = [];
+    for (let i = 0; i < numColumns; i++) {
+      const label = this.formatColumnName(Object.keys(firstSpaceRock)[i]);
+      options.push(<option key={i} value={i} label={label} />);
     }
+    return (
+      <Label>
+        Loading column
+        <HTMLSelect value={this.state.loadingColumn} onChange={this.handleLoadingColumnChange}>
+          {options}
+        </HTMLSelect>
+      </Label>
+    );
+  }
 
-    protected renderOptions() {
-        const firstSpaceRock = bigSpaceRocks[0];
-        const numColumns = Object.keys(firstSpaceRock).length;
-        const options: JSX.Element[] = [];
-        for (let i = 0; i < numColumns; i++) {
-            const label = this.formatColumnName(Object.keys(firstSpaceRock)[i]);
-            options.push(<option key={i} value={i} label={label} />);
-        }
-        return (
-            <Label>
-                Loading column
-                <HTMLSelect value={this.state.loadingColumn} onChange={this.handleLoadingColumnChange}>
-                    {options}
-                </HTMLSelect>
-            </Label>
-        );
-    }
+  private renderColumns() {
+    const columns: JSX.Element[] = [];
 
-    private renderColumns() {
-        const columns: JSX.Element[] = [];
+    Object.keys(bigSpaceRocks[0]).forEach((columnName, index) => {
+      columns.push(
+        <Column
+          key={index}
+          loadingOptions={this.loadingOptions(index)}
+          name={this.formatColumnName(columnName)}
+          cellRenderer={this.renderCell}
+        />,
+      );
+    });
 
-        Object.keys(bigSpaceRocks[0]).forEach((columnName, index) => {
-            columns.push(
-                <Column
-                    key={index}
-                    loadingOptions={this.loadingOptions(index)}
-                    name={this.formatColumnName(columnName)}
-                    cellRenderer={this.renderCell}
-                />,
-            );
-        });
+    return columns;
+  }
 
-        return columns;
-    }
+  private renderCell = (rowIndex: number, columnIndex: number) => {
+    const bigSpaceRock = bigSpaceRocks[rowIndex];
+    return <Cell>{bigSpaceRock[Object.keys(bigSpaceRock)[columnIndex]]}</Cell>;
+  };
 
-    private renderCell = (rowIndex: number, columnIndex: number) => {
-        const bigSpaceRock = bigSpaceRocks[rowIndex];
-        return <Cell>{bigSpaceRock[Object.keys(bigSpaceRock)[columnIndex]]}</Cell>;
-    };
+  private formatColumnName = (columnName: string) => {
+    return columnName.replace(/([A-Z])/g, " $1").replace(/^./, firstCharacter => firstCharacter.toUpperCase());
+  };
 
-    private formatColumnName = (columnName: string) => {
-        return columnName.replace(/([A-Z])/g, " $1").replace(/^./, firstCharacter => firstCharacter.toUpperCase());
-    };
-
-    private loadingOptions = (columnIndex: number) => {
-        return columnIndex === this.state.loadingColumn
-            ? [ColumnLoadingOption.HEADER, ColumnLoadingOption.CELLS]
-            : undefined;
-    };
+  private loadingOptions = (columnIndex: number) => {
+    return columnIndex === this.state.loadingColumn
+      ? [ColumnLoadingOption.HEADER, ColumnLoadingOption.CELLS]
+      : undefined;
+  };
 }

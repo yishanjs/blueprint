@@ -18,8 +18,8 @@ import { ContextMenuTarget, IProps } from "@yishanzhilubp/core";
 import * as React from "react";
 
 export interface IContextMenuTargetWrapper extends IProps {
-    renderContextMenu: (e: React.MouseEvent<HTMLElement>) => JSX.Element;
-    style: React.CSSProperties;
+  renderContextMenu: (e: React.MouseEvent<HTMLElement>) => JSX.Element;
+  style: React.CSSProperties;
 }
 
 /**
@@ -30,16 +30,16 @@ export interface IContextMenuTargetWrapper extends IProps {
  */
 @ContextMenuTarget
 export class ContextMenuTargetWrapper extends React.PureComponent<IContextMenuTargetWrapper, {}> {
-    public render() {
-        const { className, children, style } = this.props;
-        return (
-            <div className={className} style={style}>
-                {children}
-            </div>
-        );
-    }
+  public render() {
+    const { className, children, style } = this.props;
+    return (
+      <div className={className} style={style}>
+        {children}
+      </div>
+    );
+  }
 
-    public renderContextMenu(e: React.MouseEvent<HTMLElement>) {
-        return this.props.renderContextMenu(e);
-    }
+  public renderContextMenu(e: React.MouseEvent<HTMLElement>) {
+    return this.props.renderContextMenu(e);
+  }
 }

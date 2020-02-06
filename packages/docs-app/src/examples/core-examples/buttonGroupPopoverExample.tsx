@@ -22,59 +22,59 @@ import { AlignmentSelect } from "./common/alignmentSelect";
 import { FileMenu } from "./common/fileMenu";
 
 export interface IButtonGroupPopoverExampleState {
-    alignText: Alignment;
-    fill: boolean;
-    large: boolean;
-    minimal: boolean;
-    vertical: boolean;
+  alignText: Alignment;
+  fill: boolean;
+  large: boolean;
+  minimal: boolean;
+  vertical: boolean;
 }
 
 export class ButtonGroupPopoverExample extends React.PureComponent<IExampleProps, IButtonGroupPopoverExampleState> {
-    public state: IButtonGroupPopoverExampleState = {
-        alignText: Alignment.CENTER,
-        fill: false,
-        large: false,
-        minimal: false,
-        vertical: false,
-    };
+  public state: IButtonGroupPopoverExampleState = {
+    alignText: Alignment.CENTER,
+    fill: false,
+    large: false,
+    minimal: false,
+    vertical: false,
+  };
 
-    private handleFillChange = handleBooleanChange(fill => this.setState({ fill }));
-    private handleLargeChange = handleBooleanChange(large => this.setState({ large }));
-    private handleMinimalChange = handleBooleanChange(minimal => this.setState({ minimal }));
-    private handleVerticalChange = handleBooleanChange(vertical => this.setState({ vertical }));
+  private handleFillChange = handleBooleanChange(fill => this.setState({ fill }));
+  private handleLargeChange = handleBooleanChange(large => this.setState({ large }));
+  private handleMinimalChange = handleBooleanChange(minimal => this.setState({ minimal }));
+  private handleVerticalChange = handleBooleanChange(vertical => this.setState({ vertical }));
 
-    public render() {
-        const options = (
-            <>
-                <H5>Props</H5>
-                <Switch label="Fill" checked={this.state.fill} onChange={this.handleFillChange} />
-                <Switch label="Large" checked={this.state.large} onChange={this.handleLargeChange} />
-                <Switch label="Minimal" checked={this.state.minimal} onChange={this.handleMinimalChange} />
-                <Switch label="Vertical" checked={this.state.vertical} onChange={this.handleVerticalChange} />
-                <AlignmentSelect align={this.state.alignText} label="Align text" onChange={this.handleAlignChange} />
-            </>
-        );
-        return (
-            <Example options={options} {...this.props}>
-                <ButtonGroup {...this.state} style={{ minWidth: 120 }}>
-                    {this.renderButton("File", "document")}
-                    {this.renderButton("Edit", "edit")}
-                    {this.renderButton("View", "eye-open")}
-                </ButtonGroup>
-            </Example>
-        );
-    }
+  public render() {
+    const options = (
+      <>
+        <H5>Props</H5>
+        <Switch label="Fill" checked={this.state.fill} onChange={this.handleFillChange} />
+        <Switch label="Large" checked={this.state.large} onChange={this.handleLargeChange} />
+        <Switch label="Minimal" checked={this.state.minimal} onChange={this.handleMinimalChange} />
+        <Switch label="Vertical" checked={this.state.vertical} onChange={this.handleVerticalChange} />
+        <AlignmentSelect align={this.state.alignText} label="Align text" onChange={this.handleAlignChange} />
+      </>
+    );
+    return (
+      <Example options={options} {...this.props}>
+        <ButtonGroup {...this.state} style={{ minWidth: 120 }}>
+          {this.renderButton("File", "document")}
+          {this.renderButton("Edit", "edit")}
+          {this.renderButton("View", "eye-open")}
+        </ButtonGroup>
+      </Example>
+    );
+  }
 
-    private renderButton(text: string, iconName: IconName) {
-        const { vertical } = this.state;
-        const rightIconName: IconName = vertical ? "caret-right" : "caret-down";
-        const position = vertical ? Position.RIGHT_TOP : Position.BOTTOM_LEFT;
-        return (
-            <Popover content={<FileMenu />} position={position}>
-                <Button rightIcon={rightIconName} icon={iconName} text={text} />
-            </Popover>
-        );
-    }
+  private renderButton(text: string, iconName: IconName) {
+    const { vertical } = this.state;
+    const rightIconName: IconName = vertical ? "caret-right" : "caret-down";
+    const position = vertical ? Position.RIGHT_TOP : Position.BOTTOM_LEFT;
+    return (
+      <Popover content={<FileMenu />} position={position}>
+        <Button rightIcon={rightIconName} icon={iconName} text={text} />
+      </Popover>
+    );
+  }
 
-    private handleAlignChange = (alignText: Alignment) => this.setState({ alignText });
+  private handleAlignChange = (alignText: Alignment) => this.setState({ alignText });
 }

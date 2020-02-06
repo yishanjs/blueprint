@@ -21,43 +21,43 @@ import moment from "moment";
 import * as React from "react";
 
 export interface IFormatSelectProps {
-    /** Selected formatter. */
-    format: IDateFormatProps;
+  /** Selected formatter. */
+  format: IDateFormatProps;
 
-    /** The callback to fire when a new formatter is chosen. */
-    onChange: (format: IDateFormatProps) => void;
+  /** The callback to fire when a new formatter is chosen. */
+  onChange: (format: IDateFormatProps) => void;
 }
 
 export class FormatSelect extends React.PureComponent<IFormatSelectProps> {
-    private handleChange = handleNumberChange(index => this.props.onChange(FORMATS[index]));
+  private handleChange = handleNumberChange(index => this.props.onChange(FORMATS[index]));
 
-    public render() {
-        const value = FORMATS.indexOf(this.props.format);
-        return (
-            <RadioGroup label="Date format" onChange={this.handleChange} selectedValue={value}>
-                {FORMATS.map((format, index) => (
-                    <Radio key={index} label={format.placeholder} value={index} />
-                ))}
-            </RadioGroup>
-        );
-    }
+  public render() {
+    const value = FORMATS.indexOf(this.props.format);
+    return (
+      <RadioGroup label="Date format" onChange={this.handleChange} selectedValue={value}>
+        {FORMATS.map((format, index) => (
+          <Radio key={index} label={format.placeholder} value={index} />
+        ))}
+      </RadioGroup>
+    );
+  }
 }
 
 export const FORMATS: IDateFormatProps[] = [
-    {
-        formatDate: date => (date == null ? "" : date.toLocaleDateString()),
-        parseDate: str => new Date(Date.parse(str)),
-        placeholder: "JS Date",
-    },
-    momentFormatter("MM/DD/YYYY"),
-    momentFormatter("YYYY-MM-DD"),
-    momentFormatter("YYYY-MM-DD HH:mm:ss"),
+  {
+    formatDate: date => (date == null ? "" : date.toLocaleDateString()),
+    parseDate: str => new Date(Date.parse(str)),
+    placeholder: "JS Date",
+  },
+  momentFormatter("MM/DD/YYYY"),
+  momentFormatter("YYYY-MM-DD"),
+  momentFormatter("YYYY-MM-DD HH:mm:ss"),
 ];
 
 function momentFormatter(format: string): IDateFormatProps {
-    return {
-        formatDate: date => moment(date).format(format),
-        parseDate: str => moment(str, format).toDate(),
-        placeholder: `${format} (moment)`,
-    };
+  return {
+    formatDate: date => moment(date).format(format),
+    parseDate: str => moment(str, format).toDate(),
+    placeholder: `${format} (moment)`,
+  };
 }

@@ -21,24 +21,24 @@ import { Example, handleStringChange } from "@yishanzhilubp/docs-theme";
 import { CheckboxExample } from "./checkboxExample";
 
 export class RadioExample extends CheckboxExample {
-    private handleRadioChange = handleStringChange(value => this.setState({ value }));
+  private handleRadioChange = handleStringChange(value => this.setState({ value }));
 
-    // See CheckboxExample for options
-    protected renderExample() {
-        return (
-            <Example options={false} {...this.props}>
-                <RadioGroup
-                    inline={this.state.inline}
-                    label="Determine lunch"
-                    name="group"
-                    onChange={this.handleRadioChange}
-                    selectedValue={this.state.value}
-                >
-                    <Radio {...this.state} label="Soup" value="one" />
-                    <Radio {...this.state} label="Salad" value="two" />
-                    <Radio {...this.state} label="Sandwich" value="three" />
-                </RadioGroup>
-            </Example>
-        );
-    }
+  // See CheckboxExample for options
+  protected renderExample() {
+    return (
+      <Example options={false} {...this.props}>
+        <RadioGroup
+          inline={this.state.inline}
+          label="Determine lunch"
+          name="group"
+          onChange={this.handleRadioChange}
+          selectedValue={this.state.value}
+        >
+          <Radio {...this.state} label="Soup" value="one" />
+          <Radio {...this.state} label="Salad" value="two" />
+          <Radio {...this.state} label="Sandwich" value="three" />
+        </RadioGroup>
+      </Example>
+    );
+  }
 }

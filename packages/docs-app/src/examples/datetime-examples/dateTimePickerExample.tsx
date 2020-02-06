@@ -22,23 +22,23 @@ import { DateTimePicker } from "@yishanzhilubp/datetime";
 import { MomentDate } from "./common/momentDate";
 
 export class DateTimePickerExample extends React.PureComponent<IExampleProps, { date: Date }> {
-    public state = { date: new Date() };
+  public state = { date: new Date() };
 
-    public render() {
-        return (
-            <Example options={false} {...this.props}>
-                <DateTimePicker
-                    className={Classes.ELEVATION_1}
-                    value={this.state.date}
-                    timePickerProps={{ precision: "second", useAmPm: true }}
-                    onChange={this.handleDateChange}
-                />
-                <div>
-                    <MomentDate date={this.state.date} format="LLLL" />
-                </div>
-            </Example>
-        );
-    }
+  public render() {
+    return (
+      <Example options={false} {...this.props}>
+        <DateTimePicker
+          className={Classes.ELEVATION_1}
+          value={this.state.date}
+          timePickerProps={{ precision: "second", useAmPm: true }}
+          onChange={this.handleDateChange}
+        />
+        <div>
+          <MomentDate date={this.state.date} format="LLLL" />
+        </div>
+      </Example>
+    );
+  }
 
-    private handleDateChange = (date: Date) => this.setState({ date });
+  private handleDateChange = (date: Date) => this.setState({ date });
 }

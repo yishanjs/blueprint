@@ -24,47 +24,47 @@ import { ISliderBaseProps, MultiSlider } from "./multiSlider";
 export type NumberRange = [number, number];
 
 enum RangeIndex {
-    START = 0,
-    END = 1,
+  START = 0,
+  END = 1,
 }
 
 export interface IRangeSliderProps extends ISliderBaseProps {
-    /**
-     * Range value of slider. Handles will be rendered at each position in the range.
-     * @default [0, 10]
-     */
-    value?: NumberRange;
+  /**
+   * Range value of slider. Handles will be rendered at each position in the range.
+   * @default [0, 10]
+   */
+  value?: NumberRange;
 
-    /** Callback invoked when the range value changes. */
-    onChange?(value: NumberRange): void;
+  /** Callback invoked when the range value changes. */
+  onChange?(value: NumberRange): void;
 
-    /** Callback invoked when a handle is released. */
-    onRelease?(value: NumberRange): void;
+  /** Callback invoked when a handle is released. */
+  onRelease?(value: NumberRange): void;
 }
 
 @polyfill
 export class RangeSlider extends AbstractPureComponent2<IRangeSliderProps> {
-    public static defaultProps: IRangeSliderProps = {
-        ...MultiSlider.defaultSliderProps,
-        value: [0, 10],
-    };
+  public static defaultProps: IRangeSliderProps = {
+    ...MultiSlider.defaultSliderProps,
+    value: [0, 10],
+  };
 
-    public static displayName = `${DISPLAYNAME_PREFIX}.RangeSlider`;
+  public static displayName = `${DISPLAYNAME_PREFIX}.RangeSlider`;
 
-    public render() {
-        const { value, ...props } = this.props;
-        return (
-            <MultiSlider {...props}>
-                <MultiSlider.Handle value={value[RangeIndex.START]} type="start" intentAfter={Intent.PRIMARY} />
-                <MultiSlider.Handle value={value[RangeIndex.END]} type="end" />
-            </MultiSlider>
-        );
+  public render() {
+    const { value, ...props } = this.props;
+    return (
+      <MultiSlider {...props}>
+        <MultiSlider.Handle value={value[RangeIndex.START]} type="start" intentAfter={Intent.PRIMARY} />
+        <MultiSlider.Handle value={value[RangeIndex.END]} type="end" />
+      </MultiSlider>
+    );
+  }
+
+  protected validateProps(props: IRangeSliderProps) {
+    const { value } = props;
+    if (value == null || value[RangeIndex.START] == null || value[RangeIndex.END] == null) {
+      throw new Error(Errors.RANGESLIDER_NULL_VALUE);
     }
-
-    protected validateProps(props: IRangeSliderProps) {
-        const { value } = props;
-        if (value == null || value[RangeIndex.START] == null || value[RangeIndex.END] == null) {
-            throw new Error(Errors.RANGESLIDER_NULL_VALUE);
-        }
-    }
+  }
 }

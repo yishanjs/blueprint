@@ -18,26 +18,26 @@ import { ITag } from "@documentalist/client";
 import * as React from "react";
 
 export interface IDocsMap {
-    [name: string]: React.ComponentClass<{}>;
+  [name: string]: React.ComponentClass<{}>;
 }
 
 export class ReactDocsTagRenderer {
-    constructor(private docs: IDocsMap) {}
+  constructor(private docs: IDocsMap) {}
 
-    /**
-     * Given the name of a component, like `"ColorSchemes"`, attempts to resolve
-     * it to an actual component class in the given map, or in the default map which contains
-     * valid docs components from this package. Provide a custom map to inject your own components.
-     */
-    public render: React.SFC<ITag> = ({ value: componentName }) => {
-        if (componentName == null) {
-            return null;
-        }
+  /**
+   * Given the name of a component, like `"ColorSchemes"`, attempts to resolve
+   * it to an actual component class in the given map, or in the default map which contains
+   * valid docs components from this package. Provide a custom map to inject your own components.
+   */
+  public render: React.SFC<ITag> = ({ value: componentName }) => {
+    if (componentName == null) {
+      return null;
+    }
 
-        const docsComponent = this.docs[componentName];
-        if (docsComponent == null) {
-            throw new Error(`Unknown @reactDocs component: ${componentName}`);
-        }
-        return React.createElement(docsComponent);
-    };
+    const docsComponent = this.docs[componentName];
+    if (docsComponent == null) {
+      throw new Error(`Unknown @reactDocs component: ${componentName}`);
+    }
+    return React.createElement(docsComponent);
+  };
 }

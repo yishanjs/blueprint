@@ -22,8 +22,8 @@ FocusStyleManager.onlyShowFocusOnTabs();
 
 // tslint:disable:blueprint-classes-constants
 initializeLogo(
-    document.getElementById("pt-logo") as HTMLCanvasElement,
-    document.getElementById("pt-logo-background") as HTMLCanvasElement,
+  document.getElementById("pt-logo") as HTMLCanvasElement,
+  document.getElementById("pt-logo-background") as HTMLCanvasElement,
 );
 
 initializeSVGs(document.querySelector(".landing-wireframes") as HTMLElement);

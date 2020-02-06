@@ -28,45 +28,45 @@ import { Classes, RangeSlider } from "../../src/index";
 const STEP_SIZE = 20;
 
 describe("<RangeSlider>", () => {
-    let testsContainerElement: HTMLElement;
+  let testsContainerElement: HTMLElement;
 
-    beforeEach(() => {
-        // need an element in the document for tickSize to be a real number
-        testsContainerElement = document.createElement("div");
-        // default min-max is 0-10 so there are 10 steps
-        testsContainerElement.style.width = `${STEP_SIZE * 10}px`;
-        document.body.appendChild(testsContainerElement);
-    });
+  beforeEach(() => {
+    // need an element in the document for tickSize to be a real number
+    testsContainerElement = document.createElement("div");
+    // default min-max is 0-10 so there are 10 steps
+    testsContainerElement.style.width = `${STEP_SIZE * 10}px`;
+    document.body.appendChild(testsContainerElement);
+  });
 
-    afterEach(() => testsContainerElement.remove());
+  afterEach(() => testsContainerElement.remove());
 
-    it("renders two interactive <Handle>s", () => {
-        const handles = renderSlider(<RangeSlider />).find(Handle);
-        assert.lengthOf(handles, 2);
-    });
+  it("renders two interactive <Handle>s", () => {
+    const handles = renderSlider(<RangeSlider />).find(Handle);
+    assert.lengthOf(handles, 2);
+  });
 
-    it("renders primary track segment between two values", () => {
-        const track = renderSlider(<RangeSlider value={[2, 5]} />).find(
-            `.${Classes.SLIDER_PROGRESS}.${Classes.INTENT_PRIMARY}`,
-        );
-        assert.lengthOf(track, 1);
-        assert.equal(track.getDOMNode().getBoundingClientRect().width, STEP_SIZE * 3);
-    });
+  it("renders primary track segment between two values", () => {
+    const track = renderSlider(<RangeSlider value={[2, 5]} />).find(
+      `.${Classes.SLIDER_PROGRESS}.${Classes.INTENT_PRIMARY}`,
+    );
+    assert.lengthOf(track, 1);
+    assert.equal(track.getDOMNode().getBoundingClientRect().width, STEP_SIZE * 3);
+  });
 
-    it("throws error if range value contains null", () => {
-        expectPropValidationError(RangeSlider, { value: [null, 5] });
-        expectPropValidationError(RangeSlider, { value: [100, null] });
-    });
+  it("throws error if range value contains null", () => {
+    expectPropValidationError(RangeSlider, { value: [null, 5] });
+    expectPropValidationError(RangeSlider, { value: [100, null] });
+  });
 
-    it("disabled slider does not respond to key presses", () => {
-        const changeSpy = sinon.spy();
-        const handles = renderSlider(<RangeSlider disabled={true} onChange={changeSpy} />).find(Handle);
-        handles.first().simulate("keydown", { which: ARROW_DOWN });
-        handles.last().simulate("keydown", { which: ARROW_DOWN });
-        assert.isTrue(changeSpy.notCalled, "onChange was called when disabled");
-    });
+  it("disabled slider does not respond to key presses", () => {
+    const changeSpy = sinon.spy();
+    const handles = renderSlider(<RangeSlider disabled={true} onChange={changeSpy} />).find(Handle);
+    handles.first().simulate("keydown", { which: ARROW_DOWN });
+    handles.last().simulate("keydown", { which: ARROW_DOWN });
+    assert.isTrue(changeSpy.notCalled, "onChange was called when disabled");
+  });
 
-    function renderSlider(slider: JSX.Element) {
-        return mount(slider, { attachTo: testsContainerElement });
-    }
+  function renderSlider(slider: JSX.Element) {
+    return mount(slider, { attachTo: testsContainerElement });
+  }
 });
