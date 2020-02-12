@@ -81,15 +81,18 @@ export class TextArea extends React.PureComponent<ITextAreaProps, ITextAreaState
   private rightElement: HTMLSpanElement;
 
   public componentDidMount() {
-    const height = this.internalTextAreaRef.scrollHeight;
-    this.setState({
-      height,
-    });
     if (this.rightElement != null) {
       const rightElementWidth = this.rightElement.clientWidth || DEFAULT_RIGHT_ELEMENT_WIDTH;
-      this.setState({
-        rightElementWidth,
-      });
+      this.setState(
+        {
+          rightElementWidth,
+        },
+        () => {
+          this.syncHeight();
+        },
+      );
+    } else {
+      this.syncHeight();
     }
   }
 
