@@ -13,3 +13,7 @@ indent_size = 2
 indent_style = space
 # 120 characters max per line
 max_line_length = 120
+
+# 4 space indentation
+[*.scss]
+max_line_length = 110

@@ -209,7 +209,6 @@ export class TextArea extends React.PureComponent<ITextAreaProps, ITextAreaState
     outerHeight = Math.max(outerHeight, singleRowHeight);
     // Take the box sizing into account for applying this value as a style.
     const outerHeightStyle = outerHeight + (boxSizing === "border-box" ? padding + border : 0);
-    console.debug("TextArea | syncHeight", { outerHeightStyle });
     this.setState({
       height: outerHeightStyle,
     });

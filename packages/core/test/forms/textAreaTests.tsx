@@ -42,36 +42,38 @@ describe("<TextArea>", () => {
     }
   });
 
-  it("has default Height 30px", () => {
+  it("has default Height", () => {
     mountTextInput({});
     const textarea = wrapper.find("textarea").first();
     const textareaDOM = textarea.getDOMNode() as HTMLTextAreaElement;
-    assert.equal(textareaDOM.scrollHeight, 30);
-    assert.equal(textareaDOM.style.height, "30px");
+    // assert.equal(textareaDOM.scrollHeight, 30);
+    // assert.equal(textareaDOM.style.height, "30px");
+    const scrollHeightInPixels = `${textareaDOM.scrollHeight}px`;
+    assert.equal(textareaDOM.style.height, scrollHeightInPixels);
   });
 
   it("can handle multiline default value", () => {
     mountTextInput({ defaultValue: "line1\nline2" });
     const textarea = wrapper.find("textarea").first();
     const textareaDOM = textarea.getDOMNode() as HTMLTextAreaElement;
-    assert.equal(textareaDOM.scrollHeight, 48);
-    assert.equal(textareaDOM.style.height, "48px");
+    const scrollHeightInPixels = `${textareaDOM.scrollHeight}px`;
+    assert.equal(textareaDOM.style.height, scrollHeightInPixels);
   });
 
-  it("can auto size when input value change", () => {
+  it("can auto resize when input value change", () => {
     mountTextInput({ growVertically: true });
     const textarea = wrapper.find("textarea").first();
     const textareaDOM = textarea.getDOMNode() as HTMLTextAreaElement;
-    assert.equal(textareaDOM.scrollHeight, 30);
-    assert.equal(textareaDOM.style.height, "30px");
+    let scrollHeightInPixels = `${textareaDOM.scrollHeight}px`;
+    assert.equal(textareaDOM.style.height, scrollHeightInPixels);
 
     wrapper.setProps({ value: "line1\nline2" });
     textarea.simulate("change");
-    assert.equal(textareaDOM.scrollHeight, 48);
-    assert.equal(textareaDOM.style.height, "48px");
+    scrollHeightInPixels = `${textareaDOM.scrollHeight}px`;
+    assert.equal(textareaDOM.style.height, scrollHeightInPixels);
     wrapper.setProps({ value: "line1" });
     textarea.simulate("change");
-    assert.equal(textareaDOM.scrollHeight, 30);
-    assert.equal(textareaDOM.style.height, "30px");
+    scrollHeightInPixels = `${textareaDOM.scrollHeight}px`;
+    assert.equal(textareaDOM.style.height, scrollHeightInPixels);
   });
 });
