@@ -33,6 +33,8 @@ export interface IToastProps extends IProps, IIntentProps {
    */
   action?: IActionProps & ILinkProps;
 
+  actions?: IActionProps[];
+
   /** Name of a Blueprint UI icon (or an icon element) to render before the message. */
   icon?: IconName | MaybeElement;
 
@@ -56,6 +58,7 @@ export interface IToastProps extends IProps, IIntentProps {
 @polyfill
 export class Toast extends AbstractPureComponent2<IToastProps, {}> {
   public static defaultProps: IToastProps = {
+    actions: [],
     className: "",
     message: "",
     timeout: 5000,
@@ -78,6 +81,7 @@ export class Toast extends AbstractPureComponent2<IToastProps, {}> {
         <span className={Classes.TOAST_MESSAGE}>{message}</span>
         <ButtonGroup minimal={true}>
           {this.maybeRenderActionButton()}
+          {this.maybeRenderActionButtons()}
           <Button icon="cross" onClick={this.handleCloseClick} />
         </ButtonGroup>
       </div>
@@ -107,12 +111,39 @@ export class Toast extends AbstractPureComponent2<IToastProps, {}> {
     if (action == null) {
       return undefined;
     } else {
-      return <AnchorButton {...action} intent={undefined} onClick={this.handleActionClick} />;
+      return (
+        <AnchorButton
+          {...action}
+          intent={undefined}
+          // tslint:disable-next-line jsx-no-lambda
+          onClick={(e: React.MouseEvent<HTMLElement>) => this.handleActionClick(e, action.onClick)}
+        />
+      );
     }
   }
 
-  private handleActionClick = (e: React.MouseEvent<HTMLElement>) => {
-    safeInvoke(this.props.action.onClick, e);
+  private maybeRenderActionButtons() {
+    const { actions } = this.props;
+    if (actions.length === 0) {
+      return undefined;
+    } else {
+      return actions.map((a, i) => (
+        <Button
+          key={i}
+          {...a}
+          intent={undefined}
+          // tslint:disable-next-line jsx-no-lambda
+          onClick={(e: React.MouseEvent<HTMLElement>) => this.handleActionClick(e, a.onClick)}
+        />
+      ));
+    }
+  }
+
+  private handleActionClick = (
+    e: React.MouseEvent<HTMLElement>,
+    fn: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void,
+  ) => {
+    safeInvoke(fn, e);
     this.triggerDismiss(false);
   };
 

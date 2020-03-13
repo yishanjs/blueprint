@@ -118,8 +118,7 @@ export class Breadcrumbs extends AbstractPureComponent2<IBreadcrumbsProps> {
   };
 
   private renderOverflowBreadcrumb = (props: IBreadcrumbProps, index: number) => {
-    const isClickable = props.href != null || props.onClick != null;
-    return <MenuItem disabled={!isClickable} {...props} text={props.text} key={index} />;
+    return <MenuItem disabled={props.disabled} {...props} text={props.text} key={index} />;
   };
 
   private renderBreadcrumbWrapper = (props: IBreadcrumbProps, index: number) => {
