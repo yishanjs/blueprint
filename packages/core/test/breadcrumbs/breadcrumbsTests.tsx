@@ -89,12 +89,12 @@ describe("Breadcrumbs", () => {
     assert.equal(menuItems.get(1).props.text, "3");
   });
 
-  it("disables menu item when it is not clickable", () => {
+  it("enables menu item when it is not disabled", () => {
     const menuItems = mount(<Breadcrumbs items={ITEMS} popoverProps={{ isOpen: true, usePortal: false }} />).find(
       MenuItem,
     );
     assert.lengthOf(menuItems, ITEMS.length);
-    assert.isTrue(menuItems.get(0).props.disabled);
+    assert.isFalse(menuItems.get(0).props.disabled);
   });
 
   it("calls currentBreadcrumbRenderer (only) for the current breadcrumb", () => {
