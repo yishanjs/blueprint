@@ -11,8 +11,13 @@ $toast-margin: $pt-grid-size * 2 !default;
 
 .#{$ns}-toast {
   // toast transition properties
-  $enter-translate: (transform: translateY(-$toast-height) translateY(0));
-  $leave-blur: (opacity: 0 1, filter: blur($pt-grid-size) blur(0));
+  $enter-translate: (
+    transform: translateY(-$toast-height) translateY(0)
+  );
+  $leave-blur: (
+    opacity: 0 1,
+    filter: blur($pt-grid-size) blur(0)
+  );
 
   // new toasts slide in from the top
   @include react-transition-phase(
@@ -108,7 +113,8 @@ $toast-margin: $pt-grid-size * 2 !default;
     &::before,
     .#{$ns}-icon,
     &:active {
-      color: rgba($white, 0.7) !important;
+      color: rgba($white, 0.7);
+      font-weight: 900;
     }
 
     &:focus {
@@ -118,12 +124,12 @@ $toast-margin: $pt-grid-size * 2 !default;
 
     &:hover {
       background-color: rgba($white, 0.15) !important;
-      color: $white !important;
+      color: $white;
     }
 
     &:active {
       background-color: rgba($white, 0.3) !important;
-      color: $white !important;
+      color: $white;
     }
 
     &::after {

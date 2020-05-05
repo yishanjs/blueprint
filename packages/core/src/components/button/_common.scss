@@ -89,8 +89,8 @@ $dark-minimal-button-background-color-active: rgba($gray3, 0.3) !default;
 $button-intents: (
   "primary": ($pt-intent-primary, $red2, $red1),
   "success": ($pt-intent-success, $green2, $green1),
-  "warning": ($pt-intent-warning, $orange2, $orange1),
-  "danger": ($pt-intent-danger, $violet2, $violet1)
+  "warning": ($pt-intent-warning, $dark-gray2, $dark-gray1),
+  "danger": ($pt-intent-danger, $orange2, $orange1)
 ) !default;
 
 @mixin pt-button-base() {
